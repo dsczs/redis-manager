@@ -21,10 +21,10 @@ var Script = function () {
         }
         var o = ($(this).offset());
         diff = 200 - o.top;
-        if(diff>0)
-            $("#sidebar").scrollTo("-="+Math.abs(diff),500);
+        if (diff > 0)
+            $("#sidebar").scrollTo("-=" + Math.abs(diff), 500);
         else
-            $("#sidebar").scrollTo("+="+Math.abs(diff),500);
+            $("#sidebar").scrollTo("+=" + Math.abs(diff), 500);
     });
 
 //    sidebar toggle
@@ -47,19 +47,19 @@ var Script = function () {
         $(window).on('resize', responsiveView);
     });*/
 
-	/*失效*/
+    /*失效*/
     $('.icon-reorder').click(function () {
         if ($('#sidebar > ul').is(":visible") === true) {
-        	$('.wrapper').animate({'left': '0px'}, 200);
-        	$('#sidebar').animate({'margin-left': '-180px'}, 200, function(){
-        		$('#sidebar > ul').hide();
-        	})
+            $('.wrapper').animate({'left': '0px'}, 200);
+            $('#sidebar').animate({'margin-left': '-180px'}, 200, function () {
+                $('#sidebar > ul').hide();
+            })
             /*$('#main-content').css({'margin-left': '0px'});
             $('#sidebar').css({'margin-left': '-180px'});
             $('#sidebar > ul').hide();*/
             $("#container").addClass("sidebar-closed");
         } else {
-        	$('.wrapper').animate({'left': '180px'}, 200);
+            $('.wrapper').animate({'left': '180px'}, 200);
             /*$('#main-content').css({'margin-left': '180px'});*/
             $('#sidebar > ul').show();
             $('#sidebar').animate({'margin-left': '0'}, 200);
@@ -67,28 +67,42 @@ var Script = function () {
             $("#container").removeClass("sidebar-closed");
         }
     });
-    
-    
 
-	$('#icon-reorder').click(function () {
+
+    $('#icon-reorder').click(function () {
         if ($('#sidebar > ul').is(":visible") === true) {
-        	$('#main-content').animate({'margin-left': '0px'}, 200);
-        	$('#sidebar').animate({'margin-left': '-180px'}, 200, function(){
-        		$('#sidebar > ul').hide();
-        	})
+            $('#main-content').animate({'margin-left': '0px'}, 200);
+            $('#sidebar').animate({'margin-left': '-180px'}, 200, function () {
+                $('#sidebar > ul').hide();
+            })
             $("#main-content").addClass("sidebar-closed");
         } else {
-            
+
             $('#sidebar').animate({'margin-left': '0'}, 200);
             $('#main-content').animate({'margin-left': '180px'}, 200);
             $('#sidebar > ul').show();
             $("#main-content").removeClass("sidebar-closed");
         }
-	});
+    });
 // custom scrollbar
-    $("#sidebarD").niceScroll({styler:"fb",cursorcolor:"#e8403f", cursorwidth: '3', cursorborderradius: '10px', background: '#404040', cursorborder: ''});
+    $("#sidebarD").niceScroll({
+        styler: "fb",
+        cursorcolor: "#e8403f",
+        cursorwidth: '3',
+        cursorborderradius: '10px',
+        background: '#404040',
+        cursorborder: ''
+    });
 
-    $("html").niceScroll({styler:"fb",cursorcolor:"#e8403f", cursorwidth: '6', cursorborderradius: '10px', background: '#404040', cursorborder: '', zindex: '1000'});
+    $("html").niceScroll({
+        styler: "fb",
+        cursorcolor: "#e8403f",
+        cursorwidth: '6',
+        cursorborderradius: '10px',
+        background: '#404040',
+        cursorborder: '',
+        zindex: '1000'
+    });
 
 // widget tools
 
@@ -116,7 +130,6 @@ var Script = function () {
     $('.popovers').popover();
 
 
-
 // custom bar chart
 
     if ($(".custom-bar-chart")) {
@@ -129,12 +142,12 @@ var Script = function () {
         })
     }
 
-	// select menu
-	$(".sidebar-menu li").on("click", function(){
-		var obj = $(this).addClass("active").siblings();
-		obj.removeClass("active");
-		obj.find("li").removeClass("active");
-	})
+    // select menu
+    $(".sidebar-menu li").on("click", function () {
+        var obj = $(this).addClass("active").siblings();
+        obj.removeClass("active");
+        obj.find("li").removeClass("active");
+    })
 
 //custom select box
 
@@ -143,7 +156,6 @@ var Script = function () {
 //        $('select.styled').customSelect();
 //
 //    });
-
 
 
 }();

@@ -11,7 +11,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
 import java.util.List;
-import java.util.concurrent.Executors;
 
 /**
  * Created by gl49 on 2018/4/24.
@@ -25,7 +24,7 @@ public class ClusterDaoTest {
     private NodeInfoDao nodeInfoTable;
 
     @Test
-    public void addTest(){
+    public void addTest() {
         Cluster cluster = new Cluster();
         cluster.setAddress("localhost:8379");
         cluster.setUserGroup("admin");
@@ -34,40 +33,41 @@ public class ClusterDaoTest {
         clusterDao.addCluster(cluster);
         nodeInfoTable.createTable("node_info_" + cluster.getId());
     }
+
     @Test
-    public void createNodeInfoTableTest(){
+    public void createNodeInfoTableTest() {
         nodeInfoTable.createTable("node_info_45");
     }
 
     @Test
-    public void removeClaster(){
-        int id =  33;
-        clusterDao.removeCluster( id );
-        nodeInfoTable.dropTable( "node_info_" + id );
+    public void removeClaster() {
+        int id = 33;
+        clusterDao.removeCluster(id);
+        nodeInfoTable.dropTable("node_info_" + id);
     }
 
     @Test
-    public void getClusterTest(){
+    public void getClusterTest() {
         Cluster cluster = clusterDao.getCluster(1);
-        System.out.println( cluster );
+        System.out.println(cluster);
     }
 
     @Test
-    public void getClusterListTest(){
+    public void getClusterListTest() {
         List<Cluster> clusterList = clusterDao.getClusterList("admin2");
-        System.out.println( clusterList );
+        System.out.println(clusterList);
     }
 
     @Test
-    public void updateCluster(){
+    public void updateCluster() {
         boolean res = clusterDao.updateClusterAddress(1, "localhost:8018");
-        System.out.println( res );
+        System.out.println(res);
     }
 
     @Test
-    public void getClusterGroups(){
+    public void getClusterGroups() {
         List<String> clusters = clusterDao.getClusterGroups();
-        System.out.println( clusters );
+        System.out.println(clusters);
 
     }
 

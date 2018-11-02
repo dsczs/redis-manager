@@ -29,8 +29,8 @@ public class ClusterCheckRuleDaoTest {
     private ClusterLogic clusterLogic;
 
     @Test
-    public void addTest(){
-        ClusterCheckRule rule= new ClusterCheckRule();
+    public void addTest() {
+        ClusterCheckRule rule = new ClusterCheckRule();
         rule.setId(CommonUtil.getUuid());
         rule.setClusterId("test-tc72");
         rule.setFormula("@{totalKeys}>10000");
@@ -41,26 +41,26 @@ public class ClusterCheckRuleDaoTest {
     }
 
     @Test
-    public void getRuleTest(){
+    public void getRuleTest() {
         System.out.println(ruleDao.getClusterRule("7b919524-1b0a-4e8b-9a30-c6e1ab4c6606"));
     }
 
     @Test
-    public void getRuleListTest(){
+    public void getRuleListTest() {
         System.out.println(ruleDao.getClusterRuleList("ssecbigdata").size());
     }
 
     @Test
-    public void updateRuleTest(){
-        ClusterCheckRule rule =  ruleDao.getClusterRule("7b919524-1b0a-4e8b-9a30-c6e1ab4c6606");
+    public void updateRuleTest() {
+        ClusterCheckRule rule = ruleDao.getClusterRule("7b919524-1b0a-4e8b-9a30-c6e1ab4c6606");
         rule.setFormula("@{mem_fragmentation_ratio}>4.0");
         System.out.println(ruleDao.updateClusterCheckRule(rule));
     }
 
     @Test
-    public void delRuleTest(){
-        Map<String,Object> param = new HashMap();
-        param.put("clusterId","ssecbigdata");
+    public void delRuleTest() {
+        Map<String, Object> param = new HashMap();
+        param.put("clusterId", "ssecbigdata");
         System.out.println(ruleDao.delClusterCheckRule(param));
     }
 

@@ -7,7 +7,7 @@
         };
         a.inherits ? (b.prototype = new a.inherits(d.inheriting), b.base = a.inherits.prototype, delete a.inherits) :
             (b.prototype.createEvents = function () {
-                for (var a = 0; a < arguments.length; a++)this.events[arguments[a]] = []
+                for (var a = 0; a < arguments.length; a++) this.events[arguments[a]] = []
             }, b.prototype.listenTo = function (a, b, c) {
                 this.removeListener(a, b, c);
                 a.events[b].push({handler: c, scope: this})
@@ -15,7 +15,7 @@
                 this.removeListener(this, a, b);
                 a && this.events[a] && this.events[a].push({handler: b, scope: c})
             }, b.prototype.removeListener = function (a, b, c) {
-                if (a && a.events && (a = a.events[b]))for (b = a.length - 1; 0 <= b; b--)a[b].handler === c && a.splice(b, 1)
+                if (a && a.events && (a = a.events[b])) for (b = a.length - 1; 0 <= b; b--) a[b].handler === c && a.splice(b, 1)
             }, b.prototype.fire = function (a) {
                 for (var b =
                     this.events[a.type], c = 0; c < b.length; c++) {
@@ -23,7 +23,7 @@
                     d.handler.call(d.scope, a)
                 }
             });
-        for (var c in a)b.prototype[c] = a[c];
+        for (var c in a) b.prototype[c] = a[c];
         return b
     };
     d.addChart = function (a) {
@@ -33,7 +33,7 @@
         d.charts.push(a)
     };
     d.removeChart = function (a) {
-        for (var b = d.charts, c = b.length - 1; 0 <= c; c--)b[c] == a && b.splice(c, 1);
+        for (var b = d.charts, c = b.length - 1; 0 <= c; c--) b[c] == a && b.splice(c, 1);
         0 === b.length && (d.requestAnimation && (window.cancelAnimationFrame(d.requestAnimation),
             d.animationRequested = !1), d.updateInt && (clearInterval(d.updateInt), d.updateInt = NaN))
     };
@@ -59,7 +59,7 @@
     9 > d.IEversion && 0 < d.IEversion && (d.isModern = !1, d.isIE = !0);
     d.dx = 0;
     d.dy = 0;
-    if (document.addEventListener || window.opera)d.isNN = !0, d.isIE = !1, d.dx = .5, d.dy = .5;
+    if (document.addEventListener || window.opera) d.isNN = !0, d.isIE = !1, d.dx = .5, d.dy = .5;
     document.attachEvent && (d.isNN = !1, d.isIE = !0, d.isModern || (d.dx = 0, d.dy = 0));
     window.chrome && (d.chrome = !0);
     d.handleMouseUp = function (a) {
@@ -79,7 +79,7 @@
             var e = b[c];
             if (e && e.mouseIsOver) {
                 (e.mouseWheelScrollEnabled ||
-                e.mouseWheelZoomEnabled) && e.handleWheel && e.handleWheel(a);
+                    e.mouseWheelZoomEnabled) && e.handleWheel && e.handleWheel(a);
                 break
             }
         }
@@ -106,7 +106,7 @@
     };
     d.callInitHandler = function (a) {
         var b = d.initHandlers;
-        if (d.initHandlers)for (var c = 0; c < b.length; c++) {
+        if (d.initHandlers) for (var c = 0; c < b.length; c++) {
             var e = b[c];
             e.types ? d.isInArray(e.types, a.type) && e.method(a) : e.method(a)
         }
@@ -123,7 +123,7 @@
     };
     d.clear = function () {
         var a = d.charts;
-        if (a)for (var b = a.length - 1; 0 <= b; b--)a[b].clear();
+        if (a) for (var b = a.length - 1; 0 <= b; b--) a[b].clear();
         d.updateInt && clearInterval(d.updateInt);
         d.requestAnimation && window.cancelAnimationFrame(d.requestAnimation);
         d.charts = [];
@@ -170,8 +170,8 @@
         }, c) : d.ready(function () {
             isNaN(c) ?
                 f.write(a) : setTimeout(function () {
-                d.realWrite(f, a)
-            }, c)
+                    d.realWrite(f, a)
+                }, c)
         });
         return f
     };
@@ -185,7 +185,7 @@
         d.updateCount++;
         var b = !1;
         d.updateCount == d.validateAt && (b = !0, d.updateCount = 0);
-        if (a)for (var c = a.length - 1; 0 <= c; c--)a[c].update && a[c].update(), b && (a[c].autoResize ? a[c].validateSize && a[c].validateSize() : a[c].premeasure && a[c].premeasure());
+        if (a) for (var c = a.length - 1; 0 <= c; c--) a[c].update && a[c].update(), b && (a[c].autoResize ? a[c].validateSize && a[c].validateSize() : a[c].premeasure && a[c].premeasure());
         window.requestAnimationFrame && (d.requestAnimation = window.requestAnimationFrame(d.update))
     };
     "complete" == document.readyState && d.handleLoad()
@@ -193,7 +193,7 @@
 (function () {
     var d = window.AmCharts;
     d.toBoolean = function (a, b) {
-        if (void 0 === a)return b;
+        if (void 0 === a) return b;
         switch (String(a).toLowerCase()) {
             case "true":
             case "yes":
@@ -210,13 +210,13 @@
     };
     d.removeFromArray = function (a, b) {
         var c;
-        if (void 0 !== b && void 0 !== a)for (c = a.length - 1; 0 <= c; c--)a[c] == b && a.splice(c, 1)
+        if (void 0 !== b && void 0 !== a) for (c = a.length - 1; 0 <= c; c--) a[c] == b && a.splice(c, 1)
     };
     d.getPath = function () {
         var a = document.getElementsByTagName("script");
-        if (a)for (var b = 0; b < a.length; b++) {
+        if (a) for (var b = 0; b < a.length; b++) {
             var c = a[b].src;
-            if (-1 !== c.search(/\/(amcharts|ammap)\.js/))return c.replace(/\/(amcharts|ammap)\.js.*/,
+            if (-1 !== c.search(/\/(amcharts|ammap)\.js/)) return c.replace(/\/(amcharts|ammap)\.js.*/,
                 "/")
         }
     };
@@ -227,7 +227,7 @@
         return 0 === a.search(/^http[s]?:|^\//)
     };
     d.isInArray = function (a, b) {
-        for (var c = 0; c < a.length; c++)if (a[c] == b)return !0;
+        for (var c = 0; c < a.length; c++) if (a[c] == b) return !0;
         return !1
     };
     d.getDecimals = function (a) {
@@ -238,12 +238,12 @@
     d.wordwrap = function (a, b, c, e) {
         var h, f, g, k;
         a += "";
-        if (1 > b)return a;
+        if (1 > b) return a;
         h = -1;
         for (a = (k = a.split(/\r\n|\n|\r/)).length; ++h < a; k[h] +=
             g) {
             g = k[h];
-            for (k[h] = ""; g.length > b; k[h] += d.trim(g.slice(0, f)) + ((g = g.slice(f)).length ? c : ""))f = 2 == e || (f = g.slice(0, b + 1).match(/\S*(\s)?$/))[1] ? b : f.input.length - f[0].length || 1 == e && b || f.input.length + (f = g.slice(b).match(/^\S*/))[0].length;
+            for (k[h] = ""; g.length > b; k[h] += d.trim(g.slice(0, f)) + ((g = g.slice(f)).length ? c : "")) f = 2 == e || (f = g.slice(0, b + 1).match(/\S*(\s)?$/))[1] ? b : f.input.length - f[0].length || 1 == e && b || f.input.length + (f = g.slice(b).match(/^\S*/))[0].length;
             g = d.trim(g)
         }
         return k.join(c)
@@ -270,7 +270,7 @@
     };
     d.getStyle = function (a, b) {
         var c = "";
-        if (document.defaultView && document.defaultView.getComputedStyle)try {
+        if (document.defaultView && document.defaultView.getComputedStyle) try {
             c = document.defaultView.getComputedStyle(a, "").getPropertyValue(b)
         } catch (e) {
         } else a.currentStyle && (b = b.replace(/\-(\w)/g, function (a, b) {
@@ -279,11 +279,11 @@
         return c
     };
     d.removePx = function (a) {
-        if (void 0 !== a)return Number(a.substring(0, a.length - 2))
+        if (void 0 !== a) return Number(a.substring(0, a.length - 2))
     };
     d.getURL = function (a, b) {
-        if (a)if ("_self" !=
-            b && b)if ("_top" == b && window.top)window.top.location.href = a; else if ("_parent" == b && window.parent)window.parent.location.href = a; else if ("_blank" == b)window.open(a); else {
+        if (a) if ("_self" !=
+            b && b) if ("_top" == b && window.top) window.top.location.href = a; else if ("_parent" == b && window.parent) window.parent.location.href = a; else if ("_blank" == b) window.open(a); else {
             var c = document.getElementsByName(b)[0];
             c ? c.src = a : (c = d.windows[b]) ? c.opener && !c.opener.closed ? c.location.href = a : d.windows[b] = window.open(a) : d.windows[b] = window.open(a)
         } else window.location.href = a
@@ -296,13 +296,13 @@
         for (c = 0; c < b.length; c++) {
             var e = b[c];
             if (e) {
-                if (e[a])e[a]();
+                if (e[a]) e[a]();
                 var d = e.length;
                 if (0 < d) {
                     var f;
                     for (f = 0; f < d; f++) {
                         var g = e[f];
-                        if (g && g[a])g[a]()
+                        if (g && g[a]) g[a]()
                     }
                 }
             }
@@ -312,7 +312,7 @@
         return "number" == typeof a ? a : Number(String(a).replace(/[^0-9\-.]+/g, ""))
     };
     d.toColor = function (a) {
-        if ("" !== a && void 0 !== a)if (-1 != a.indexOf(",")) {
+        if ("" !== a && void 0 !== a) if (-1 != a.indexOf(",")) {
             a = a.split(",");
             var b;
             for (b = 0; b < a.length; b++) {
@@ -340,7 +340,7 @@
         return a.replace(/[0-9]+/g, "")
     };
     d.roundTo = function (a, b) {
-        if (0 > b)return a;
+        if (0 > b) return a;
         var c = Math.pow(10, b);
         return Math.round(a * c) / c
     };
@@ -353,7 +353,7 @@
             if (d < b) {
                 var f;
                 for (f = 0; f <
-                b - d; f++)e = "0" + e
+                b - d; f++) e = "0" + e
             }
             d = e.substring(0, e.length - b);
             "" === d && (d = 0);
@@ -377,7 +377,7 @@
         "ss" == b && (a = d.formatNumber(a, f), 1 == a.split(k)[0].length && (a = "0" + a));
         ("mm" == b || "hh" == b) && 10 > a && (a = "0" + a);
         c = a + "" + e[b] + "" + c;
-        if (g[h].count > g[b].count)for (a = g[b].count; a < g[h].count; a++)b = g[b].nextInterval, "ss" == b || "mm" == b || "hh" == b ? c = "00" + e[b] + "" + c : "DD" == b && (c = "0" + e[b] + "" + c);
+        if (g[h].count > g[b].count) for (a = g[b].count; a < g[h].count; a++) b = g[b].nextInterval, "ss" == b || "mm" == b || "hh" == b ? c = "00" + e[b] + "" + c : "DD" == b && (c = "0" + e[b] + "" + c);
         ":" == c.charAt(c.length - 1) && (c = c.substring(0, c.length - 1));
         return c
     };
@@ -393,9 +393,9 @@
         -1 != k.indexOf("e") && (l = !0);
         0 <= c && !l && (k = d.toFixed(a, c));
         var m = "";
-        if (l)m = k; else {
+        if (l) m = k; else {
             var k = k.split("."), l = String(k[0]), p;
-            for (p = l.length; 0 <= p; p -= 3)m = p != l.length ? 0 !== p ? l.substring(p - 3, p) + b + m : l.substring(p - 3, p) + m : l.substring(p - 3, p);
+            for (p = l.length; 0 <= p; p -= 3) m = p != l.length ? 0 !== p ? l.substring(p - 3, p) + b + m : l.substring(p - 3, p) + m : l.substring(p - 3, p);
             void 0 !== k[1] && (m = m + f + k[1]);
             void 0 !== c && 0 < c && "0" != m && (m = d.addZeroes(m, f, c))
         }
@@ -416,19 +416,19 @@
         var c;
         if ("-" == a[1].substr(0, 1)) {
             b = "0.";
-            for (c = 0; c < Math.abs(Number(a[1])) - 1; c++)b += "0";
+            for (c = 0; c < Math.abs(Number(a[1])) - 1; c++) b += "0";
             b += a[0].split(".").join("")
         } else {
             var e = 0;
             b = a[0].split(".");
             b[1] && (e = b[1].length);
             b = a[0].split(".").join("");
-            for (c = 0; c < Math.abs(Number(a[1])) - e; c++)b += "0"
+            for (c = 0; c < Math.abs(Number(a[1])) - e; c++) b += "0"
         }
         return b
     };
     d.toScientific = function (a, b) {
-        if (0 === a)return "0";
+        if (0 === a) return "0";
         var c = Math.floor(Math.log(Math.abs(a)) * Math.LOG10E), e = String(e).split(".").join(b);
         return String(e) + "e" + c
     };
@@ -448,7 +448,7 @@
         return a >= c.x - 5 && a <= c.x + c.width + 5 && b >= c.y - 5 && b <= c.y + c.height + 5 ? !0 : !1
     };
     d.isPercents = function (a) {
-        if (-1 != String(a).indexOf("%"))return !0
+        if (-1 != String(a).indexOf("%")) return !0
     };
     d.formatValue =
         function (a, b, c, e, h, f, g, k) {
@@ -473,7 +473,7 @@
         return a
     };
     d.massReplace = function (a, b) {
-        for (var c in b)if (b.hasOwnProperty(c)) {
+        for (var c in b) if (b.hasOwnProperty(c)) {
             var e =
                 b[c];
             void 0 === e && (e = "");
@@ -486,19 +486,19 @@
     };
     d.addPrefix = function (a, b, c, e, h) {
         var f = d.formatNumber(a, e), g = "", k, l, m;
-        if (0 === a)return "0";
+        if (0 === a) return "0";
         0 > a && (g = "-");
         a = Math.abs(a);
-        if (1 < a)for (k = b.length - 1; -1 < k; k--) {
+        if (1 < a) for (k = b.length - 1; -1 < k; k--) {
             if (a >= b[k].number && (l = a / b[k].number, m = Number(e.precision), 1 > m && (m = 1), c = d.roundTo(l, m), m = d.formatNumber(c, {
-                    precision: -1,
-                    decimalSeparator: e.decimalSeparator,
-                    thousandsSeparator: e.thousandsSeparator
-                }), !h || l == c)) {
+                precision: -1,
+                decimalSeparator: e.decimalSeparator,
+                thousandsSeparator: e.thousandsSeparator
+            }), !h || l == c)) {
                 f = g + "" + m + "" + b[k].prefix;
                 break
             }
-        } else for (k = 0; k < c.length; k++)if (a <= c[k].number) {
+        } else for (k = 0; k < c.length; k++) if (a <= c[k].number) {
             l = a / c[k].number;
             m = Math.abs(Math.floor(Math.log(l) * Math.LOG10E));
             l = d.roundTo(l, m);
@@ -542,14 +542,14 @@
     d.extend = function (a, b, c) {
         var e;
         a || (a = {});
-        for (e in b)c ? a.hasOwnProperty(e) || (a[e] = b[e]) : a[e] = b[e];
+        for (e in b) c ? a.hasOwnProperty(e) || (a[e] = b[e]) : a[e] = b[e];
         return a
     };
     d.copyProperties = function (a, b) {
-        for (var c in a)a.hasOwnProperty(c) && "events" != c && void 0 !== a[c] && "function" != typeof a[c] && "cname" != c && (b[c] = a[c])
+        for (var c in a) a.hasOwnProperty(c) && "events" != c && void 0 !== a[c] && "function" != typeof a[c] && "cname" != c && (b[c] = a[c])
     };
     d.processObject = function (a, b, c, e) {
-        if (!1 === a instanceof b && (a = e ? d.extend(new b(c), a) : d.extend(a, new b(c), !0), a.listeners))for (var h in a.listeners)b = a.listeners[h], a.addListener(b.event,
+        if (!1 === a instanceof b && (a = e ? d.extend(new b(c), a) : d.extend(a, new b(c), !0), a.listeners)) for (var h in a.listeners) b = a.listeners[h], a.addListener(b.event,
             b.method);
         return a
     };
@@ -567,9 +567,9 @@
     };
     d.deleteObject = function (a, b) {
         if (a) {
-            if (void 0 === b || null === b)b = 20;
-            if (0 !== b)if ("[object Array]" === Object.prototype.toString.call(a))for (var c = 0; c < a.length; c++)d.deleteObject(a[c], b - 1), a[c] = null; else if (a && !a.tagName)try {
-                for (c in a.theme = null, a)a[c] && ("object" == typeof a[c] &&
+            if (void 0 === b || null === b) b = 20;
+            if (0 !== b) if ("[object Array]" === Object.prototype.toString.call(a)) for (var c = 0; c < a.length; c++) d.deleteObject(a[c], b - 1), a[c] = null; else if (a && !a.tagName) try {
+                for (c in a.theme = null, a) a[c] && ("object" == typeof a[c] &&
                 d.deleteObject(a[c], b - 1), "function" != typeof a[c] && (a[c] = null))
             } catch (e) {
             }
@@ -580,7 +580,7 @@
     };
     d.easeInOutQuad = function (a, b, c, e, d) {
         b /= d / 2;
-        if (1 > b)return e / 2 * b * b + c;
+        if (1 > b) return e / 2 * b * b + c;
         b--;
         return -e / 2 * (b * (b - 2) - 1) + c
     };
@@ -589,13 +589,13 @@
     };
     d.easeOutSine = function (a, b, c, e, d) {
         return e * Math.sin(b / d * (Math.PI /
-                2)) + c
+            2)) + c
     };
     d.easeOutElastic = function (a, b, c, e, d) {
         a = 1.70158;
         var f = 0, g = e;
-        if (0 === b)return c;
-        if (1 == (b /= d))return c + e;
+        if (0 === b) return c;
+        if (1 == (b /= d)) return c + e;
         f || (f = .3 * d);
         g < Math.abs(e) ? (g = e, a = f / 4) : a = f / (2 * Math.PI) * Math.asin(e / g);
         return g * Math.pow(2, -10 * b) * Math.sin(2 * (b * d - a) * Math.PI / f) + e + c
@@ -610,7 +610,7 @@
         var c = "", e;
         e = 0 > b ? Math.abs(b) - 1 : Math.abs(b);
         var d;
-        for (d = 0; d < e; d++)c += "0";
+        for (d = 0; d < e; d++) c += "0";
         return 0 > b ? Number("0." + c + String(a)) :
             Number(String(a) + c)
     };
@@ -628,8 +628,8 @@
     d.parseDefs = function (a, b) {
         for (var c in a) {
             var e = typeof a[c];
-            if (0 < a[c].length && "object" == e)for (var h = 0; h < a[c].length; h++)e = document.createElementNS(d.SVG_NS, c), b.appendChild(e), d.parseDefs(a[c][h],
-                e); else"object" == e ? (e = document.createElementNS(d.SVG_NS, c), b.appendChild(e), d.parseDefs(a[c], e)) : b.setAttribute(c, a[c])
+            if (0 < a[c].length && "object" == e) for (var h = 0; h < a[c].length; h++) e = document.createElementNS(d.SVG_NS, c), b.appendChild(e), d.parseDefs(a[c][h],
+                e); else "object" == e ? (e = document.createElementNS(d.SVG_NS, c), b.appendChild(e), d.parseDefs(a[c], e)) : b.setAttribute(c, a[c])
         }
     }
 })();
@@ -764,7 +764,8 @@
                 e.push(a);
                 var e = h.x, f = h.y;
                 d.VML && (f -= this.y, e -= this.x);
-                var g = h.width, h = h.height, k = this.width, l = this.height, m = 0, p = a.getBBox().height / 2, q = this.inside, n = this.titleAlign;
+                var g = h.width, h = h.height, k = this.width, l = this.height, m = 0, p = a.getBBox().height / 2,
+                    q = this.inside, n = this.titleAlign;
                 switch (this.position) {
                     case "top":
                         b = "left" == n ? -1 : "right" == n ? k : k / 2;
@@ -792,7 +793,7 @@
         }, pushAxisItem: function (a, b) {
             var c = this, e = a.graphics();
             0 < e.length() && (b ? c.labelsSet.push(e) : c.set.push(e));
-            if (e = a.getLabel())c.labelsSet.push(e), e.click(function (b) {
+            if (e = a.getLabel()) c.labelsSet.push(e), e.click(function (b) {
                 c.handleMouse(b, a, "clickItem")
             }).touchend(function (b) {
                 c.handleMouse(b, a, "clickItem")
@@ -813,16 +814,17 @@
                 event: a
             })
         }, addGuide: function (a) {
-            for (var b = this.guides, c = !1, e = b.length, h = 0; h < b.length; h++)b[h] == a && (c = !0, e = h);
+            for (var b = this.guides, c = !1, e = b.length, h = 0; h < b.length; h++) b[h] == a && (c = !0, e = h);
             a = d.processObject(a, d.Guide, this.theme);
             a.id || (a.id = "guideAuto" + e + "_" + (new Date).getTime());
             c || b.push(a)
         }, removeGuide: function (a) {
             var b = this.guides, c;
-            for (c = 0; c < b.length; c++)b[c] == a && b.splice(c, 1)
+            for (c = 0; c < b.length; c++) b[c] == a && b.splice(c, 1)
         }, handleGuideOver: function (a) {
             clearTimeout(this.chart.hoverInt);
-            var b = a.graphics.getBBox(), c = this.x + b.x + b.width / 2, b = this.y + b.y + b.height / 2, e = a.fillColor;
+            var b = a.graphics.getBBox(), c = this.x + b.x + b.width / 2, b = this.y + b.y + b.height / 2,
+                e = a.fillColor;
             void 0 === e && (e = a.lineColor);
             this.chart.showBalloon(a.balloonText, e, !0, c, b);
             this.fire({type: "rollOverGuide", guide: a, chart: this.chart})
@@ -863,19 +865,22 @@
             a && d.remove(a.axisSet);
             d.remove(this.grid0)
         }, chooseMinorFrequency: function (a) {
-            for (var b = 10; 0 < b; b--)if (a /
-                b == Math.round(a / b))return a / b
+            for (var b = 10; 0 < b; b--) if (a /
+                b == Math.round(a / b)) return a / b
         }, parseDatesDraw: function () {
-            var a, b = this.chart, c = this.showFirstLabel, e = this.showLastLabel, h, f = "", g = d.extractPeriod(this.minPeriod), k = d.getPeriodDuration(g.period, g.count), l, m, p, q, n, t = this.firstDayOfWeek, r = this.boldPeriodBeginning;
+            var a, b = this.chart, c = this.showFirstLabel, e = this.showLastLabel, h, f = "",
+                g = d.extractPeriod(this.minPeriod), k = d.getPeriodDuration(g.period, g.count), l, m, p, q, n,
+                t = this.firstDayOfWeek, r = this.boldPeriodBeginning;
             a = this.minorGridEnabled;
-            var w, z = this.gridAlpha, x, u = this.choosePeriod(0), A = u.period, u = u.count, y = d.getPeriodDuration(A, u);
+            var w, z = this.gridAlpha, x, u = this.choosePeriod(0), A = u.period, u = u.count,
+                y = d.getPeriodDuration(A, u);
             y < k && (A = g.period, u = g.count, y = k);
             g = A;
             "WW" == g && (g = "DD");
             this.stepWidth = this.getStepWidth(this.timeDifference);
             var B = Math.ceil(this.timeDifference /
-                    y) + 5, D = l = d.resetDateToMin(new Date(this.startTime - y), A, u, t).getTime();
-            if (g == A && 1 == u && this.centerLabelOnFullPeriod || this.autoWrap || this.centerLabels)p = y * this.stepWidth, this.autoWrap && !this.centerLabels && (p = -p);
+                y) + 5, D = l = d.resetDateToMin(new Date(this.startTime - y), A, u, t).getTime();
+            if (g == A && 1 == u && this.centerLabelOnFullPeriod || this.autoWrap || this.centerLabels) p = y * this.stepWidth, this.autoWrap && !this.centerLabels && (p = -p);
             this.cellWidth = k * this.stepWidth;
             q = Math.round(l / y);
             k = -1;
@@ -883,14 +888,14 @@
             q = this.firstTime;
             var C = 0, I = 0;
             a && 1 < u && (w = this.chooseMinorFrequency(u), x = d.getPeriodDuration(A, w), "DD" == A && (x += d.getPeriodDuration("hh")), "fff" == A && (x = 1));
-            if (0 < this.gridCountR)for (B - 5 - k > this.autoRotateCount && !isNaN(this.autoRotateAngle) && (this.labelRotationR = this.autoRotateAngle), a = k; a <= B; a++) {
+            if (0 < this.gridCountR) for (B - 5 - k > this.autoRotateCount && !isNaN(this.autoRotateAngle) && (this.labelRotationR = this.autoRotateAngle), a = k; a <= B; a++) {
                 n = q + y * (a + Math.floor((D - q) / y)) - C;
                 "DD" == A && (n += 36E5);
                 n = d.resetDateToMin(new Date(n), A, u, t).getTime();
                 "MM" == A && (h = (n - l) / y, 1.5 <= (n - l) / y && (n = n - (h - 1) * y + d.getPeriodDuration("DD", 3), n = d.resetDateToMin(new Date(n), A, 1).getTime(), C += y));
                 h = (n - this.startTime) * this.stepWidth;
                 if ("radar" == b.type) {
-                    if (h = this.axisWidth - h, 0 > h || h > this.axisWidth)continue
+                    if (h = this.axisWidth - h, 0 > h || h > this.axisWidth) continue
                 } else this.rotate ? "date" == this.type && "middle" == this.gridPosition && (I = -y * this.stepWidth /
                     2) : "date" == this.type && (h = this.axisWidth - h);
                 f = !1;
@@ -900,13 +905,13 @@
                 r || (l = !1);
                 this.currentDateFormat = f;
                 f = d.formatDate(new Date(n), f, b);
-                if (a == k && !c || a == B && !e)f = " ";
+                if (a == k && !c || a == B && !e) f = " ";
                 this.labelFunction && (f = this.labelFunction(f, new Date(n), this, A, u, m).toString());
                 this.boldLabels && (l = !0);
                 m = new this.axisItemRenderer(this, h, f, !1, p, I, !1, l);
                 this.pushAxisItem(m);
                 m = l = n;
-                if (!isNaN(w))for (h = 1; h < u; h += w)this.gridAlpha = this.minorGridAlpha, f = n + x * h, f = d.resetDateToMin(new Date(f), A, w, t).getTime(), f = new this.axisItemRenderer(this, (f - this.startTime) * this.stepWidth, void 0, void 0, void 0, void 0, void 0, void 0, void 0, !0), this.pushAxisItem(f);
+                if (!isNaN(w)) for (h = 1; h < u; h += w) this.gridAlpha = this.minorGridAlpha, f = n + x * h, f = d.resetDateToMin(new Date(f), A, w, t).getTime(), f = new this.axisItemRenderer(this, (f - this.startTime) * this.stepWidth, void 0, void 0, void 0, void 0, void 0, void 0, void 0, !0), this.pushAxisItem(f);
                 this.gridAlpha = z
             }
         }, choosePeriod: function (a) {
@@ -962,7 +967,7 @@
             }
             c || (c = this.currentDateFormat);
             if ("V" == this.orientation) {
-                if (0 > b || b > this.height)return;
+                if (0 > b || b > this.height) return;
                 if (isNaN(b)) {
                     this.hideBalloon();
                     return
@@ -970,7 +975,7 @@
                 b = this.adjustBalloonCoordinate(b, e);
                 e = this.coordinateToValue(b)
             } else {
-                if (0 > a || a > this.width)return;
+                if (0 > a || a > this.width) return;
                 if (isNaN(a)) {
                     this.hideBalloon();
                     return
@@ -979,14 +984,14 @@
                 e = this.coordinateToValue(a)
             }
             var f;
-            if (d = this.chart.chartCursor)f =
+            if (d = this.chart.chartCursor) f =
                 d.index;
             if (this.balloon && void 0 !== e && this.balloon.enabled) {
                 if (this.balloonTextFunction) {
-                    if ("date" == this.type || !0 === this.parseDates)e = new Date(e);
+                    if ("date" == this.type || !0 === this.parseDates) e = new Date(e);
                     e = this.balloonTextFunction(e)
                 } else this.balloonText ? e = this.formatBalloonText(this.balloonText, f, c) : isNaN(e) || (e = this.formatValue(e, c));
-                if (a != this.prevBX || b != this.prevBY)this.balloon.setPosition(a, b), this.prevBX = a, this.prevBY = b, e && this.balloon.showBalloon(e)
+                if (a != this.prevBX || b != this.prevBY) this.balloon.setPosition(a, b), this.prevBX = a, this.prevBY = b, e && this.balloon.showBalloon(e)
             }
         }, adjustBalloonCoordinate: function (a) {
             return a
@@ -1009,7 +1014,7 @@
                 a.mainSet = b.plotBalloonsSet;
                 a.pointerWidth =
                     this.tickLength;
-                if (this.parseDates || "date" == this.type)a.pointerWidth = 0;
+                if (this.parseDates || "date" == this.type) a.pointerWidth = 0;
                 a.className = this.id;
                 b = "V";
                 "V" == this.orientation && (b = "H");
@@ -1106,12 +1111,12 @@
             }
             this.grid0 = null;
             var f, g, k = a.dx, l = a.dy, e = !1, h = this.logarithmic;
-            if (isNaN(this.min) || isNaN(this.max) || !this.foundGraphs || Infinity == this.min || -Infinity == this.max)e = !0; else {
+            if (isNaN(this.min) || isNaN(this.max) || !this.foundGraphs || Infinity == this.min || -Infinity == this.max) e = !0; else {
                 "date" == this.type && this.min == this.max && (this.max += this.minDuration(), this.min -= this.minDuration());
                 var m = this.labelFrequency, p = this.showFirstLabel, q = this.showLastLabel, n = 1, t = 0;
                 this.minCalc = this.min;
                 this.maxCalc = this.max;
-                if (this.strictMinMax && (isNaN(this.minimum) || (this.min = this.minimum), isNaN(this.maximum) || (this.max = this.maximum), this.min == this.max))return;
+                if (this.strictMinMax && (isNaN(this.minimum) || (this.min = this.minimum), isNaN(this.maximum) || (this.max = this.maximum), this.min == this.max)) return;
                 isNaN(this.minZoom) || (this.minReal = this.min = this.minZoom);
                 isNaN(this.maxZoom) ||
                 (this.max = this.maxZoom);
@@ -1120,7 +1125,8 @@
                     var r = this.fullMax;
                     isNaN(this.minimum) || (g = this.minimum);
                     isNaN(this.maximum) || (r = this.maximum);
-                    var r = Math.log(r) * Math.LOG10E - Math.log(g) * Math.LOG10E, w = Math.log(this.max) / Math.LN10 - Math.log(g) * Math.LOG10E;
+                    var r = Math.log(r) * Math.LOG10E - Math.log(g) * Math.LOG10E,
+                        w = Math.log(this.max) / Math.LN10 - Math.log(g) * Math.LOG10E;
                     this.relativeStart = d.roundTo((Math.log(this.minReal) / Math.LN10 - Math.log(g) * Math.LOG10E) / r, 5);
                     this.relativeEnd = d.roundTo(w / r, 5)
                 } else this.relativeStart = d.roundTo(d.fitToBounds((this.min - this.fullMin) / (this.fullMax - this.fullMin), 0, 1), 5), this.relativeEnd =
@@ -1149,12 +1155,12 @@
                 this.duration && (this.maxInterval = d.getMaxInterval(this.max, this.duration));
                 var x = this.step, y, A = this.minorGridAlpha;
                 this.minorGridEnabled && (y = this.getMinorGridStep(x, this.stepWidth * x));
-                if (this.autoGridCount || 0 !== this.gridCount)if ("date" == c)this.generateDFObject(), this.timeDifference = this.max - this.min, this.maxTime = this.lastTime = this.max, this.startTime = this.firstTime = this.min, this.parseDatesDraw(); else for (r >= this.autoRotateCount && !isNaN(this.autoRotateAngle) && (this.labelRotationR = this.autoRotateAngle),
-                                                                                                                                                                                                                                                                             c = this.minCalc, h && (r++, c = this.maxCalc - r * x), this.gridCountReal = r, g = this.startCount = t; g < r; g += n)if (t = x * g + c, t = d.roundTo(t, this.maxDecCount + 1), !this.integersOnly || Math.round(t) == t)if (isNaN(w) || Number(d.toFixed(t, w)) == t) {
-                    if (!0 === h)if (z > this.logGridLimit)t = Math.pow(10, g); else if (0 >= t && (t = c + x * g + x / 2, 0 >= t))continue;
+                if (this.autoGridCount || 0 !== this.gridCount) if ("date" == c) this.generateDFObject(), this.timeDifference = this.max - this.min, this.maxTime = this.lastTime = this.max, this.startTime = this.firstTime = this.min, this.parseDatesDraw(); else for (r >= this.autoRotateCount && !isNaN(this.autoRotateAngle) && (this.labelRotationR = this.autoRotateAngle),
+                                                                                                                                                                                                                                                                               c = this.minCalc, h && (r++, c = this.maxCalc - r * x), this.gridCountReal = r, g = this.startCount = t; g < r; g += n) if (t = x * g + c, t = d.roundTo(t, this.maxDecCount + 1), !this.integersOnly || Math.round(t) == t) if (isNaN(w) || Number(d.toFixed(t, w)) == t) {
+                    if (!0 === h) if (z > this.logGridLimit) t = Math.pow(10, g); else if (0 >= t && (t = c + x * g + x / 2, 0 >= t)) continue;
                     u = this.formatValue(t, !1, g);
                     Math.round(g / m) != g / m && (u = void 0);
-                    if (0 === g && !p || g == r - 1 && !q)u = " ";
+                    if (0 === g && !p || g == r - 1 && !q) u = " ";
                     f = this.getCoordinate(t);
                     var B;
                     this.rotate && this.autoWrap && (B = this.stepWidth * x - 10);
@@ -1173,7 +1179,8 @@
                         I = this.gridAlpha;
                         this.gridAlpha = this.minorGridAlpha;
                         for (H = 1; H < f; H++) {
-                            var Q = this.getCoordinate(t + y * H), Q = new this.axisItemRenderer(this, Q, "", !1, 0, 0, !1, !1, 0, !0);
+                            var Q = this.getCoordinate(t + y * H),
+                                Q = new this.axisItemRenderer(this, Q, "", !1, 0, 0, !1, !1, 0, !0);
                             this.pushAxisItem(Q)
                         }
                         this.gridAlpha = I
@@ -1183,7 +1190,7 @@
                 B = z.length;
                 if (0 < B) {
                     D = this.fillAlpha;
-                    for (g = this.fillAlpha = 0; g < B; g++)C = z[g], k = NaN, y = C.above, isNaN(C.toValue) ||
+                    for (g = this.fillAlpha = 0; g < B; g++) C = z[g], k = NaN, y = C.above, isNaN(C.toValue) ||
                     (k = this.getCoordinate(C.toValue), u = new this.axisItemRenderer(this, k, "", !0, NaN, NaN, C), this.pushAxisItem(u, y)), l = NaN, isNaN(C.value) || (l = this.getCoordinate(C.value), u = new this.axisItemRenderer(this, l, C.label, !0, NaN, (k - l) / 2, C), this.pushAxisItem(u, y)), isNaN(k) && (l -= 3, k = l + 3), u && (m = u.label) && this.addEventListeners(m, C), isNaN(k - l) || 0 > l && 0 > k || (k = new this.guideFillRenderer(this, l, k, C), this.pushAxisItem(k, y), y = k.graphics(), C.graphics = y, this.addEventListeners(y, C));
                     this.fillAlpha = D
                 }
@@ -1215,7 +1222,7 @@
         }, formatValue: function (a, b, c) {
             var e = this.exponential, h = this.logarithmic, f =
                 this.numberFormatter, g = this.chart;
-            if (f)return !0 === this.logarithmic && (e = -1 != String(a).indexOf("e") ? !0 : !1), this.useScientificNotation && (e = !0), this.usePrefixes && (e = !1), e ? (c = -1 == String(a).indexOf("e") ? a.toExponential(15) : String(a), e = c.split("e"), c = Number(e[0]), e = Number(e[1]), c = d.roundTo(c, 14), b || isNaN(this.precision) || (c = d.roundTo(c, this.precision)), 10 == c && (c = 1, e += 1), c = c + "e" + e, 0 === a && (c = "0"), 1 == a && (c = "1")) : (h && (e = String(a).split("."), e[1] ? (f.precision = e[1].length, 0 > c && (f.precision = Math.abs(c)), b && 1 < a &&
+            if (f) return !0 === this.logarithmic && (e = -1 != String(a).indexOf("e") ? !0 : !1), this.useScientificNotation && (e = !0), this.usePrefixes && (e = !1), e ? (c = -1 == String(a).indexOf("e") ? a.toExponential(15) : String(a), e = c.split("e"), c = Number(e[0]), e = Number(e[1]), c = d.roundTo(c, 14), b || isNaN(this.precision) || (c = d.roundTo(c, this.precision)), 10 == c && (c = 1, e += 1), c = c + "e" + e, 0 === a && (c = "0"), 1 == a && (c = "1")) : (h && (e = String(a).split("."), e[1] ? (f.precision = e[1].length, 0 > c && (f.precision = Math.abs(c)), b && 1 < a &&
             (f.precision = 0), b || isNaN(this.precision) || (f.precision = this.precision)) : f.precision = -1), c = this.usePrefixes ? d.addPrefix(a, g.prefixesOfBigNumbers, g.prefixesOfSmallNumbers, f, !b) : d.formatNumber(a, f, f.precision)), this.duration && (b && (f.precision = 0), c = d.formatDuration(a, this.duration, "", this.durationUnits, this.maxInterval, f)), "date" == this.type && (c = d.formatDate(new Date(a), this.currentDateFormat, g)), this.recalculateToPercents ? c += "%" : (b = this.unit) && (c = "left" == this.unitPosition ? b + c : c + b), this.labelFunction &&
             (c = "date" == this.type ? this.labelFunction(c, new Date(a), this).toString() : this.labelFunction(a, c, this).toString()), c
         }, getMinorGridStep: function (a, b) {
@@ -1223,9 +1230,9 @@
             60 > b && c.shift();
             for (var e = Math.floor(Math.log(Math.abs(a)) * Math.LOG10E), d = 0; d < c.length; d++) {
                 var f = a / c[d], g = Math.floor(Math.log(Math.abs(f)) * Math.LOG10E);
-                if (!(1 < Math.abs(e - g)))if (1 > a) {
-                    if (g = Math.pow(10, -g) * f, g == Math.round(g))return f
-                } else if (f == Math.round(f))return f
+                if (!(1 < Math.abs(e - g))) if (1 > a) {
+                    if (g = Math.pow(10, -g) * f, g == Math.round(g)) return f
+                } else if (f == Math.round(f)) return f
             }
         }, stackGraphs: function (a) {
             var b = this.stackType;
@@ -1234,8 +1241,8 @@
             "100% stacked" == b && (b = "100%");
             this.stackType = b;
             var c = [], e = [], h = [], f = [], g, k = this.chart.graphs, l, m, p, q, n, t = this.baseValue, r = !1;
-            if ("line" == a || "step" == a || "smoothedLine" == a)r = !0;
-            if (r && ("regular" == b || "100%" == b))for (q = 0; q < k.length; q++)p = k[q], p.stackGraph = null, p.hidden || (m = p.type, p.chart == this.chart && p.valueAxis == this && a == m && p.stackable && (l && (p.stackGraph = l), l = p));
+            if ("line" == a || "step" == a || "smoothedLine" == a) r = !0;
+            if (r && ("regular" == b || "100%" == b)) for (q = 0; q < k.length; q++) p = k[q], p.stackGraph = null, p.hidden || (m = p.type, p.chart == this.chart && p.valueAxis == this && a == m && p.stackable && (l && (p.stackGraph = l), l = p));
             p = this.start - 10;
             l = this.end + 10;
             q = this.data.length - 1;
@@ -1244,7 +1251,7 @@
             for (n = p; n <= l; n++) {
                 var w =
                     0;
-                for (q = 0; q < k.length; q++)if (p = k[q], p.hidden)p.newStack && (h[n] = NaN, e[n] = NaN); else if (m = p.type, p.chart == this.chart && p.valueAxis == this && a == m && p.stackable)if (m = this.data[n].axes[this.id].graphs[p.id], g = m.values.value, isNaN(g))p.newStack && (h[n] = NaN, e[n] = NaN); else {
+                for (q = 0; q < k.length; q++) if (p = k[q], p.hidden) p.newStack && (h[n] = NaN, e[n] = NaN); else if (m = p.type, p.chart == this.chart && p.valueAxis == this && a == m && p.stackable) if (m = this.data[n].axes[this.id].graphs[p.id], g = m.values.value, isNaN(g)) p.newStack && (h[n] = NaN, e[n] = NaN); else {
                     var z = d.getDecimals(g);
                     w < z && (w = z);
                     isNaN(f[n]) ? f[n] = Math.abs(g) : f[n] += Math.abs(g);
@@ -1255,7 +1262,7 @@
                         g, m.values.open = this.baseValue) : (isNaN(g) ? m.values.close = c[n] : m.values.close = g + c[n], m.values.open = c[n], c[n] = m.values.close)), "column" == a && (p.newStack && (h[n] = NaN, e[n] = NaN), m.values.close = g, 0 > g ? (m.values.close = g, isNaN(e[n]) ? m.values.open = t : (m.values.close += e[n], m.values.open = e[n]), e[n] = m.values.close) : (m.values.close = g, isNaN(h[n]) ? m.values.open = t : (m.values.close += h[n], m.values.open = h[n]), h[n] = m.values.close)))
                 }
             }
-            for (n = this.start; n <= this.end; n++)for (q = 0; q < k.length; q++)(p = k[q], p.hidden) ? p.newStack && (h[n] =
+            for (n = this.start; n <= this.end; n++) for (q = 0; q < k.length; q++) (p = k[q], p.hidden) ? p.newStack && (h[n] =
                 NaN, e[n] = NaN) : (m = p.type, p.chart == this.chart && p.valueAxis == this && a == m && p.stackable && (m = this.data[n].axes[this.id].graphs[p.id], g = m.values.value, isNaN(g) || (c = g / f[n] * 100, m.values.percents = c, m.values.total = f[n], p.newStack && (h[n] = NaN, e[n] = NaN), "100%" == b && (isNaN(e[n]) && (e[n] = 0), isNaN(h[n]) && (h[n] = 0), 0 > c ? (m.values.close = d.fitToBounds(c + e[n], -100, 100), m.values.open = e[n], e[n] = m.values.close) : (m.values.close = d.fitToBounds(c + h[n], -100, 100), m.values.open = h[n], h[n] = m.values.close)))))
         }, recalculate: function () {
             var a =
@@ -1264,25 +1271,27 @@
                 var e = b[c];
                 if (e.valueAxis == this) {
                     var h = "value";
-                    if ("candlestick" == e.type || "ohlc" == e.type)h = "open";
-                    var f, g, k = this.end + 2, k = d.fitToBounds(this.end + 1, 0, this.data.length - 1), l = this.start;
+                    if ("candlestick" == e.type || "ohlc" == e.type) h = "open";
+                    var f, g, k = this.end + 2, k = d.fitToBounds(this.end + 1, 0, this.data.length - 1),
+                        l = this.start;
                     0 < l && l--;
                     var m;
                     g = this.start;
                     e.compareFromStart && (g = 0);
                     if (!isNaN(a.startTime) && (m = a.categoryAxis)) {
-                        var p = m.minDuration(), p = new Date(a.startTime + p / 2), q = d.resetDateToMin(new Date(a.startTime), m.minPeriod).getTime();
+                        var p = m.minDuration(), p = new Date(a.startTime + p / 2),
+                            q = d.resetDateToMin(new Date(a.startTime), m.minPeriod).getTime();
                         d.resetDateToMin(new Date(p), m.minPeriod).getTime() > q && g++
                     }
                     if (m =
-                            a.recalculateFromDate)m = d.getDate(m, a.dataDateFormat, "fff"), g = a.getClosestIndex(a.chartData, "time", m.getTime(), !0, 0, a.chartData.length), k = a.chartData.length - 1;
-                    for (m = g; m <= k && (g = this.data[m].axes[this.id].graphs[e.id], f = g.values[h], e.recalculateValue && (f = g.dataContext[e.valueField + e.recalculateValue]), isNaN(f)); m++);
+                        a.recalculateFromDate) m = d.getDate(m, a.dataDateFormat, "fff"), g = a.getClosestIndex(a.chartData, "time", m.getTime(), !0, 0, a.chartData.length), k = a.chartData.length - 1;
+                    for (m = g; m <= k && (g = this.data[m].axes[this.id].graphs[e.id], f = g.values[h], e.recalculateValue && (f = g.dataContext[e.valueField + e.recalculateValue]), isNaN(f)); m++) ;
                     this.recBaseValue = f;
                     for (h = l; h <= k; h++) {
                         g = this.data[h].axes[this.id].graphs[e.id];
                         g.percents = {};
                         var l = g.values, n;
-                        for (n in l)g.percents[n] = "percents" != n ? l[n] / f * 100 - 100 : l[n]
+                        for (n in l) g.percents[n] = "percents" != n ? l[n] / f * 100 - 100 : l[n]
                     }
                 }
             }
@@ -1306,7 +1315,7 @@
             this.min -= a;
             this.max += a;
             a = this.guides.length;
-            if (this.includeGuidesInMinMax && 0 < a)for (b = 0; b < a; b++)c = this.guides[b], c.toValue < this.min && (this.min = c.toValue), c.value < this.min && (this.min = c.value), c.toValue > this.max && (this.max = c.toValue), c.value > this.max && (this.max = c.value);
+            if (this.includeGuidesInMinMax && 0 < a) for (b = 0; b < a; b++) c = this.guides[b], c.toValue < this.min && (this.min = c.toValue), c.value < this.min && (this.min = c.value), c.toValue > this.max && (this.max = c.toValue), c.value > this.max && (this.max = c.value);
             isNaN(this.minimum) || (this.min = this.minimum);
             isNaN(this.maximum) || (this.max = this.maximum);
             "date" == this.type && this.getDateMinMax();
@@ -1357,7 +1366,7 @@
             var c, e, d;
             for (d = a; d <= b; d++) {
                 var f = this.data[d].axes[this.id].graphs, g;
-                for (g in f)if (f.hasOwnProperty(g)) {
+                for (g in f) if (f.hasOwnProperty(g)) {
                     var k = this.chart.graphsById[g];
                     if (k.includeInMinMax && (!k.hidden || this.includeHidden)) {
                         isNaN(c) && (c = Infinity);
@@ -1366,7 +1375,7 @@
                         k = f[g].values;
                         this.recalculateToPercents && (k = f[g].percents);
                         var l;
-                        if (this.minMaxField)l = k[this.minMaxField], l < c && (c = l), l > e && (e = l); else for (var m in k)k.hasOwnProperty(m) &&
+                        if (this.minMaxField) l = k[this.minMaxField], l < c && (c = l), l > e && (e = l); else for (var m in k) k.hasOwnProperty(m) &&
                         "percents" != m && "total" != m && "error" != m && (l = k[m], l < c && (c = l), l > e && (e = l))
                     }
                 }
@@ -1398,20 +1407,23 @@
             if (this.logarithmic) {
                 isNaN(this.minimum) || (e = this.minimum);
                 isNaN(this.maximum) || (h = this.maximum);
-                var h = Math.log(h) * Math.LOG10E - Math.log(e) * Math.LOG10E, f = Math.log(b) / Math.LN10 - Math.log(e) * Math.LOG10E;
+                var h = Math.log(h) * Math.LOG10E - Math.log(e) * Math.LOG10E,
+                    f = Math.log(b) / Math.LN10 - Math.log(e) * Math.LOG10E;
                 this.relativeStart = d.roundTo((Math.log(a) /
                     Math.LN10 - Math.log(e) * Math.LOG10E) / h, 9);
                 this.relativeEnd = d.roundTo(f / h, 9)
             }
-            if (this.minZoom != a || this.maxZoom != b)return this.minZoom = a, this.maxZoom = b, e = {type: "axisZoomed"}, e.chart = this.chart, e.valueAxis = this, e.startValue = a, e.endValue = b, e.relativeStart = this.relativeStart, e.relativeEnd = this.relativeEnd, this.prevStartValue == a && this.prevEndValue == b || this.fire(e), this.prevStartValue = a, this.prevEndValue = b, c || (a = {}, d.copyProperties(e, a), a.type = "axisIntZoomed", this.fire(a)), 0 === this.relativeStart && 1 == this.relativeEnd &&
+            if (this.minZoom != a || this.maxZoom != b) return this.minZoom = a, this.maxZoom = b, e = {type: "axisZoomed"}, e.chart = this.chart, e.valueAxis = this, e.startValue = a, e.endValue = b, e.relativeStart = this.relativeStart, e.relativeEnd = this.relativeEnd, this.prevStartValue == a && this.prevEndValue == b || this.fire(e), this.prevStartValue = a, this.prevEndValue = b, c || (a = {}, d.copyProperties(e, a), a.type = "axisIntZoomed", this.fire(a)), 0 === this.relativeStart && 1 == this.relativeEnd &&
             (this.maxZoom = this.minZoom = NaN), !0
         }, coordinateToValue: function (a) {
-            if (isNaN(a))return NaN;
-            var b = this.axisWidth, c = this.stepWidth, e = this.reversed, d = this.rotate, f = this.min, g = this.minReal;
+            if (isNaN(a)) return NaN;
+            var b = this.axisWidth, c = this.stepWidth, e = this.reversed, d = this.rotate, f = this.min,
+                g = this.minReal;
             return !0 === this.logarithmic ? Math.pow(10, (d ? !0 === e ? (b - a) / c : a / c : !0 === e ? a / c : (b - a) / c) + Math.log(g) * Math.LOG10E) : !0 === e ? d ? f - (a - b) / c : a / c + f : d ? a / c + f : f - (a - b) / c
         }, getCoordinate: function (a, b) {
-            if (isNaN(a))return NaN;
-            var c = this.rotate, e = this.reversed, d = this.axisWidth, f = this.stepWidth, g = this.min, k = this.minReal;
+            if (isNaN(a)) return NaN;
+            var c = this.rotate, e = this.reversed, d = this.axisWidth, f = this.stepWidth, g = this.min,
+                k = this.minReal;
             !0 === this.logarithmic ?
                 (0 === a && (a = this.treatZeroAs), g = Math.log(a) * Math.LOG10E - Math.log(k) * Math.LOG10E, c = c ? !0 === e ? d - f * g : f * g : !0 === e ? f * g : d - f * g) : c = !0 === e ? c ? d - f * (a - g) : f * (a - g) : c ? f * (a - g) : d - f * (a - g);
             1E7 < Math.abs(c) && (c = c / Math.abs(c) * 1E7);
@@ -1433,7 +1445,8 @@
     var d = window.AmCharts;
     d.RecAxis = d.Class({
         construct: function (a) {
-            var b = a.chart, c = a.axisThickness, e = a.axisColor, h = a.axisAlpha, f = a.offset, g = a.dx, k = a.dy, l = a.x, m = a.y, p = a.height, q = a.width, n = b.container;
+            var b = a.chart, c = a.axisThickness, e = a.axisColor, h = a.axisAlpha, f = a.offset, g = a.dx, k = a.dy,
+                l = a.x, m = a.y, p = a.height, q = a.width, n = b.container;
             "H" == a.orientation ? (e = d.line(n, [0, q], [0, 0], e, h, c), this.axisWidth = a.width, "bottom" == a.position ? (k = c / 2 + f + p + m - 1, c = l) : (k = -c / 2 - f + m + k, c = g + l)) : (this.axisWidth = a.height, "right" == a.position ? (e = d.line(n, [0, 0, -g], [0, p, p - k], e, h, c), k = m + k, c = c / 2 + f + g + q + l - 1) : (e = d.line(n, [0, 0], [0, p], e, h, c), k = m, c = -c / 2 - f + l));
             e.translate(c,
                 k);
@@ -1463,9 +1476,12 @@
             void 0 !== p && (w = p);
             var z = a.chart.container, x = z.set();
             this.set = x;
-            var u = a.axisThickness, A = a.axisColor, y = a.axisAlpha, B = a.tickLength, D = a.gridAlpha, C = a.gridThickness, I = a.gridColor, H = a.dashLength, Q = a.fillColor, M = a.fillAlpha, P = a.labelsEnabled;
+            var u = a.axisThickness, A = a.axisColor, y = a.axisAlpha, B = a.tickLength, D = a.gridAlpha,
+                C = a.gridThickness, I = a.gridColor, H = a.dashLength, Q = a.fillColor, M = a.fillAlpha,
+                P = a.labelsEnabled;
             p = a.labelRotationR;
-            var ia = a.counter, J = a.inside, aa = a.labelOffset, ma = a.dx, na = a.dy, Pa = a.orientation, Z = a.position, da = a.previousCoord, X = a.height, xa = a.width, ea = a.offset, fa, Ba;
+            var ia = a.counter, J = a.inside, aa = a.labelOffset, ma = a.dx, na = a.dy, Pa = a.orientation,
+                Z = a.position, da = a.previousCoord, X = a.height, xa = a.width, ea = a.offset, fa, Ba;
             g ? (void 0 !== g.id && (q = n.classNamePrefix + "-guide-" + g.id), P = !0, isNaN(g.tickLength) || (B = g.tickLength), void 0 != g.lineColor && (I = g.lineColor), void 0 != g.color && (w = g.color), isNaN(g.lineAlpha) || (D = g.lineAlpha), isNaN(g.dashLength) || (H = g.dashLength), isNaN(g.lineThickness) || (C = g.lineThickness), !0 === g.inside && (J = !0, 0 < ea && (ea = 0)), isNaN(g.labelRotation) ||
             (p = g.labelRotation), isNaN(g.fontSize) || (r = g.fontSize), g.position && (Z = g.position), void 0 !== g.boldLabel && (k = g.boldLabel), isNaN(g.labelOffset) || (aa = g.labelOffset)) : "" === c && (B = 0);
             m && !isNaN(a.minorTickLength) && (B = a.minorTickLength);
@@ -1478,12 +1494,12 @@
             P && "" !== c && (ca = a.autoWrap && 0 === p ? d.wrappedText(z, c, w, t, r, ga, k, Math.abs(h), 0) : d.text(z, c, w, t, r, ga, k), ga = ca.getBBox(), ha = ga.width, Qa = ga.height);
             if ("H" == Pa) {
                 if (0 <= b && b <= xa + 1 && (0 < B && 0 < y && b + l <= xa + 1 && (fa = d.line(z, [b + l, b + l], [0, B], A, y, C), x.push(fa)), 0 < D && (Ba = d.line(z, [b, b + ma, b + ma], [X, X + na, na], I, D, C, H), x.push(Ba))), v = 0, G = b, g && 90 == p && J && (G -= r), !1 === e ? (ga = "start", v = "bottom" == Z ? J ? v + B : v - B : J ? v - B : v + B, G += 3, 0 < h && (G += h / 2 - 3, ga = "middle"), 0 < p && (ga = "middle")) : ga = "middle", 1 == ia && 0 < M && !g && !m && da < xa && (e = d.fitToBounds(b, 0, xa), da = d.fitToBounds(da, 0, xa), Y = e - da, 0 < Y && (Da = d.rect(z, Y, a.height, Q, M), Da.translate(e - Y + ma, na), x.push(Da))), "bottom" == Z ? (v += X + r / 2 + ea, J ? (0 < p ? (v =
-                        X - ha / 2 * Math.sin(V) - B - 3, a.centerRotatedLabels || (G += ha / 2 * Math.cos(V) - 4 + 2)) : 0 > p ? (v = X + ha * Math.sin(V) - B - 3 + 2, G += -ha * Math.cos(V) - Qa * Math.sin(V) - 4) : v -= B + r + 3 + 3, v -= aa) : (0 < p ? (v = X + ha / 2 * Math.sin(V) + B + 3, a.centerRotatedLabels || (G -= ha / 2 * Math.cos(V))) : 0 > p ? (v = X + B + 3 - ha / 2 * Math.sin(V) + 2, G += ha / 2 * Math.cos(V)) : v += B + u + 3 + 3, v += aa)) : (v += na + r / 2 - ea, G += ma, J ? (0 < p ? (v = ha / 2 * Math.sin(V) + B + 3, a.centerRotatedLabels || (G -= ha / 2 * Math.cos(V))) : v += B + 3, v += aa) : (0 < p ? (v = -(ha / 2) * Math.sin(V) - B - 6, a.centerRotatedLabels || (G += ha / 2 * Math.cos(V))) : v -= B +
-                        r + 3 + u + 3, v -= aa)), "bottom" == Z ? Y = (J ? X - B - 1 : X + u - 1) + ea : (oa = ma, Y = (J ? na : na - B - u + 1) - ea), f && (G += f), r = G, 0 < p && (r += ha / 2 * Math.cos(V)), ca && (f = 0, J && (f = ha / 2 * Math.cos(V)), r + f > xa + 2 || 0 > r))ca.remove(), ca = null
+                    X - ha / 2 * Math.sin(V) - B - 3, a.centerRotatedLabels || (G += ha / 2 * Math.cos(V) - 4 + 2)) : 0 > p ? (v = X + ha * Math.sin(V) - B - 3 + 2, G += -ha * Math.cos(V) - Qa * Math.sin(V) - 4) : v -= B + r + 3 + 3, v -= aa) : (0 < p ? (v = X + ha / 2 * Math.sin(V) + B + 3, a.centerRotatedLabels || (G -= ha / 2 * Math.cos(V))) : 0 > p ? (v = X + B + 3 - ha / 2 * Math.sin(V) + 2, G += ha / 2 * Math.cos(V)) : v += B + u + 3 + 3, v += aa)) : (v += na + r / 2 - ea, G += ma, J ? (0 < p ? (v = ha / 2 * Math.sin(V) + B + 3, a.centerRotatedLabels || (G -= ha / 2 * Math.cos(V))) : v += B + 3, v += aa) : (0 < p ? (v = -(ha / 2) * Math.sin(V) - B - 6, a.centerRotatedLabels || (G += ha / 2 * Math.cos(V))) : v -= B +
+                    r + 3 + u + 3, v -= aa)), "bottom" == Z ? Y = (J ? X - B - 1 : X + u - 1) + ea : (oa = ma, Y = (J ? na : na - B - u + 1) - ea), f && (G += f), r = G, 0 < p && (r += ha / 2 * Math.cos(V)), ca && (f = 0, J && (f = ha / 2 * Math.cos(V)), r + f > xa + 2 || 0 > r)) ca.remove(), ca = null
             } else {
                 0 <= b && b <= X + 1 && (0 < B && 0 < y && b + l <= X + 1 && (fa = d.line(z, [0, B + 1], [b + l, b + l], A, y, C), x.push(fa)), 0 < D && (Ba = d.line(z, [0, ma, xa + ma], [b, b + na, b + na], I, D, C, H), x.push(Ba)));
                 ga = "end";
-                if (!0 === J && "left" == Z || !1 === J && "right" == Z)ga = "start";
+                if (!0 === J && "left" == Z || !1 === J && "right" == Z) ga = "start";
                 v = b - Qa / 2 + 2;
                 1 == ia && 0 < M && !g && !m && (e = d.fitToBounds(b, 0, X), da = d.fitToBounds(da, 0, X), V = e - da, Da = d.polygon(z,
                     [0, a.width, a.width, 0], [0, 0, V, V], Q, M), Da.translate(ma, e - V + na), x.push(Da));
@@ -1631,7 +1647,7 @@
             d.setCN(this, b, "bg");
             this.background = b;
             e.push(b);
-            if (b = this.backgroundImage)a = a.image(b, 0, 0, h, f), d.setCN(this, b, "bg-image"), this.bgImg = a, e.push(a)
+            if (b = this.backgroundImage) a = a.image(b, 0, 0, h, f), d.setCN(this, b, "bg-image"), this.bgImg = a, e.push(a)
         }, drawTitles: function (a) {
             var b = this.titles;
             this.titleHeight = 0;
@@ -1665,7 +1681,7 @@
             }
         }, write: function (a) {
             var b = this;
-            if (b.listeners)for (var c = 0; c < b.listeners.length; c++) {
+            if (b.listeners) for (var c = 0; c < b.listeners.length; c++) {
                 var e = b.listeners[c];
                 b.addListener(e.event, e.method)
             }
@@ -1677,7 +1693,7 @@
         }, afterWrite: function (a) {
             var b;
             if (b = "object" != typeof a ? document.getElementById(a) : a) {
-                for (; b.firstChild;)b.removeChild(b.firstChild);
+                for (; b.firstChild;) b.removeChild(b.firstChild);
                 this.div = b;
                 b.style.overflow = "hidden";
                 b.style.textAlign = "left";
@@ -1699,7 +1715,7 @@
                 this.AmExport && this.AmExport.init && this.AmExport.init();
                 if (e) {
                     e = this.addLegend(e, e.divId);
-                    if (e.enabled)switch (h.left = null, h.top = null, h.right = null, f.left = null, f.right = null, f.top = null, h.position = "relative", f.position = "relative", g.width = "100%", g.height = "100%", e.position) {
+                    if (e.enabled) switch (h.left = null, h.top = null, h.right = null, f.left = null, f.right = null, f.top = null, h.position = "relative", f.position = "relative", g.width = "100%", g.height = "100%", e.position) {
                         case "bottom":
                             k.appendChild(a);
                             k.appendChild(c);
@@ -1793,7 +1809,7 @@
                 }
                 var b = a.offsetWidth, c = a.offsetHeight;
                 a.clientHeight && (b = a.clientWidth, c = a.clientHeight);
-                if (b != this.mw || c != this.mh)this.mw = b, this.mh =
+                if (b != this.mw || c != this.mh) this.mw = b, this.mh =
                     c, this.measure()
             }
         }, measure: function () {
@@ -1801,7 +1817,8 @@
             if (a) {
                 var b = this.chartDiv, c = a.offsetWidth, e = a.offsetHeight, h = this.container;
                 a.clientHeight && (c = a.clientWidth, e = a.clientHeight);
-                var e = Math.round(e), c = Math.round(c), a = Math.round(d.toCoordinate(this.width, c)), f = Math.round(d.toCoordinate(this.height, e));
+                var e = Math.round(e), c = Math.round(c), a = Math.round(d.toCoordinate(this.width, c)),
+                    f = Math.round(d.toCoordinate(this.height, e));
                 (c != this.previousWidth || e != this.previousHeight) && 0 < a && 0 < f && (b.style.width = a + "px", b.style.height = f + "px", b.style.padding = 0, h && h.setSize(a, f), this.balloon = d.processObject(this.balloon, d.AmBalloon, this.theme));
                 this.balloon && this.balloon.setBounds && this.balloon.setBounds(2, 2, a - 2, f);
                 this.updateWidth();
@@ -1823,7 +1840,8 @@
                 if (a.style) {
                     var b = window.getComputedStyle(a, null);
                     if (b && (b = b.getPropertyValue("-webkit-transform") || b.getPropertyValue("-moz-transform") || b.getPropertyValue("-ms-transform") || b.getPropertyValue("-o-transform") || b.getPropertyValue("transform")) && "none" !== b) {
-                        var c = b.split("(")[1].split(")")[0].split(","), b = c[0], c = c[1], b = Math.sqrt(b * b + c * c);
+                        var c = b.split("(")[1].split(")")[0].split(","), b = c[0], c = c[1],
+                            b = Math.sqrt(b * b + c * c);
                         isNaN(b) || (this.cssScale *= b)
                     }
                 }
@@ -1837,7 +1855,7 @@
             var a = this.timeOuts;
             if (a) {
                 var b;
-                for (b = 0; b < a.length; b++)clearTimeout(a[b])
+                for (b = 0; b < a.length; b++) clearTimeout(a[b])
             }
             this.timeOuts = []
         }, clear: function (a) {
@@ -1851,7 +1869,7 @@
             this.container &&
             (this.container.remove(this.chartDiv), this.container.remove(this.legendDiv));
             a || d.removeChart(this);
-            if (a = this.div)for (; a.firstChild;)a.removeChild(a.firstChild);
+            if (a = this.div) for (; a.firstChild;) a.removeChild(a.firstChild);
             this.legend && this.legend.destroy();
             this.AmExport && this.AmExport.clear && this.AmExport.clear()
         }, setMouseCursor: function (a) {
@@ -1863,13 +1881,14 @@
             var a = this.allLabels;
             this.createLabelsSet();
             var b;
-            for (b = 0; b < a.length; b++)this.drawLabel(a[b])
+            for (b = 0; b < a.length; b++) this.drawLabel(a[b])
         },
         drawLabel: function (a) {
             var b = this;
             if (b.container && !1 !== a.enabled) {
                 a = d.processObject(a, d.Label, b.theme);
-                var c = a.y, e = a.text, h = a.align, f = a.size, g = a.color, k = a.rotation, l = a.alpha, m = a.bold, p = d.toCoordinate(a.x, b.realWidth), c = d.toCoordinate(c, b.realHeight);
+                var c = a.y, e = a.text, h = a.align, f = a.size, g = a.color, k = a.rotation, l = a.alpha, m = a.bold,
+                    p = d.toCoordinate(a.x, b.realWidth), c = d.toCoordinate(c, b.realHeight);
                 p || (p = 0);
                 c || (c = 0);
                 void 0 === g && (g = b.color);
@@ -1901,7 +1920,7 @@
         },
         clearLabels: function () {
             var a = this.labels, b;
-            for (b = a.length - 1; 0 <= b; b--)a[b].remove();
+            for (b = a.length - 1; 0 <= b; b--) a[b].remove();
             this.labels = [];
             this.allLabels = []
         }, updateHeight: function () {
@@ -1910,7 +1929,7 @@
                 var c = this.legendDiv.offsetHeight, b = b.position;
                 if ("top" == b || "bottom" == b) {
                     a -= c;
-                    if (0 > a || isNaN(a))a = 0;
+                    if (0 > a || isNaN(a)) a = 0;
                     this.chartDiv.style.height = a + "px"
                 }
             }
@@ -1925,7 +1944,7 @@
                     e.offsetHeight, e = e.style, g = this.chartDiv.style, k = c.position;
                 if (("right" == k || "left" == k) && void 0 === c.divId) {
                     a -= d;
-                    if (0 > a || isNaN(a))a = 0;
+                    if (0 > a || isNaN(a)) a = 0;
                     g.width = a + "px";
                     this.balloon && this.balloon.setBounds && this.balloon.setBounds(2, 2, a - 2, this.realHeight);
                     "left" == k ? (g.left = d + "px", e.left = "0px") : (g.left = "0px", e.left = a + "px");
@@ -1964,15 +1983,15 @@
         }, checkTouchDuration: function (a) {
             var b =
                 this, c = (new Date).getTime();
-            if (a)if (a.touches)b.isTouchEvent = !0; else if (!b.isTouchEvent)return !0;
-            if (c - b.touchStartTime > b.touchClickDuration)return !0;
+            if (a) if (a.touches) b.isTouchEvent = !0; else if (!b.isTouchEvent) return !0;
+            if (c - b.touchStartTime > b.touchClickDuration) return !0;
             setTimeout(function () {
                 b.resetTouchDuration()
             }, 300)
         }, resetTouchDuration: function () {
             this.isTouchEvent = !1
         }, checkTouchMoved: function () {
-            if (4 < Math.abs(this.mouseX - this.tmx) || 4 < Math.abs(this.mouseY - this.tmy))return !0
+            if (4 < Math.abs(this.mouseX - this.tmx) || 4 < Math.abs(this.mouseY - this.tmy)) return !0
         }, addListeners: function () {
             var a = this, b = a.chartDiv;
             document.addEventListener ? ("ontouchstart" in document.documentElement && (b.addEventListener("touchstart",
@@ -2131,7 +2150,7 @@
                     f && this.panEventsEnabled && this.boundingRect && (e = f.clientX - this.boundingRect.left,
                         d = f.clientY - this.boundingRect.top);
                     a = a.touches.item(0);
-                    if (!a)return
+                    if (!a) return
                 } else this.wasTouched = !1;
                 this.boundingRect && a.clientX && (b = a.clientX - this.boundingRect.left, c = a.clientY - this.boundingRect.top);
                 isNaN(e) ? this.mouseX = b : (this.mouseX = Math.min(b, e), this.mouse2X = Math.max(b, e));
@@ -2176,7 +2195,7 @@
                 a && a.renderFix()
             }
         }, getSVG: function () {
-            if (d.hasSVG)return this.container
+            if (d.hasSVG) return this.container
         },
         animate: function (a, b, c, e, h, f, g) {
             a["an_" + b] && d.removeFromArray(this.animations, a["an_" + b]);
@@ -2192,7 +2211,7 @@
         }, updateAnimations: function () {
             var a;
             this.container && this.container.update();
-            if (this.animations)for (a = this.animations.length - 1; 0 <= a; a--) {
+            if (this.animations) for (a = this.animations.length - 1; 0 <= a; a--) {
                 var b = this.animations[a], c = d.updateRate * b.time,
                     e = b.frame + 1, h = b.obj, f = b.attribute;
                 if (e <= c) {
@@ -2228,7 +2247,7 @@
                 b = this.creditsPosition;
                 if (c != a || !0 === this.inIframe()) {
                     var a = "http://www." + a, e = c = 0, d = this.realWidth, f = this.realHeight, g = this.type;
-                    if ("serial" == g || "xy" == g || "gantt" == g)c = this.marginLeftReal,
+                    if ("serial" == g || "xy" == g || "gantt" == g) c = this.marginLeftReal,
                         e = this.marginTopReal, d = c + this.plotAreaWidth, f = e + this.plotAreaHeight;
                     var g = a + "/javascript-charts/", k = "JavaScript charts", l = " ";
                     "ammap" == this.product && (g = a + "/javascript-maps/", k = "Interactive JavaScript maps", l = "JS map by amCharts");
@@ -2390,7 +2409,7 @@
             void 0 === a.bulletColorR && (a.bulletColorR = a.lineColorR, a.bulletColorNegative = a.negativeLineColor);
             void 0 === a.bulletAlpha && (a.bulletAlpha =
                 a.lineAlpha);
-            if ("step" == c || d.VML)a.noRounding = !1;
+            if ("step" == c || d.VML) a.noRounding = !1;
             var c = b.type;
             "gantt" == c && (c = "serial");
             clearTimeout(a.playedTO);
@@ -2418,7 +2437,8 @@
             this.pmy = this.pmx = 0;
             var d;
             for (d = this.start; d <= this.end; d++) {
-                var f = this.data[d].axes[c.id].graphs[this.id], g = f.values, k = g.x, l = g.y, g = c.getCoordinate(k, this.noRounding), m = e.getCoordinate(l, this.noRounding);
+                var f = this.data[d].axes[c.id].graphs[this.id], g = f.values, k = g.x, l = g.y,
+                    g = c.getCoordinate(k, this.noRounding), m = e.getCoordinate(l, this.noRounding);
                 if (!isNaN(k) && !isNaN(l) && (a.push(g), b.push(m), f.x = g, f.y = m, k = this.createBullet(f, g, m, d), l = this.labelText)) {
                     var l = this.createLabel(f, l), p = 0;
                     k && (p = k.size);
@@ -2433,8 +2453,9 @@
             for (m = this.start; m <= this.end; m++) {
                 var p = this.data[m].axes[this.valueAxis.id].graphs[this.id], q, n;
                 "none" == a || "3d" == a ? q = p.values.value : (q = p.values.close, n = p.values.open);
-                if (isNaN(q))this.connect || (this.drawLineGraph(b, c, e, d), b = [], c = [], e = [], d = []); else {
-                    var t = this.valueAxis.getCoordinate(q, this.noRounding) - this.height, t = t * this.valueAxis.rMultiplier, r = -360 / (this.end - this.start + 1) * m;
+                if (isNaN(q)) this.connect || (this.drawLineGraph(b, c, e, d), b = [], c = [], e = [], d = []); else {
+                    var t = this.valueAxis.getCoordinate(q, this.noRounding) - this.height,
+                        t = t * this.valueAxis.rMultiplier, r = -360 / (this.end - this.start + 1) * m;
                     "middle" ==
                     this.valueAxis.pointPosition && (r -= 180 / (this.end - this.start + 1));
                     q = t * Math.sin(r / 180 * Math.PI);
@@ -2442,7 +2463,9 @@
                     b.push(q);
                     c.push(t);
                     if (!isNaN(n)) {
-                        var w = this.valueAxis.getCoordinate(n, this.noRounding) - this.height, w = w * this.valueAxis.rMultiplier, z = w * Math.sin(r / 180 * Math.PI), r = w * Math.cos(r / 180 * Math.PI);
+                        var w = this.valueAxis.getCoordinate(n, this.noRounding) - this.height,
+                            w = w * this.valueAxis.rMultiplier, z = w * Math.sin(r / 180 * Math.PI),
+                            r = w * Math.cos(r / 180 * Math.PI);
                         e.push(z);
                         d.push(r);
                         isNaN(k) && (k = z);
@@ -2451,7 +2474,7 @@
                     r = this.createBullet(p, q, t, m);
                     p.x = q;
                     p.y = t;
-                    if (z = this.labelText)z = this.createLabel(p, z), w = 0, r && (w = r.size), this.positionLabel(p, q, t, z, w);
+                    if (z = this.labelText) z = this.createLabel(p, z), w = 0, r && (w = r.size), this.positionLabel(p, q, t, z, w);
                     isNaN(f) && (f =
                         q);
                     isNaN(g) && (g = t)
@@ -2464,7 +2487,8 @@
             this.launchAnimation()
         }, positionLabel: function (a, b, c, e, d) {
             if (e) {
-                var f = this.chart, g = this.valueAxis, k = "middle", l = !1, m = this.labelPosition, p = e.getBBox(), q = this.chart.rotate, n = a.isNegative, t = this.fontSize;
+                var f = this.chart, g = this.valueAxis, k = "middle", l = !1, m = this.labelPosition, p = e.getBBox(),
+                    q = this.chart.rotate, n = a.isNegative, t = this.fontSize;
                 void 0 === t && (t = this.chart.fontSize);
                 c -= p.height / 2 - t / 2 - 1;
                 void 0 !== a.labelIsNegative && (n = a.labelIsNegative);
@@ -2510,11 +2534,11 @@
                 this.labelRotation && e.rotate(this.labelRotation);
                 e.translate(b, c);
                 !this.showAllValueLabels && t && l && (p = e.getBBox(), p.height > a.columnHeight || p.width > a.columnWidth) && (e.remove(), e = null);
-                if (e && "radar" != f.type)if (q) {
-                    if (0 > c || c > this.height)e.remove(), e = null;
+                if (e && "radar" != f.type) if (q) {
+                    if (0 > c || c > this.height) e.remove(), e = null;
                     !this.showAllValueLabels && e && (0 > b || b > this.width) && (e.remove(), e = null)
                 } else {
-                    if (0 > b || b > this.width)e.remove(),
+                    if (0 > b || b > this.width) e.remove(),
                         e = null;
                     !this.showAllValueLabels && e && (0 > c || c > this.height) && (e.remove(), e = null)
                 }
@@ -2527,16 +2551,24 @@
             return this.gradientRotation = a
         }, createSerialGraph: function () {
             this.dashLengthSwitched = this.fillColorsSwitched = this.lineColorSwitched = void 0;
-            var a = this.chart, b = this.id, c = this.index, e = this.data, h = this.chart.container, f = this.valueAxis, g = this.type, k = this.columnWidthReal, l = this.showBulletsAt;
+            var a = this.chart, b = this.id, c = this.index, e = this.data, h = this.chart.container,
+                f = this.valueAxis, g = this.type, k = this.columnWidthReal, l = this.showBulletsAt;
             isNaN(this.columnWidth) ||
             (k = this.columnWidth);
             isNaN(k) && (k = .8);
-            var m = this.useNegativeColorIfDown, p = this.width, q = this.height, n = this.y, t = this.rotate, r = this.columnCount, w = d.toCoordinate(this.cornerRadiusTop, k / 2), z = this.connect, x = [], u = [], A, y, B, D, C = this.chart.graphs.length, I, H = this.dx / this.tcc, Q = this.dy / this.tcc, M = f.stackType, P = this.start, ia = this.end, J = this.scrollbar, aa = "graph-column-";
+            var m = this.useNegativeColorIfDown, p = this.width, q = this.height, n = this.y, t = this.rotate,
+                r = this.columnCount, w = d.toCoordinate(this.cornerRadiusTop, k / 2), z = this.connect, x = [], u = [],
+                A, y, B, D, C = this.chart.graphs.length, I, H = this.dx / this.tcc, Q = this.dy / this.tcc,
+                M = f.stackType, P = this.start, ia = this.end, J = this.scrollbar, aa = "graph-column-";
             J && (aa = "scrollbar-graph-column-");
-            var ma = this.categoryAxis, na = this.baseCoord, Pa = this.negativeBase, Z = this.columnIndex, da = this.lineThickness, X = this.lineAlpha,
-                xa = this.lineColorR, ea = this.dashLength, fa = this.set, Ba, ga = this.getGradRotation(), V = this.chart.columnSpacing, Y = ma.cellWidth, Da = (Y * k - r) / r;
+            var ma = this.categoryAxis, na = this.baseCoord, Pa = this.negativeBase, Z = this.columnIndex,
+                da = this.lineThickness, X = this.lineAlpha,
+                xa = this.lineColorR, ea = this.dashLength, fa = this.set, Ba, ga = this.getGradRotation(),
+                V = this.chart.columnSpacing, Y = ma.cellWidth, Da = (Y * k - r) / r;
             V > Da && (V = Da);
-            var G, v, oa, ha = q, Qa = p, ca = 0, tb = 0, ub = 0, vb = 0, gb = 0, hb = 0, wb = this.fillColorsR, Ra = this.negativeFillColors, Ja = this.negativeLineColor, Ya = this.fillAlphas, Za = this.negativeFillAlphas;
+            var G, v, oa, ha = q, Qa = p, ca = 0, tb = 0, ub = 0, vb = 0, gb = 0, hb = 0, wb = this.fillColorsR,
+                Ra = this.negativeFillColors, Ja = this.negativeLineColor, Ya = this.fillAlphas,
+                Za = this.negativeFillAlphas;
             "object" == typeof Ya && (Ya = Ya[0]);
             "object" == typeof Za && (Za = Za[0]);
             var xb = this.noRounding;
@@ -2573,42 +2605,45 @@
             var L;
             if ("line" == g || "step" == g || "smoothedLine" == g) {
                 if (0 < P) {
-                    for (L = P - 1; -1 < L; L--)if (G = e[L], v = G.axes[f.id].graphs[b], oa = v.values.value, !isNaN(oa)) {
+                    for (L = P - 1; -1 < L; L--) if (G = e[L], v = G.axes[f.id].graphs[b], oa = v.values.value, !isNaN(oa)) {
                         P = L;
                         break
                     }
-                    if (this.lineColorField)for (L =
-                                                     P; -1 < L; L--)if (G = e[L], v = G.axes[f.id].graphs[b], v.lineColor) {
+                    if (this.lineColorField) for (L =
+                                                      P; -1 < L; L--) if (G = e[L], v = G.axes[f.id].graphs[b], v.lineColor) {
                         this.lineColorSwitched = v.lineColor;
                         void 0 === this.bulletColor && (this.bulletColorSwitched = this.lineColorSwitched);
                         break
                     }
-                    if (this.fillColorsField)for (L = P; -1 < L; L--)if (G = e[L], v = G.axes[f.id].graphs[b], v.fillColors) {
+                    if (this.fillColorsField) for (L = P; -1 < L; L--) if (G = e[L], v = G.axes[f.id].graphs[b], v.fillColors) {
                         this.fillColorsSwitched = v.fillColors;
                         break
                     }
-                    if (this.dashLengthField)for (L = P; -1 < L; L--)if (G = e[L], v = G.axes[f.id].graphs[b], !isNaN(v.dashLength)) {
+                    if (this.dashLengthField) for (L = P; -1 < L; L--) if (G = e[L], v = G.axes[f.id].graphs[b], !isNaN(v.dashLength)) {
                         this.dashLengthSwitched = v.dashLength;
                         break
                     }
                 }
-                if (ia < e.length - 1)for (L = ia + 1; L < e.length; L++)if (G = e[L],
-                        v = G.axes[f.id].graphs[b], oa = v.values.value, !isNaN(oa)) {
+                if (ia < e.length - 1) for (L = ia + 1; L < e.length; L++) if (G = e[L],
+                    v = G.axes[f.id].graphs[b], oa = v.values.value, !isNaN(oa)) {
                     ia = L;
                     break
                 }
             }
             ia < e.length - 1 && ia++;
             var T = [], U = [], Ma = !1;
-            if ("line" == g || "step" == g || "smoothedLine" == g)if (this.stackable && "regular" == M || "100%" == M || this.fillToGraph)Ma = !0;
+            if ("line" == g || "step" == g || "smoothedLine" == g) if (this.stackable && "regular" == M || "100%" == M || this.fillToGraph) Ma = !0;
             var Ob = this.noStepRisers, jb = -1E3, kb = -1E3, lb = this.minDistance, Sa = !0, $a = !1;
             for (L = P; L <= ia; L++) {
                 G = e[L];
                 v = G.axes[f.id].graphs[b];
                 v.index = L;
                 var ab, Ta = NaN;
-                if (m && void 0 == this.openField)for (var yb = L + 1; yb < e.length && (!e[yb] || !(ab = e[L + 1].axes[f.id].graphs[b]) || !ab.values || (Ta = ab.values.value, isNaN(Ta))); yb++);
-                var S, R, K, ba, ja = NaN, E = NaN, F = NaN, O = NaN, N = NaN, qa = NaN, ra = NaN, sa = NaN, ta = NaN, ya = NaN, Ea = NaN, ka = NaN, la = NaN, W = NaN, zb = NaN, Ab = NaN, ua = NaN, va = void 0, Na = wb, Va = Ya, Ha = xa, Ca, za, Bb = this.proCandlesticks, mb = this.topRadius, Fa = q - 1, pa = p - 1, bb = this.pattern;
+                if (m && void 0 == this.openField) for (var yb = L + 1; yb < e.length && (!e[yb] || !(ab = e[L + 1].axes[f.id].graphs[b]) || !ab.values || (Ta = ab.values.value, isNaN(Ta))); yb++) ;
+                var S, R, K, ba, ja = NaN, E = NaN, F = NaN, O = NaN, N = NaN, qa = NaN, ra = NaN, sa = NaN, ta = NaN,
+                    ya = NaN, Ea = NaN, ka = NaN, la = NaN, W = NaN, zb = NaN, Ab = NaN, ua = NaN, va = void 0, Na = wb,
+                    Va = Ya, Ha = xa, Ca, za, Bb = this.proCandlesticks, mb = this.topRadius, Fa = q - 1, pa = p - 1,
+                    bb = this.pattern;
                 void 0 != v.pattern && (bb = v.pattern);
                 isNaN(v.alpha) || (Va = v.alpha);
                 isNaN(v.dashLength) || (ea = v.dashLength);
@@ -2618,12 +2653,12 @@
                 if (Ia) {
                     W = this.stackable && "none" != M && "3d" !=
                     M ? Ia.close : Ia.value;
-                    if ("candlestick" == g || "ohlc" == g)W = Ia.close, Ab = Ia.low, ra = f.getCoordinate(Ab), zb = Ia.high, ta = f.getCoordinate(zb);
+                    if ("candlestick" == g || "ohlc" == g) W = Ia.close, Ab = Ia.low, ra = f.getCoordinate(Ab), zb = Ia.high, ta = f.getCoordinate(zb);
                     ua = Ia.open;
                     F = f.getCoordinate(W, xb);
                     isNaN(ua) || (N = f.getCoordinate(ua, xb), m && "regular" != M && "100%" != M && (Ta = ua, ua = N = NaN));
                     m && (void 0 == this.openField ? ab && (ab.isNegative = Ta < W ? !0 : !1, isNaN(Ta) && (v.isNegative = !Sa)) : v.isNegative = Ta > W ? !0 : !1);
-                    if (!J)switch (this.showBalloonAt) {
+                    if (!J) switch (this.showBalloonAt) {
                         case "close":
                             v.y = F;
                             break;
@@ -2652,7 +2687,7 @@
                     -1E5 > ja && (ja = -1E5);
                     ja > p + 1E5 && (ja = p + 1E5);
                     t ? (E = F, O = N, N = F = ja, isNaN(ua) && !this.fillToGraph && (O = na), qa = ra, sa = ta) : (O = E = ja, isNaN(ua) && !this.fillToGraph && (N = na));
-                    if (!Bb && W < ua || Bb && W < Ba)v.isNegative = !0, Ra && (Na = Ra), Za && (Va = Za), void 0 != Ja && (Ha = Ja);
+                    if (!Bb && W < ua || Bb && W < Ba) v.isNegative = !0, Ra && (Na = Ra), Za && (Va = Za), void 0 != Ja && (Ha = Ja);
                     $a = !1;
                     isNaN(W) || (m ? W > Ta ? (Sa && ($a = !0), Sa = !1) : (Sa || ($a = !0), Sa = !0) : v.isNegative = W < Pa ? !0 : !1, Ba = W);
                     var Pb = !1;
@@ -2661,22 +2696,22 @@
                     F = d.fitToBounds(F, -3E4, 3E4);
                     switch (g) {
                         case "line":
-                            if (isNaN(W))z ||
+                            if (isNaN(W)) z ||
                             (this.drawLineGraph(x, u, T, U), x = [], u = [], T = [], U = []); else {
-                                if (Math.abs(E - jb) >= lb || Math.abs(F - kb) >= lb)x.push(E), u.push(F), jb = E, kb = F;
+                                if (Math.abs(E - jb) >= lb || Math.abs(F - kb) >= lb) x.push(E), u.push(F), jb = E, kb = F;
                                 ya = E;
                                 Ea = F;
                                 ka = E;
                                 la = F;
                                 !Ma || isNaN(N) || isNaN(O) || (T.push(O), U.push(N));
-                                if ($a || void 0 != v.lineColor && v.lineColor != this.lineColorSwitched || void 0 != v.fillColors && v.fillColors != this.fillColorsSwitched || !isNaN(v.dashLength))this.drawLineGraph(x, u, T, U), x = [E], u = [F], T = [], U = [], !Ma || isNaN(N) || isNaN(O) || (T.push(O), U.push(N)), m ? (Sa ? (this.lineColorSwitched = xa, this.fillColorsSwitched = wb) : (this.lineColorSwitched =
+                                if ($a || void 0 != v.lineColor && v.lineColor != this.lineColorSwitched || void 0 != v.fillColors && v.fillColors != this.fillColorsSwitched || !isNaN(v.dashLength)) this.drawLineGraph(x, u, T, U), x = [E], u = [F], T = [], U = [], !Ma || isNaN(N) || isNaN(O) || (T.push(O), U.push(N)), m ? (Sa ? (this.lineColorSwitched = xa, this.fillColorsSwitched = wb) : (this.lineColorSwitched =
                                     Ja, this.fillColorsSwitched = Ra), void 0 === this.bulletColor && (this.bulletColorSwitched = xa)) : (this.lineColorSwitched = v.lineColor, this.fillColorsSwitched = v.fillColors, void 0 === this.bulletColor && (this.bulletColorSwitched = this.lineColorSwitched)), this.dashLengthSwitched = v.dashLength;
                                 v.gap && (this.drawLineGraph(x, u, T, U), x = [], u = [], T = [], U = [])
                             }
                             break;
                         case "smoothedLine":
-                            if (isNaN(W))z || (this.drawSmoothedGraph(x, u, T, U), x = [], u = [], T = [], U = []); else {
-                                if (Math.abs(E - jb) >= lb || Math.abs(F - kb) >= lb)x.push(E), u.push(F), jb = E,
+                            if (isNaN(W)) z || (this.drawSmoothedGraph(x, u, T, U), x = [], u = [], T = [], U = []); else {
+                                if (Math.abs(E - jb) >= lb || Math.abs(F - kb) >= lb) x.push(E), u.push(F), jb = E,
                                     kb = F;
                                 ya = E;
                                 Ea = F;
@@ -2717,9 +2752,9 @@
                                     this.dashLengthSwitched = v.dashLength;
                                     m && (Sa ? (this.lineColorSwitched = xa, this.fillColorsSwitched = wb) : (this.lineColorSwitched = Ja, this.fillColorsSwitched = Ra))
                                 }
-                                if (Ob || v.gap)A = y = NaN, this.drawLineGraph(x, u, T, U), x = [], u = [], T = [], U = []
+                                if (Ob || v.gap) A = y = NaN, this.drawLineGraph(x, u, T, U), x = [], u = [], T = [], U = []
                             } else if (!z) {
-                                if (1 >= this.periodSpan || 1 < this.periodSpan && E - A > wa + Ga)A = y = NaN;
+                                if (1 >= this.periodSpan || 1 < this.periodSpan && E - A > wa + Ga) A = y = NaN;
                                 this.drawLineGraph(x, u, T, U);
                                 x = [];
                                 u = [];
@@ -2794,7 +2829,7 @@
                                     if (!J) {
                                         "none" == M && (I = t ? (this.end + 1 - L) * C - c : C * L + c);
                                         "3d" == M && (t ? (I = (this.end + 1 - L) * C - c - 1E3 * this.depthCount, ya += H * Z, ka += H * Z, v.y += H * Z) : (I = (C - c) * (L + 1) + 1E3 * this.depthCount, Ea += Q * Z, la += Q * Z, v.y += Q * Z));
-                                        if ("regular" == M || "100%" == M)I = t ? 0 < Ia.value ? (this.end + 1 - L) * C + c : (this.end + 1 - L) * C - c : 0 < Ia.value ? C * L + c : C * L - c;
+                                        if ("regular" == M || "100%" == M) I = t ? 0 < Ia.value ? (this.end + 1 - L) * C + c : (this.end + 1 - L) * C - c : 0 < Ia.value ? C * L + c : C * L - c;
                                         this.columnsArray.push({column: va, depth: I});
                                         v.x = t ? R + K / 2 : S + K / 2;
                                         this.ownColumns.push(va);
@@ -2822,8 +2857,8 @@
                                     O = d.fitToBounds(O, 0, pa);
                                     qa = d.fitToBounds(qa, 0, pa);
                                     sa = d.fitToBounds(sa, 0, pa);
-                                    if (0 === E && 0 === O && 0 === qa && 0 === sa)continue;
-                                    if (E == pa && O == pa && qa == pa && sa == pa)continue;
+                                    if (0 === E && 0 === O && 0 === qa && 0 === sa) continue;
+                                    if (E == pa && O == pa && qa == pa && sa == pa) continue;
                                     R = F - k / 2;
                                     S = O;
                                     K = k;
@@ -2845,8 +2880,8 @@
                                     N = d.fitToBounds(N, 0, Fa);
                                     ra = d.fitToBounds(ra, 0, Fa);
                                     ta = d.fitToBounds(ta, 0, Fa);
-                                    if (0 === F && 0 === N && 0 === ra && 0 === ta)continue;
-                                    if (F == Fa && N == Fa && ra == Fa && ta == Fa)continue;
+                                    if (0 === F && 0 === N && 0 === ra && 0 === ta) continue;
+                                    if (F == Fa && N == Fa && ra == Fa && ta == Fa) continue;
                                     S = E - k / 2;
                                     R = N + da / 2;
                                     K = k;
@@ -2855,7 +2890,8 @@
                                     ba = F - N;
                                     if (S < p && 0 < K) {
                                         Bb && W >= ua && (Va = 0);
-                                        var va = new d.Cuboid(h, K, ba, H, Q, Na, Va, da, Ca, X, ga, w, t, ea, bb, mb, aa), Gb, Hb;
+                                        var va = new d.Cuboid(h, K, ba, H, Q, Na, Va, da, Ca, X, ga, w, t, ea, bb, mb, aa),
+                                            Gb, Hb;
                                         W > ua ? (Gb = [F, ta], Hb = [N, ra]) : (Gb = [N, ta], Hb = [F, ra]);
                                         !isNaN(ta) && !isNaN(ra) && E < p && 0 < E && (Xa = d.line(h, [E, E], Gb, Ca, X, da), cb = d.line(h,
                                             [E, E], Hb, Ca, X, da), d.setCN(a, Xa, this.bcn + "line-high"), v.className && d.setCN(a, Xa, v.className, !0), d.setCN(a, cb, this.bcn + "line-low"), v.className && d.setCN(a, cb, v.className, !0))
@@ -2880,9 +2916,10 @@
                                     "low" == l && (ka = qa);
                                     qa = d.fitToBounds(qa, 0, pa);
                                     sa = d.fitToBounds(sa, 0, pa);
-                                    if (0 === E && 0 === O && 0 === qa && 0 === sa)continue;
-                                    if (E == pa && O == pa && qa == pa && sa == pa)continue;
-                                    var Ib = F - k / 2, Ib = d.fitToBounds(Ib, 0, q), Tb = d.fitToBounds(F, 0, q), Jb = F + k / 2, Jb = d.fitToBounds(Jb, 0, q);
+                                    if (0 === E && 0 === O && 0 === qa && 0 === sa) continue;
+                                    if (E == pa && O == pa && qa == pa && sa == pa) continue;
+                                    var Ib = F - k / 2, Ib = d.fitToBounds(Ib, 0, q), Tb = d.fitToBounds(F, 0, q),
+                                        Jb = F + k / 2, Jb = d.fitToBounds(Jb, 0, q);
                                     0 <= O && O <= pa && (qb = d.line(h, [O, O], [Ib, Tb], Ha, X,
                                         da, ea));
                                     0 < F && F < q && (pb = d.line(h, [qa, sa], [F, F], Ha, X, da, ea));
@@ -2892,7 +2929,9 @@
                                     "open" == l && (la = N);
                                     "high" == l && (la = ta);
                                     "low" == l && (la = ra);
-                                    var ka = E, ra = d.fitToBounds(ra, 0, Fa), ta = d.fitToBounds(ta, 0, Fa), Kb = E - k / 2, Kb = d.fitToBounds(Kb, 0, p), Ub = d.fitToBounds(E, 0, p), Lb = E + k / 2, Lb = d.fitToBounds(Lb, 0, p);
+                                    var ka = E, ra = d.fitToBounds(ra, 0, Fa), ta = d.fitToBounds(ta, 0, Fa),
+                                        Kb = E - k / 2, Kb = d.fitToBounds(Kb, 0, p), Ub = d.fitToBounds(E, 0, p),
+                                        Lb = E + k / 2, Lb = d.fitToBounds(Lb, 0, p);
                                     0 <= N && N <= Fa && (qb = d.line(h, [Kb, Ub], [N, N], Ha, X, da, ea));
                                     0 < E && E < p && (pb = d.line(h, [E, E], [ra, ta], Ha, X, da, ea));
                                     0 <= F && F <= Fa && (rb = d.line(h, [Ub, Lb], [F, F], Ha, X, da, ea))
@@ -2925,7 +2964,8 @@
                                     d.setCN(a, Oa, this.bcn + "label-total");
                                     this.allBullets.push(Oa);
                                     if (Oa) {
-                                        var $b = Oa.getBBox(), ac = $b.width, bc = $b.height, db, eb, sb = f.totalTextOffset, cc = f.totals[L];
+                                        var $b = Oa.getBBox(), ac = $b.width, bc = $b.height, db, eb,
+                                            sb = f.totalTextOffset, cc = f.totals[L];
                                         cc && cc.remove();
                                         var fb = 0;
                                         "column" != g && (fb = this.bulletSize);
@@ -2941,7 +2981,7 @@
                 }
             }
             this.lastDataItem = v;
-            if ("line" == g || "step" == g || "smoothedLine" == g)"smoothedLine" == g ?
+            if ("line" == g || "step" == g || "smoothedLine" == g) "smoothedLine" == g ?
                 this.drawSmoothedGraph(x, u, T, U) : this.drawLineGraph(x, u, T, U), J || this.launchAnimation();
             this.bulletsHidden && this.hideBullets();
             this.customBulletsHidden && this.hideCustomBullets()
@@ -2962,7 +3002,7 @@
             b = e.formatString(b, a);
             b = d.cleanFromEmpty(b);
             f && (b = f(a, b));
-            if (void 0 !== b && "" !== b)return a = d.text(this.container, b, h, e.fontFamily, c), a.node.style.pointerEvents = "none", d.setCN(e, a, this.bcn + "label"), this.bulletSet.push(a), a
+            if (void 0 !== b && "" !== b) return a = d.text(this.container, b, h, e.fontFamily, c), a.node.style.pointerEvents = "none", d.setCN(e, a, this.bcn + "label"), this.bulletSet.push(a), a
         }, positiveClip: function (a) {
             a.clipRect(this.pmx, this.pmy, this.pmw, this.pmh)
         }, negativeClip: function (a) {
@@ -3002,8 +3042,8 @@
                 });
                 void 0 === z || h.useNegativeColorIfDown || (n = d.line(l, a, b, z, r, n, x, !1,
                     !0, f), n.node.setAttribute("stroke-linejoin", "round"), d.setCN(k, n, h.bcn + "stroke"), d.setCN(k, n, h.bcn + "stroke-negative"), p.push(n));
-                if (0 < g || 0 < A)if (n = a.join(";").split(";"), r = b.join(";").split(";"), q = k.type, "serial" == q || "radar" == q ? 0 < c.length ? (c.reverse(), e.reverse(), n = a.concat(c), r = b.concat(e)) : "radar" == q ? (r.push(0), n.push(0)) : h.rotate ? (r.push(r[r.length - 1]), n.push(y), r.push(r[0]), n.push(y), r.push(r[0]), n.push(n[0])) : (n.push(n[n.length - 1]), r.push(y), n.push(n[0]), r.push(y), n.push(a[0]), r.push(r[0])) : "xy" ==
-                    q && (b = h.fillToAxis) && (d.isString(b) && (b = k.getValueAxisById(b)), "H" == b.orientation ? (y = "top" == b.position ? 0 : b.height, n.push(n[n.length - 1]), r.push(y), n.push(n[0]), r.push(y), n.push(a[0]), r.push(r[0])) : (y = "left" == b.position ? 0 : b.width, r.push(r[r.length - 1]), n.push(y), r.push(r[0]), n.push(y), r.push(r[0]), n.push(n[0]))), a = h.gradientRotation, 0 < g && (b = d.polygon(l, n, r, w, g, 1, "#000", 0, a, f), b.pattern(h.pattern, NaN, k.path), d.setCN(k, b, h.bcn + "fill"), m.push(b)), u || void 0 !== z)isNaN(A) && (A = g), u || (u = z), f = d.polygon(l, n, r,
+                if (0 < g || 0 < A) if (n = a.join(";").split(";"), r = b.join(";").split(";"), q = k.type, "serial" == q || "radar" == q ? 0 < c.length ? (c.reverse(), e.reverse(), n = a.concat(c), r = b.concat(e)) : "radar" == q ? (r.push(0), n.push(0)) : h.rotate ? (r.push(r[r.length - 1]), n.push(y), r.push(r[0]), n.push(y), r.push(r[0]), n.push(n[0])) : (n.push(n[n.length - 1]), r.push(y), n.push(n[0]), r.push(y), n.push(a[0]), r.push(r[0])) : "xy" ==
+                    q && (b = h.fillToAxis) && (d.isString(b) && (b = k.getValueAxisById(b)), "H" == b.orientation ? (y = "top" == b.position ? 0 : b.height, n.push(n[n.length - 1]), r.push(y), n.push(n[0]), r.push(y), n.push(a[0]), r.push(r[0])) : (y = "left" == b.position ? 0 : b.width, r.push(r[r.length - 1]), n.push(y), r.push(r[0]), n.push(y), r.push(r[0]), n.push(n[0]))), a = h.gradientRotation, 0 < g && (b = d.polygon(l, n, r, w, g, 1, "#000", 0, a, f), b.pattern(h.pattern, NaN, k.path), d.setCN(k, b, h.bcn + "fill"), m.push(b)), u || void 0 !== z) isNaN(A) && (A = g), u || (u = z), f = d.polygon(l, n, r,
                     u, A, 1, "#000", 0, a, f), d.setCN(k, f, h.bcn + "fill"), d.setCN(k, f, h.bcn + "fill-negative"), f.pattern(h.pattern, NaN, k.path), p.push(f), p.click(function (a) {
                     h.handleGraphEvent(a, "clickGraph")
                 }).mouseover(function (a) {
@@ -3026,7 +3066,9 @@
                 var h = this.set, f = this.chart, g = this.container, k = g.set(), l = g.set();
                 h.push(l);
                 h.push(k);
-                var m = this.lineAlpha, p = this.lineThickness, h = this.dashLength, q = this.fillAlphas, n = this.lineColorR, t = this.fillColorsR, r = this.negativeLineColor, w = this.negativeFillColors, z = this.negativeFillAlphas, x = this.baseCoord, u = this.lineColorSwitched;
+                var m = this.lineAlpha, p = this.lineThickness, h = this.dashLength, q = this.fillAlphas,
+                    n = this.lineColorR, t = this.fillColorsR, r = this.negativeLineColor, w = this.negativeFillColors,
+                    z = this.negativeFillAlphas, x = this.baseCoord, u = this.lineColorSwitched;
                 u && (n = u);
                 (u = this.fillColorsSwitched) && (t = u);
                 var A = this.negativeLineAlpha;
@@ -3083,7 +3125,8 @@
             if (!isNaN(b) && !isNaN(c) && ("none" != this.bullet || this.customBullet || a.bullet || a.customBullet)) {
                 var e = this.chart, h = this.container, f = this.bulletOffset, g = this.bulletSize;
                 isNaN(a.bulletSize) || (g = a.bulletSize);
-                var k = a.values.value, l = this.maxValue, m = this.minValue, p = this.maxBulletSize, q = this.minBulletSize;
+                var k = a.values.value, l = this.maxValue, m = this.minValue, p = this.maxBulletSize,
+                    q = this.minBulletSize;
                 isNaN(l) || (isNaN(k) || (g = (k - m) / (l - m) * (p - q) + q), m == l && (g = p));
                 l = g;
                 this.bulletAxis && (g = a.values.error,
@@ -3099,7 +3142,8 @@
                 "xy" == e.type && this.valueField && (n = this.pattern, a.pattern && (n = a.pattern));
                 f = this.bullet;
                 a.bullet && (f = a.bullet);
-                var k = this.bulletBorderThickness, m = this.bulletBorderColorR, p = this.bulletBorderAlpha, t = this.bulletAlpha;
+                var k = this.bulletBorderThickness, m = this.bulletBorderColorR, p = this.bulletBorderAlpha,
+                    t = this.bulletAlpha;
                 m || (m = q);
                 this.useLineColorForBulletBorder && (m = this.lineColorR, a.isNegative && this.negativeLineColor && (m = this.negativeLineColor), this.lineColorSwitched && (m = this.lineColorSwitched));
                 var r = a.alpha;
@@ -3111,7 +3155,7 @@
                 (l.availableSpace = c, l.graph = this, l.graphDataItem = a, l.bulletY = c, a.bulletConfig.minCoord = this.minCoord - c, l.bulletConfig = a.bulletConfig), l.write(h), n && l.showBullet && l.set.push(n), a.customBulletGraphics = l.cset, n = l.set) : (n = h.set(), l = h.image(l, 0, 0, g, g), n.push(l), this.centerCustomBullets && l.translate(-g / 2, -g / 2)));
                 if (n) {
                     (a.url || this.showHandOnHover) && n.setAttr("cursor", "pointer");
-                    if ("serial" == e.type || "gantt" == e.type)if (-.5 > b || b > this.width || c < -g / 2 || c > this.height)n.remove(), n = null;
+                    if ("serial" == e.type || "gantt" == e.type) if (-.5 > b || b > this.width || c < -g / 2 || c > this.height) n.remove(), n = null;
                     n && (this.bulletSet.push(n),
                         n.translate(b, c), this.addListeners(n, a), this.allBullets.push(n));
                     a.bx = b;
@@ -3121,7 +3165,7 @@
                 }
                 if (n) {
                     n.size = g || 0;
-                    if (e = this.bulletHitAreaSize)h = d.circle(h, e, "#FFFFFF", .001, 0), h.translate(b, c), a.hitBullet = h, this.bulletSet.push(h), this.addListeners(h, a);
+                    if (e = this.bulletHitAreaSize) h = d.circle(h, e, "#FFFFFF", .001, 0), h.translate(b, c), a.hitBullet = h, this.bulletSet.push(h), this.addListeners(h, a);
                     a.bulletGraphics = n;
                     void 0 !== this.tabIndex && n.setAttr("tabindex", this.tabIndex)
                 } else n = {size: 0};
@@ -3132,11 +3176,11 @@
             var a = this.allBullets, b;
             this.bulletsHidden = !1;
             for (b =
-                     0; b < a.length; b++)a[b].show()
+                     0; b < a.length; b++) a[b].show()
         }, hideBullets: function () {
             var a = this.allBullets, b;
             this.bulletsHidden = !0;
-            for (b = 0; b < a.length; b++)a[b].hide()
+            for (b = 0; b < a.length; b++) a[b].hide()
         }, showCustomBullets: function () {
             var a = this.allBullets, b;
             this.customBulletsHidden = !1;
@@ -3283,7 +3327,7 @@
             var a = this.timeOuts;
             if (a) {
                 var b;
-                for (b = 0; b < a.length; b++)clearTimeout(a[b])
+                for (b = 0; b < a.length; b++) clearTimeout(a[b])
             }
             this.timeOuts = []
         }, createBalloon: function () {
@@ -3403,7 +3447,8 @@
             this.hideLines();
             this.valueLineAxis || (this.valueLineAxis = a.valueAxes[0])
         }, createElements: function () {
-            var a = this, b = a.chart, c = b.dx, e = b.dy, h = a.width, f = a.height, g, k, l = a.cursorAlpha, m = a.valueLineAlpha;
+            var a = this, b = a.chart, c = b.dx, e = b.dy, h = a.width, f = a.height, g, k, l = a.cursorAlpha,
+                m = a.valueLineAlpha;
             a.rotate ? (g = m, k = l) : (k = m, g = l);
             "xy" == b.type && (k = l, void 0 !== m && (k = m), g = l);
             a.vvLine = d.line(a.container, [c, 0, 0], [e, 0, f], a.cursorColor, g, 1);
@@ -3560,7 +3605,8 @@
                 isNaN(this.fx) || (a = this.fx);
                 isNaN(this.fy) || (b = this.fy);
                 this.clearSelection();
-                var c = this.mouseX0, e = this.mouseY0, h = this.width, f = this.height, a = d.fitToBounds(a, 0, h), b = d.fitToBounds(b, 0, f), g;
+                var c = this.mouseX0, e = this.mouseY0, h = this.width, f = this.height, a = d.fitToBounds(a, 0, h),
+                    b = d.fitToBounds(b, 0, f), g;
                 a < c && (g = a, a = c, c = g);
                 b < e && (g = b, b = e, e = g);
                 this.hZoomEnabled ?
@@ -3571,18 +3617,18 @@
             }
         }, mouseIsOver: function () {
             var a = this.mouseX, b = this.mouseY;
-            if (this.justReleased)return this.justReleased = !1, !0;
-            if (this.mouseIsDown)return !0;
-            if (!this.chart.mouseIsOver)return this.handleMouseOut(), !1;
+            if (this.justReleased) return this.justReleased = !1, !0;
+            if (this.mouseIsDown) return !0;
+            if (!this.chart.mouseIsOver) return this.handleMouseOut(), !1;
             if (0 < a &&
-                a < this.width && 0 < b && b < this.height)return !0;
+                a < this.width && 0 < b && b < this.height) return !0;
             this.handleMouseOut()
         }, fixPosition: function () {
             this.prevY = this.prevX = NaN
         }, handleMouseDown: function () {
             this.update();
-            if (this.mouseIsOver())if (this.mouseIsDown = !0, this.mouseX0 = this.mouseX, this.mouseY0 = this.mouseY, this.mouse2X0 = this.mouse2X, this.mouse2Y0 = this.mouse2Y, this.drawing)this.drawStartY = this.mouseY, this.drawStartX = this.mouseX, this.drawingNow = !0; else if (this.dispatchMovedEvent(this.mouseX, this.mouseY), !this.pan && isNaN(this.mouse2X0) && (isNaN(this.fx) || (this.mouseX0 =
-                    this.fx), isNaN(this.fy) || (this.mouseY0 = this.fy)), this.hZoomEnabled || this.vZoomEnabled) {
+            if (this.mouseIsOver()) if (this.mouseIsDown = !0, this.mouseX0 = this.mouseX, this.mouseY0 = this.mouseY, this.mouse2X0 = this.mouse2X, this.mouse2Y0 = this.mouse2Y, this.drawing) this.drawStartY = this.mouseY, this.drawStartX = this.mouseX, this.drawingNow = !0; else if (this.dispatchMovedEvent(this.mouseX, this.mouseY), !this.pan && isNaN(this.mouse2X0) && (isNaN(this.fx) || (this.mouseX0 =
+                this.fx), isNaN(this.fy) || (this.mouseY0 = this.fy)), this.hZoomEnabled || this.vZoomEnabled) {
                 this.zooming = !0;
                 var a = {chart: this.chart, target: this, type: "zoomStarted"};
                 a.x = this.mouseX / this.width;
@@ -3616,7 +3662,8 @@
                 var b = this.selection;
                 if (b && 3 < Math.abs(b.width) &&
                     3 < Math.abs(b.height)) {
-                    var c = Math.min(this.index, this.index0), e = Math.max(this.index, this.index0), d = c, f = e, g = this.chart, k = g.chartData, l = g.categoryAxis;
+                    var c = Math.min(this.index, this.index0), e = Math.max(this.index, this.index0), d = c, f = e,
+                        g = this.chart, k = g.chartData, l = g.categoryAxis;
                     l && l.parseDates && !l.equalSpacing && (d = k[c] ? k[c].time : Math.min(this.timestamp0, this.timestamp), f = k[e] ? g.getEndTime(k[e].time) : Math.max(this.timestamp0, this.timestamp));
                     var b = {
                         type: a,
@@ -3674,9 +3721,12 @@
         }, dispatchPanEvent: function () {
             if (this.mouseIsDown) {
                 var a =
-                    d.roundTo((this.mouseX - this.mouseX0) / this.width, 3), b = d.roundTo((this.mouseY - this.mouseY0) / this.height, 3), c = d.roundTo((this.mouse2X - this.mouse2X0) / this.width, 3), e = d.roundTo((this.mouse2Y - this.mouse2Y0) / this.height, 2), h = !1;
+                        d.roundTo((this.mouseX - this.mouseX0) / this.width, 3),
+                    b = d.roundTo((this.mouseY - this.mouseY0) / this.height, 3),
+                    c = d.roundTo((this.mouse2X - this.mouse2X0) / this.width, 3),
+                    e = d.roundTo((this.mouse2Y - this.mouse2Y0) / this.height, 2), h = !1;
                 0 !== Math.abs(a) && 0 !== Math.abs(b) && (h = !0);
-                if (this.prevDeltaX == a || this.prevDeltaY == b)h = !1;
+                if (this.prevDeltaX == a || this.prevDeltaY == b) h = !1;
                 isNaN(c) || isNaN(e) || (0 !== Math.abs(c) && 0 !== Math.abs(e) && (h = !0), this.prevDelta2X != c && this.prevDelta2Y != e) || (h = !1);
                 h && (this.hideLines(), this.fire({
                     type: "panning", chart: this.chart, target: this, deltaX: a,
@@ -3908,9 +3958,9 @@
         }, handleKeys: function (a, b, c) {
             this.getPercents();
             var e = this.percentStart, d = this.percentEnd;
-            if (this.rotate)var f = d, d = e, e = f;
-            if (37 == a.keyCode || 40 == a.keyCode)e -= .02 * b, d -= .02 * c;
-            if (39 == a.keyCode || 38 == a.keyCode)e += .02 * b, d += .02 * c;
+            if (this.rotate) var f = d, d = e, e = f;
+            if (37 == a.keyCode || 40 == a.keyCode) e -= .02 * b, d -= .02 * c;
+            if (39 == a.keyCode || 38 == a.keyCode) e += .02 * b, d += .02 * c;
             this.rotate && (a = d, d = e, e = a);
             isNaN(d) || isNaN(e) || this.percentZoom(e, d, !0)
         }, updateScrollbarSize: function (a, b) {
@@ -3926,7 +3976,8 @@
             if (k) {
                 c = k.x + d;
                 e = k.y + f;
-                var l = k.width, k = k.height, m = this.rotate, p = this.chart, q = this.width, n = this.height, t = p.mouseX, p = p.mouseY;
+                var l = k.width, k = k.height, m = this.rotate, p = this.chart, q = this.width, n = this.height,
+                    t = p.mouseX, p = p.mouseY;
                 a = this.initialMouse;
                 this.forceClip &&
                 this.clipDragger(!0);
@@ -3936,24 +3987,24 @@
                     this.clipDragger(!0)
                 }
                 if (this.resizingRight) {
-                    if (m)if (a = p - e, !isNaN(this.maxHeight) && a > this.maxHeight && (a = this.maxHeight), a + e > n + f && (a = n - e + f), 0 > a)this.resizingRight = !1, b = this.resizingLeft = !0; else {
-                        if (0 === a || isNaN(a))a = .1;
+                    if (m) if (a = p - e, !isNaN(this.maxHeight) && a > this.maxHeight && (a = this.maxHeight), a + e > n + f && (a = n - e + f), 0 > a) this.resizingRight = !1, b = this.resizingLeft = !0; else {
+                        if (0 === a || isNaN(a)) a = .1;
                         g.setAttr("height", a)
                     } else if (a = t - c, !isNaN(this.maxWidth) && a > this.maxWidth && (a = this.maxWidth), a + c > q + d && (a =
-                            q - c + d), 0 > a)this.resizingRight = !1, b = this.resizingLeft = !0; else {
-                        if (0 === a || isNaN(a))a = .1;
+                        q - c + d), 0 > a) this.resizingRight = !1, b = this.resizingLeft = !0; else {
+                        if (0 === a || isNaN(a)) a = .1;
                         g.setAttr("width", a)
                     }
                     this.clipDragger(!0)
                 }
                 if (this.resizingLeft) {
-                    if (m)if (c = e, e = p, e < f && (e = f), isNaN(e) && (e = f), e > n + f && (e = n + f), a = !0 === b ? c - e : k + c - e, !isNaN(this.maxHeight) && a > this.maxHeight && (a = this.maxHeight, e = c), 0 > a)this.resizingRight = !0, this.resizingLeft = !1, g.setAttr("y", c + k - f); else {
-                        if (0 === a || isNaN(a))a = .1;
+                    if (m) if (c = e, e = p, e < f && (e = f), isNaN(e) && (e = f), e > n + f && (e = n + f), a = !0 === b ? c - e : k + c - e, !isNaN(this.maxHeight) && a > this.maxHeight && (a = this.maxHeight, e = c), 0 > a) this.resizingRight = !0, this.resizingLeft = !1, g.setAttr("y", c + k - f); else {
+                        if (0 === a || isNaN(a)) a = .1;
                         g.setAttr("y", e - f);
                         g.setAttr("height", a)
                     } else if (e = t, e < d && (e = d), isNaN(e) && (e = d), e > q + d && (e = q + d), a = !0 === b ? c - e : l + c - e,
-                        !isNaN(this.maxWidth) && a > this.maxWidth && (a = this.maxWidth, e = c), 0 > a)this.resizingRight = !0, this.resizingLeft = !1, g.setAttr("x", c + l - d); else {
-                        if (0 === a || isNaN(a))a = .1;
+                    !isNaN(this.maxWidth) && a > this.maxWidth && (a = this.maxWidth, e = c), 0 > a) this.resizingRight = !0, this.resizingLeft = !1, g.setAttr("x", c + l - d); else {
+                        if (0 === a || isNaN(a)) a = .1;
                         g.setAttr("x", e - d);
                         g.setAttr("width", a)
                     }
@@ -3967,9 +4018,9 @@
             if (b) {
                 var c = b.x, e = b.y, d = b.width, b = b.height, f = !1;
                 if (this.rotate) {
-                    if (c = 0, d = this.width + 1, this.clipY != e || this.clipH != b)f = !0
+                    if (c = 0, d = this.width + 1, this.clipY != e || this.clipH != b) f = !0
                 } else if (e = 0, b = this.height + 1, this.clipX != c || this.clipW !=
-                    d)f = !0;
+                d) f = !0;
                 f && (this.clipAndUpdate(c, e, d, b), a && (this.updateOnReleaseOnly || this.dispatchScrollbarEvent()))
             }
         }, maskGraphs: function () {
@@ -3984,7 +4035,7 @@
             this.updateDragIconPositions();
             this.maskGraphs(a, b, c, d)
         }, dispatchScrollbarEvent: function () {
-            if (this.skipEvent)this.skipEvent = !1; else {
+            if (this.skipEvent) this.skipEvent = !1; else {
                 var a = this.chart;
                 a.hideBalloon();
                 var b = this.getDBox(), c =
@@ -4002,14 +4053,15 @@
                 })
             }
         }, updateDragIconPositions: function () {
-            var a = this.getDBox(), b = a.x, c = a.y, d = this.iconLeft, h = this.iconRight, f, g, k = this.scrollbarHeight;
+            var a = this.getDBox(), b = a.x, c = a.y, d = this.iconLeft, h = this.iconRight, f, g,
+                k = this.scrollbarHeight;
             this.rotate ? (f = this.dragIconWidth, g = this.dragIconHeight, d.translate((k - g) / 2, c - f / 2), h.translate((k - g) / 2, c + a.height - f / 2)) : (f = this.dragIconHeight,
                 g = this.dragIconWidth, d.translate(b - g / 2, (k - f) / 2), h.translate(b - g / 2 + a.width, (k - f) / 2))
         }, showDragIcons: function () {
             this.resizeEnabled && (this.iconLeft.show(), this.iconRight.show())
         }, hideDragIcons: function () {
             if (!this.resizingLeft && !this.resizingRight && !this.dragging) {
-                if (this.hideResizeGrips || !this.resizeEnabled)this.iconLeft.hide(), this.iconRight.hide();
+                if (this.hideResizeGrips || !this.resizeEnabled) this.iconLeft.hide(), this.iconRight.hide();
                 this.removeCursors()
             }
         }, removeCursors: function () {
@@ -4084,7 +4136,7 @@
             this.rotate ? this.vResizeCursor && this.chart.setMouseCursor(this.vResizeCursor) : this.hResizeCursor && this.chart.setMouseCursor(this.hResizeCursor);
             this.handleMouseOver()
         }, getDBox: function () {
-            if (this.dragger)return this.dragger.getBBox()
+            if (this.dragger) return this.dragger.getBBox()
         }, handleBgClick: function () {
             var a = this;
             if (!a.resizingRight && !a.resizingLeft) {
@@ -4104,7 +4156,7 @@
             (this.update(), this.skipEvent = !1, this.dispatchScrollbarEvent())
         }, handleReleaseOutside: function () {
             if (this.set) {
-                if (this.resizingLeft || this.resizingRight || this.dragging)this.dragging = this.resizingRight = this.resizingLeft = !1, this.updateOnRelease(), this.removeCursors();
+                if (this.resizingLeft || this.resizingRight || this.dragging) this.dragging = this.resizingRight = this.resizingLeft = !1, this.updateOnRelease(), this.removeCursors();
                 this.animating = this.mouseIsOver = !1;
                 this.hideDragIcons();
                 this.update()
@@ -4171,7 +4223,8 @@
             d.ChartScrollbar.base.draw.call(a);
             if (a.enabled) {
                 a.scrollbarCreated || a.init();
-                var b = a.chart, c = b.chartData, e = a.categoryAxis, h = a.rotate, f = a.x, g = a.y, k = a.width, l = a.height, m = a.gridAxis, p = a.set;
+                var b = a.chart, c = b.chartData, e = a.categoryAxis, h = a.rotate, f = a.x, g = a.y, k = a.width,
+                    l = a.height, m = a.gridAxis, p = a.set;
                 e.setOrientation(!h);
                 e.parseDates = m.parseDates;
                 "ValueAxis" == a.categoryAxis.cname && (e.rotate = !h);
@@ -4210,7 +4263,7 @@
                         g = -Infinity, t;
                     for (t = 0; t < c.length; t++) {
                         var r = c[t].axes[n.id].graphs[m.id].values, w;
-                        for (w in r)if (r.hasOwnProperty(w) && "percents" != w && "total" != w) {
+                        for (w in r) if (r.hasOwnProperty(w) && "percents" != w && "total" != w) {
                             var z = r[w];
                             z < f && (f = z);
                             z > g && (g = z)
@@ -4322,7 +4375,7 @@
             this.skipEvent = !0;
             this.zoomScrollbar()
         }, dispatchScrollbarEvent: function () {
-            if (this.categoryAxis && "ValueAxis" == this.categoryAxis.cname)d.ChartScrollbar.base.dispatchScrollbarEvent.call(this); else if (this.skipEvent)this.skipEvent = !1; else {
+            if (this.categoryAxis && "ValueAxis" == this.categoryAxis.cname) d.ChartScrollbar.base.dispatchScrollbarEvent.call(this); else if (this.skipEvent) this.skipEvent = !1; else {
                 var a = this.chart.chartData, b, c, e = this.dragger.getBBox();
                 b = e.x;
                 var h = e.y, f = e.width, e = e.height, g = this.chart;
@@ -4332,13 +4385,13 @@
                 var k = this.categoryAxis, l = this.stepWidth, h = g.minSelectedTime, e = g.maxSelectedTime, m = !1;
                 if (k.parseDates && !k.equalSpacing) {
                     if (a = g.lastTime, g = g.firstTime, k = Math.round(b / l) + g, b = this.dragging ? k + this.timeDifference : Math.round((b + c) / l) + g, k > b && (k = b), 0 < h && b - k < h && (b = Math.round(k + (b - k) / 2), m = Math.round(h / 2), k = b - m, b += m, m = !0), 0 < e && b - k > e && (b = Math.round(k + (b - k) / 2), m = Math.round(e / 2), k = b - m, b += m, m = !0), b > a && (b =
-                            a), b - h < k && (k = b - h), k < g && (k = g), k + h > b && (b = k + h), k != this.startTime || b != this.endTime)this.startTime = k, this.endTime = b, f.start = k, f.end = b, f.startDate = new Date(k), f.endDate = new Date(b), this.fire(f)
+                        a), b - h < k && (k = b - h), k < g && (k = g), k + h > b && (b = k + h), k != this.startTime || b != this.endTime) this.startTime = k, this.endTime = b, f.start = k, f.end = b, f.startDate = new Date(k), f.endDate = new Date(b), this.fire(f)
                 } else {
                     k.startOnAxis || (b += l / 2);
                     c -= this.stepWidth / 2;
                     h = k.xToIndex(b);
                     b = k.xToIndex(b + c);
-                    if (h != this.start || this.end != b)k.startOnAxis && (this.resizingRight && h == b && b++, this.resizingLeft && h == b && (0 < h ? h-- : b = 1)), this.start = h, this.end = this.dragging ? this.start + this.difference : b, f.start = this.start, f.end = this.end, k.parseDates && (a[this.start] &&
+                    if (h != this.start || this.end != b) k.startOnAxis && (this.resizingRight && h == b && b++, this.resizingLeft && h == b && (0 < h ? h-- : b = 1)), this.start = h, this.end = this.dragging ? this.start + this.difference : b, f.start = this.start, f.end = this.end, k.parseDates && (a[this.start] &&
                     (f.startDate = new Date(a[this.start].time)), a[this.end] && (f.endDate = new Date(a[this.end].time))), this.fire(f);
                     this.percentStart = h;
                     this.percentEnd = b
@@ -4421,9 +4474,11 @@
                 this.set = f;
                 this.mainSet ? (this.mainSet.push(this.set), this.sdx = this.mainSet.x, this.sdy = this.mainSet.y) : c.balloonsSet.push(f);
                 if (this.show) {
-                    var g = this.l, k = this.t, l = this.r, m = this.b, p = this.balloonColor, q = this.fillColor, n = this.borderColor, t = q;
+                    var g = this.l, k = this.t, l = this.r, m = this.b, p = this.balloonColor, q = this.fillColor,
+                        n = this.borderColor, t = q;
                     void 0 != p && (this.adjustBorderColor ? t = n = p : q = p);
-                    var r = this.horizontalPadding, w = this.verticalPadding, z = this.pointerWidth, x = this.pointerOrientation, u = this.cornerRadius,
+                    var r = this.horizontalPadding, w = this.verticalPadding, z = this.pointerWidth,
+                        x = this.pointerOrientation, u = this.cornerRadius,
                         A = c.fontFamily, y = this.fontSize;
                     void 0 == y && (y = c.fontSize);
                     var p = document.createElement("div"), B = c.classNamePrefix;
@@ -4459,7 +4514,8 @@
                     y < k && (y = k);
                     D < g && (D = g);
                     D + C > l && (D = l - C);
-                    var k = y + w, m = D + r, M = this.shadowAlpha, P = this.shadowColor, r = this.borderThickness, ia = this.bulletSize, J, w = this.fillAlpha, aa = this.borderAlpha;
+                    var k = y + w, m = D + r, M = this.shadowAlpha, P = this.shadowColor, r = this.borderThickness,
+                        ia = this.bulletSize, J, w = this.fillAlpha, aa = this.borderAlpha;
                     this.showBullet && (J = d.circle(h, ia, t, w), f.push(J));
                     this.drop ? (g = C / 1.6, l = 0, "V" == x && (x = "down"), "H" == x && (x = "left"), "down" == x && (D = a + 1, y = b - g - g / 3), "up" == x && (l = 180, D = a + 1, y = b + g + g / 3), "left" == x && (l = 270, D = a + g + g / 3 + 2, y = b), "right" == x && (l = 90, D = a - g - g / 3 + 2, y = b), k = y - H / 2 + 1, m = D - I / 2 - 1, q = d.drop(h, g, l, q, w, r, n, aa)) : 0 < u || 0 === z ? (0 < M && (a =
                         d.rect(h, C, A, q, 0, r + 1, P, M, u), d.isModern ? a.translate(1, 1) : a.translate(4, 4), f.push(a)), q = d.rect(h, C, A, q, w, r, n, aa, u)) : (t = [], u = [], "H" != x ? (g = a - D, g > C - z && (g = C - z), g < z && (g = z), t = [0, g - z, a - D, g + z, C, C, 0, 0], u = Q ? [0, 0, b - y, 0, 0, A, A, 0] : [A, A, b - y, A, A, 0, 0, A]) : (x = b - y, x > A - z && (x = A - z), x < z && (x = z), u = [0, x - z, b - y, x + z, A, A, 0, 0], t = a < g + (l - g) / 2 ? [0, 0, D < a ? 0 : a - D, 0, 0, C, C, 0] : [C, C, D + C > a ? C : a - D, C, C, 0, 0, C]), 0 < M && (a = d.polygon(h, t, u, q, 0, r, P, M), a.translate(1, 1), f.push(a)), q = d.polygon(h, t, u, q, w, r, n, aa));
@@ -4504,7 +4560,7 @@
                     this.deltaSignX - this.sdx, b = this.chart.mouseY - this.sdy;
                 this.pointToX = a;
                 this.pointToY = b;
-                if (a != this.previousX || b != this.previousY)if (this.previousX = a, this.previousY = b, 0 === this.cornerRadius)this.draw(); else {
+                if (a != this.previousX || b != this.previousY) if (this.previousX = a, this.previousY = b, 0 === this.cornerRadius) this.draw(); else {
                     var c = this.set;
                     if (c) {
                         var d = c.getBBox(), a = a - d.width / 2, h = b - d.height - 10;
@@ -4528,7 +4584,7 @@
             this.b = d;
             this.destroyTO && clearTimeout(this.destroyTO)
         }, showBalloon: function (a) {
-            if (this.text != a || this.positionChanged)this.text = a, this.isHiding = !1, this.show = !0, this.destroyTO && clearTimeout(this.destroyTO), a = this.chart, this.fadeAnim1 && a.stopAnim(this.fadeAnim1), this.fadeAnim2 && a.stopAnim(this.fadeAnim2), this.draw(), this.positionChanged = !1
+            if (this.text != a || this.positionChanged) this.text = a, this.isHiding = !1, this.show = !0, this.destroyTO && clearTimeout(this.destroyTO), a = this.chart, this.fadeAnim1 && a.stopAnim(this.fadeAnim1), this.fadeAnim2 && a.stopAnim(this.fadeAnim2), this.draw(), this.positionChanged = !1
         }, hide: function (a) {
             var b = this;
             b.text = void 0;
@@ -4547,7 +4603,7 @@
                 b.textDiv && (b.fadeAnim2 = c.animate({node: b.textDiv}, "opacity", 1, 0, a, "easeInSine", ""))
             } else b.show = !1, b.follow = !1, b.destroy()
         }, setPosition: function (a, b) {
-            if (a != this.pointToX || b != this.pointToY)this.previousX = this.pointToX, this.previousY = this.pointToY, this.pointToX = a, this.pointToY =
+            if (a != this.pointToX || b != this.pointToY) this.previousX = this.pointToX, this.previousY = this.pointToY, this.pointToX = a, this.pointToY =
                 b, this.positionChanged = !0
         }, followCursor: function (a) {
             var b = this;
@@ -4611,11 +4667,11 @@
             this.processGraphs()
         }, parseSerialData: function (a) {
             this.chartData = [];
-            if (a)if (0 < this.processTimeout) {
+            if (a) if (0 < this.processTimeout) {
                 1 > this.processCount && (this.processCount = 1);
                 var b = a.length / this.processCount;
                 this.parseCount = Math.ceil(b) - 1;
-                for (var c = 0; c < b; c++)this.delayParseSerialData(a, c)
+                for (var c = 0; c < b; c++) this.delayParseSerialData(a, c)
             } else this.parseCount = 0, this.parsePartSerialData(a,
                 0, a.length, 0); else this.onDataUpdated()
         }, delayParseSerialData: function (a, b) {
@@ -4644,7 +4700,7 @@
                 n && (B.className = D[n]);
                 q && (B.labelColor = D[q]);
                 x[D[g]] = B;
-                if (k && (m.categoryFunction ? b = m.categoryFunction(b, D, m) : (!A || b instanceof Date || (b = b.toString() + " |"), b = d.getDate(b, A, m.minPeriod)), b = d.resetDateToMin(b, r, t, m.firstDayOfWeek), B.category = b, B.time = b.getTime(), isNaN(B.time)))continue;
+                if (k && (m.categoryFunction ? b = m.categoryFunction(b, D, m) : (!A || b instanceof Date || (b = b.toString() + " |"), b = d.getDate(b, A, m.minPeriod)), b = d.resetDateToMin(b, r, t, m.firstDayOfWeek), B.category = b, B.time = b.getTime(), isNaN(B.time))) continue;
                 var C = this.valueAxes;
                 B.axes = {};
                 B.x = {};
@@ -4666,9 +4722,9 @@
                             var aa = D;
                             b.dataProvider && (aa = f);
                             J.values = this.processValues(aa, b, ia);
-                            if (!b.connect || b.forceGap && !isNaN(b.gapPeriod))if (y && y[M] && 0 < P && B.time - w[M] >= z * P && (y[M].gap = !0), b.forceGap) {
+                            if (!b.connect || b.forceGap && !isNaN(b.gapPeriod)) if (y && y[M] && 0 < P && B.time - w[M] >= z * P && (y[M].gap = !0), b.forceGap) {
                                 var P = 0, ma;
-                                for (ma in J.values)P++;
+                                for (ma in J.values) P++;
                                 0 < P && (w[M] = B.time, y[M] = J)
                             } else w[M] = B.time, y[M] = J;
                             this.processFields(b, J, aa);
@@ -4682,7 +4738,7 @@
                 this.chartData[u] = B
             }
             if (this.parseCount == e) {
-                for (a = 0; a < h.length; a++)b = h[a], b.dataProvider && this.parseGraphData(b);
+                for (a = 0; a < h.length; a++) b = h[a], b.dataProvider && this.parseGraphData(b);
                 this.dataChanged = !1;
                 this.dispatchDataUpdated = !0;
                 this.onDataUpdated()
@@ -4714,7 +4770,7 @@
             this.validateData()
         }, removeValueAxesAndGraphs: function () {
             var a = this.valueAxes, b;
-            for (b = a.length - 1; -1 < b; b--)this.removeValueAxis(a[b])
+            for (b = a.length - 1; -1 < b; b--) this.removeValueAxis(a[b])
         }, removeValueAxis: function (a) {
             var b = this.graphs, c;
             for (c = b.length - 1; 0 <= c; c--) {
@@ -4722,7 +4778,7 @@
                 d && d.valueAxis == a && this.removeGraph(d)
             }
             b = this.valueAxes;
-            for (c = b.length - 1; 0 <= c; c--)b[c] == a && b.splice(c, 1);
+            for (c = b.length - 1; 0 <= c; c--) b[c] == a && b.splice(c, 1);
             this.validateData()
         }, addGraph: function (a) {
             this.graphs.push(a);
@@ -4730,7 +4786,7 @@
             this.validateData()
         }, removeGraph: function (a) {
             var b = this.graphs, c;
-            for (c = b.length - 1; 0 <= c; c--)b[c] == a && (b.splice(c, 1), a.destroy());
+            for (c = b.length - 1; 0 <= c; c--) b[c] == a && (b.splice(c, 1), a.destroy());
             this.validateData()
         }, handleValueAxisZoom: function () {
         }, processValueAxes: function () {
@@ -4746,7 +4802,7 @@
             }
         }, processGuides: function () {
             var a = this.guides, b = this.categoryAxis;
-            if (a)for (var c = 0; c < a.length; c++) {
+            if (a) for (var c = 0; c < a.length; c++) {
                 var e = a[c];
                 (void 0 !== e.category || void 0 !== e.date) && b && b.addGuide(e);
                 e.id || (e.id = "guideAuto" + c + "_" + (new Date).getTime());
@@ -4804,7 +4860,7 @@
             }
             b.dataContext = c
         }, chooseGraphColor: function (a, b) {
-            if (a.lineColor)a.lineColorR = a.lineColor; else {
+            if (a.lineColor) a.lineColorR = a.lineColor; else {
                 var c;
                 c = this.colors.length > b ? this.colors[b] : a.lineColorR ? a.lineColorR : d.randomColor();
                 a.lineColorR = c
@@ -4812,7 +4868,7 @@
             a.fillColorsR = a.fillColors ? a.fillColors : a.lineColorR;
             a.bulletBorderColorR = a.bulletBorderColor ? a.bulletBorderColor : a.useLineColorForBulletBorder ? a.lineColorR : a.bulletColor;
             a.bulletColorR = a.bulletColor ? a.bulletColor : a.lineColorR;
-            if (c = this.patterns)a.pattern =
+            if (c = this.patterns) a.pattern =
                 c[b]
         }, handleLegendEvent: function (a) {
             var b = a.type;
@@ -4844,7 +4900,7 @@
             if (b) {
                 var c, d = .2;
                 this.legend && (d = this.legend.rollOverGraphAlpha);
-                if (1 != d)for (c = 0; c < b.length; c++) {
+                if (1 != d) for (c = 0; c < b.length; c++) {
                     var h = b[c];
                     h != a && h.changeOpacity(d)
                 }
@@ -4855,7 +4911,7 @@
             if (1 != a) {
                 a = this.graphs;
                 var b;
-                for (b = 0; b < a.length; b++)a[b].changeOpacity(1)
+                for (b = 0; b < a.length; b++) a[b].changeOpacity(1)
             }
         }, showGraph: function (a) {
             a.switchable && (a.hidden = !1, this.dataChanged = !0, "xy" != this.type && (this.marginsUpdated = !1), this.chartCreated && this.initChart())
@@ -4873,7 +4929,7 @@
             var a = this.graphs;
             if (a) {
                 var b;
-                for (b = 0; b < a.length; b++)a[b].animationPlayed = !1
+                for (b = 0; b < a.length; b++) a[b].animationPlayed = !1
             }
         }, animateAgain: function () {
             this.resetAnimation();
@@ -4895,7 +4951,9 @@
         }, draw: function () {
             var a = this;
             a.destroy();
-            var b = a.chart, c = b.container, e, h, f, g, k = a.categoryAxis, l = a.initialDate, m = a.initialCategory, p = a.finalDate, q = a.finalCategory, n = a.valueAxis, t = a.valueAxisX, r = a.initialXValue, w = a.finalXValue,
+            var b = a.chart, c = b.container, e, h, f, g, k = a.categoryAxis, l = a.initialDate, m = a.initialCategory,
+                p = a.finalDate, q = a.finalCategory, n = a.valueAxis, t = a.valueAxisX, r = a.initialXValue,
+                w = a.finalXValue,
                 z = a.initialValue, x = a.finalValue, u = n.recalculateToPercents, A = b.dataDateFormat;
             k && (l && (l = d.getDate(l, A, "fff"), a.initialDate = l, e = k.dateToCoordinate(l)), m && (e = k.categoryToCoordinate(m)), p && (p = d.getDate(p, A, "fff"), a.finalDate = p, h = k.dateToCoordinate(p)), q && (h = k.categoryToCoordinate(q)));
             t && !u && (isNaN(r) || (e = t.getCoordinate(r)), isNaN(w) || (h = t.getCoordinate(w)));
@@ -4927,8 +4985,8 @@
                 d.setCN(b, f, "trend-line-" + a.id);
                 a.line = f;
                 a.set = c;
-                if (f = a.initialImage)f = d.processObject(f, d.Image, a.theme), f.chart = b, f.draw(), f.translate(e[0] + f.offsetX, h[0] + f.offsetY), c.push(f.set);
-                if (f = a.finalImage)f = d.processObject(f, d.Image, a.theme), f.chart = b, f.draw(), f.translate(e[1] + f.offsetX, h[1] + f.offsetY), c.push(f.set);
+                if (f = a.initialImage) f = d.processObject(f, d.Image, a.theme), f.chart = b, f.draw(), f.translate(e[0] + f.offsetX, h[0] + f.offsetY), c.push(f.set);
+                if (f = a.finalImage) f = d.processObject(f, d.Image, a.theme), f.chart = b, f.draw(), f.translate(e[1] + f.offsetX, h[1] + f.offsetY), c.push(f.set);
                 g.mouseup(function () {
                     a.handleLineClick()
                 }).mouseover(function () {
@@ -4993,7 +5051,7 @@
     var d = window.AmCharts;
     d.circle = function (a, b, c, e, h, f, g, k, l) {
         0 >= b && (b = .001);
-        if (void 0 == h || 0 === h)h = .01;
+        if (void 0 == h || 0 === h) h = .01;
         void 0 === f && (f = "#000000");
         void 0 === g && (g = 0);
         e = {fill: c, stroke: f, "fill-opacity": e, "stroke-width": h, "stroke-opacity": g};
@@ -5027,13 +5085,13 @@
         g = Math.round;
         m && (b[t] = d.roundTo(b[t], 5), c[t] = d.roundTo(c[t], 5), g = Number);
         k = "M" + (g(b[0]) + p) + "," + (g(c[0]) + f);
-        for (var t = 1; t < b.length; t++)m && (b[t] = d.roundTo(b[t], 5), c[t] = d.roundTo(c[t], 5)), k += " L" + (g(b[t]) + p) + "," + (g(c[t]) + f);
+        for (var t = 1; t < b.length; t++) m && (b[t] = d.roundTo(b[t], 5), c[t] = d.roundTo(c[t], 5)), k += " L" + (g(b[t]) + p) + "," + (g(c[t]) + f);
         a = a.path(k + " Z").attr(h);
         n && a.gradient("linearGradient", e, l);
         return a
     };
     d.rect = function (a, b, c, e, h, f, g, k, l, m, p) {
-        if (isNaN(b) || isNaN(c))return a.set();
+        if (isNaN(b) || isNaN(c)) return a.set();
         isNaN(f) && (f = 0);
         void 0 === l && (l = 0);
         void 0 === m && (m = 270);
@@ -5105,7 +5163,7 @@
         return t
     };
     d.triangle = function (a, b, c, d, h, f, g, k) {
-        if (void 0 === f || 0 === f)f = 1;
+        if (void 0 === f || 0 === f) f = 1;
         void 0 === g && (g = "#000");
         void 0 ===
         k && (k = 0);
@@ -5119,7 +5177,7 @@
         return a.path(l).attr(d)
     };
     d.line = function (a, b, c, e, h, f, g, k, l, m, p) {
-        if (a.handDrawn && !p)return d.handDrawnLine(a, b, c, e, h, f, g, k, l, m, p);
+        if (a.handDrawn && !p) return d.handDrawnLine(a, b, c, e, h, f, g, k, l, m, p);
         f = {fill: "none", "stroke-width": f};
         void 0 !== g && 0 < g && (f["stroke-dasharray"] =
             g);
@@ -5130,14 +5188,14 @@
         m = d.dx;
         h = d.dy;
         g = "M" + (e(b[0]) + m) + "," + (e(c[0]) + h);
-        for (k = 1; k < b.length; k++)b[k] = d.roundTo(b[k], 5), c[k] = d.roundTo(c[k], 5), g += " L" + (e(b[k]) + m) + "," + (e(c[k]) + h);
-        if (d.VML)return a.path(g, void 0, !0).attr(f);
+        for (k = 1; k < b.length; k++) b[k] = d.roundTo(b[k], 5), c[k] = d.roundTo(c[k], 5), g += " L" + (e(b[k]) + m) + "," + (e(c[k]) + h);
+        if (d.VML) return a.path(g, void 0, !0).attr(f);
         l && (g += " M0,0 L0,0");
         return a.path(g).attr(f)
     };
     d.makeHD = function (a, b, c) {
-        for (var d = [], h = [], f = 1; f < a.length; f++)for (var g = Number(a[f - 1]), k = Number(b[f - 1]), l = Number(a[f]), m = Number(b[f]),
-                                                                   p = Math.round(Math.sqrt(Math.pow(l - g, 2) + Math.pow(m - k, 2)) / 50) + 1, l = (l - g) / p, m = (m - k) / p, q = 0; q <= p; q++) {
+        for (var d = [], h = [], f = 1; f < a.length; f++) for (var g = Number(a[f - 1]), k = Number(b[f - 1]), l = Number(a[f]), m = Number(b[f]),
+                                                                    p = Math.round(Math.sqrt(Math.pow(l - g, 2) + Math.pow(m - k, 2)) / 50) + 1, l = (l - g) / p, m = (m - k) / p, q = 0; q <= p; q++) {
             var n = k + q * m + Math.random() * c;
             d.push(g + q * l + Math.random() * c);
             h.push(n)
@@ -5146,7 +5204,7 @@
     };
     d.handDrawnLine = function (a, b, c, e, h, f, g, k, l, m) {
         var p, q = a.set();
-        for (p = 1; p < b.length; p++)for (var n = [b[p - 1], b[p]], t = [c[p - 1], c[p]], t = d.makeHD(n, t, a.handDrawScatter), n = t[0], t = t[1], r = 1; r < n.length; r++)q.push(d.line(a, [n[r - 1], n[r]], [t[r - 1], t[r]], e, h, f + Math.random() * a.handDrawThickness - a.handDrawThickness / 2, g, k, l, m, !0));
+        for (p = 1; p < b.length; p++) for (var n = [b[p - 1], b[p]], t = [c[p - 1], c[p]], t = d.makeHD(n, t, a.handDrawScatter), n = t[0], t = t[1], r = 1; r < n.length; r++) q.push(d.line(a, [n[r - 1], n[r]], [t[r - 1], t[r]], e, h, f + Math.random() * a.handDrawThickness - a.handDrawThickness / 2, g, k, l, m, !0));
         return q
     };
     d.doNothing =
@@ -5154,7 +5212,8 @@
             return a
         };
     d.drop = function (a, b, c, d, h, f, g, k) {
-        var l = 1 / 180 * Math.PI, m = c - 20, p = Math.sin(m * l) * b, q = Math.cos(m * l) * b, n = Math.sin((m + 40) * l) * b, t = Math.cos((m + 40) * l) * b, r = .8 * b, w = -b / 3, z = b / 3;
+        var l = 1 / 180 * Math.PI, m = c - 20, p = Math.sin(m * l) * b, q = Math.cos(m * l) * b,
+            n = Math.sin((m + 40) * l) * b, t = Math.cos((m + 40) * l) * b, r = .8 * b, w = -b / 3, z = b / 3;
         0 === c && (w = -w, z = 0);
         180 == c && (z = 0);
         90 == c && (w = 0);
@@ -5173,11 +5232,14 @@
         var w = r(g / f * k), z = d.VML, x = 359.5 + f / 100;
         359.94 < x && (x = 359.94);
         h >= x && (h = x);
-        var u = 1 / 180 * Math.PI, x = b + Math.sin(e * u) * k, A = c - Math.cos(e * u) * w, y = b + Math.sin(e * u) * f, B = c - Math.cos(e * u) * g, D = b + Math.sin((e + h) * u) * f, C = c - Math.cos((e + h) * u) * g, I = b + Math.sin((e + h) * u) * k, u = c - Math.cos((e + h) * u) * w, H = {
-            fill: d.adjustLuminosity(m.fill, -.2),
-            "stroke-opacity": 0,
-            "fill-opacity": m["fill-opacity"]
-        }, Q = 0;
+        var u = 1 / 180 * Math.PI, x = b + Math.sin(e * u) * k, A = c - Math.cos(e * u) * w,
+            y = b + Math.sin(e * u) * f, B = c - Math.cos(e * u) * g, D = b + Math.sin((e + h) * u) * f,
+            C = c - Math.cos((e + h) * u) * g, I = b + Math.sin((e + h) * u) * k, u = c - Math.cos((e + h) * u) * w,
+            H = {
+                fill: d.adjustLuminosity(m.fill, -.2),
+                "stroke-opacity": 0,
+                "fill-opacity": m["fill-opacity"]
+            }, Q = 0;
         180 < Math.abs(h) && (Q = 1);
         e = a.set();
         var M;
@@ -5210,7 +5272,7 @@
         a = a.path(g + " Z", void 0, void 0, "1000,1000").attr(m);
         if (p) {
             k = [];
-            for (w = 0; w < p.length; w++)k.push(d.adjustLuminosity(m.fill, p[w]));
+            for (w = 0; w < p.length; w++) k.push(d.adjustLuminosity(m.fill, p[w]));
             "radial" != t || d.isModern || (k = []);
             0 < k.length && a.gradient(t + "Gradient", k)
         }
@@ -5230,8 +5292,8 @@
         6 > a.length && (a = String(a[0]) + String(a[0]) + String(a[1]) + String(a[1]) + String(a[2]) + String(a[2]));
         b = b || 0;
         var c = "#", e, h;
-        for (h = 0; 3 > h; h++)e = parseInt(a.substr(2 * h, 2), 16), e = Math.round(Math.min(Math.max(0, e + e * b), 255)).toString(16), c += ("00" +
-        e).substr(e.length);
+        for (h = 0; 3 > h; h++) e = parseInt(a.substr(2 * h, 2), 16), e = Math.round(Math.min(Math.max(0, e + e * b), 255)).toString(16), c += ("00" +
+            e).substr(e.length);
         return c
     }
 })();
@@ -5254,7 +5316,7 @@
             e = "M" + Math.round(b[0]) +
                 "," + Math.round(c[0]) + " ";
             h = [];
-            for (l = 0; l < b.length; l++)isNaN(b[l]) || isNaN(c[l]) ? (e += this.drawSegment(h, n, t), l < b.length - 1 && (e += "L" + b[l + 1] + "," + c[l + 1] + " "), h = []) : h.push({
+            for (l = 0; l < b.length; l++) isNaN(b[l]) || isNaN(c[l]) ? (e += this.drawSegment(h, n, t), l < b.length - 1 && (e += "L" + b[l + 1] + "," + c[l + 1] + " "), h = []) : h.push({
                 x: Number(b[l]),
                 y: Number(c[l])
             });
@@ -5265,7 +5327,7 @@
             w && this.path.gradient("linearGradient", r, p)
         }, drawSegment: function (a, b, c) {
             var d = "";
-            if (2 < a.length)for (var h = 0; h < a.length - 1; h++) {
+            if (2 < a.length) for (var h = 0; h < a.length - 1; h++) {
                 var f = [], g = a[h - 1], k = a[h], l = a[h + 1], m = a[h + 2];
                 0 === h ? (f.push({x: k.x, y: k.y}),
                     f.push({x: k.x, y: k.y}), f.push({x: l.x, y: l.y}), f.push({
@@ -5305,7 +5367,7 @@
             this.height = c;
             this.rBin = document.createElement("div");
             d.hasSVG ? (d.SVG = !0, b = this.createSvgElement("svg"), a.appendChild(b), this.container = b, this.addDefs(e), this.R = new d.SVGRenderer(this)) : d.isIE && d.VMLRenderer &&
-            (d.VML = !0, d.vmlStyleSheet || (document.namespaces.add("amvml", "urn:schemas-microsoft-com:vml"), 31 > document.styleSheets.length ? (b = document.createStyleSheet(), b.addRule(".amvml", "behavior:url(#default#VML); display:inline-block; antialias:true"), d.vmlStyleSheet = b) : document.styleSheets[0].addRule(".amvml", "behavior:url(#default#VML); display:inline-block; antialias:true")), this.container = a, this.R = new d.VMLRenderer(this, e), this.R.disableSelection(a))
+                (d.VML = !0, d.vmlStyleSheet || (document.namespaces.add("amvml", "urn:schemas-microsoft-com:vml"), 31 > document.styleSheets.length ? (b = document.createStyleSheet(), b.addRule(".amvml", "behavior:url(#default#VML); display:inline-block; antialias:true"), d.vmlStyleSheet = b) : document.styleSheets[0].addRule(".amvml", "behavior:url(#default#VML); display:inline-block; antialias:true")), this.container = a, this.R = new d.VMLRenderer(this, e), this.R.disableSelection(a))
         }, createSvgElement: function (a) {
             return document.createElementNS(d.SVG_NS,
                 a)
@@ -5418,7 +5480,7 @@
             this.R.rotate(this, a, b);
             this.angle = a
         }, animate: function (a, b, c) {
-            for (var e in a)if (a.hasOwnProperty(e)) {
+            for (var e in a) if (a.hasOwnProperty(e)) {
                 var h = e, f = a[e];
                 c = d.getEffect(c);
                 this.R.animate(this, h, f, b, c)
@@ -5438,8 +5500,8 @@
             this.R.remove(this)
         }, clear: function () {
             var a = this.node;
-            if (a.hasChildNodes())for (; 1 <=
-                                         a.childNodes.length;)a.removeChild(a.firstChild)
+            if (a.hasChildNodes()) for (; 1 <=
+                                          a.childNodes.length;) a.removeChild(a.firstChild)
         }, hide: function () {
             this.setAttr("visibility", "hidden")
         }, show: function () {
@@ -5538,7 +5600,7 @@
             }
         }, create: function (a, b) {
             var c;
-            if ("group" == b)c = document.createElement("div"), a.type = "div"; else if ("text" == b)c = document.createElement("div"), a.type = "text"; else if ("image" == b)c = document.createElement("img"),
+            if ("group" == b) c = document.createElement("div"), a.type = "div"; else if ("text" == b) c = document.createElement("div"), a.type = "text"; else if ("image" == b) c = document.createElement("img"),
                 a.type = "image"; else {
                 a.type = "shape";
                 a.shapeType = this.cNames[b];
@@ -5576,7 +5638,7 @@
                 void 0 !== k && (g[k] = c);
                 "text" == f && ("text-anchor" == b && (a.anchor = c, k = h.clientWidth, "end" == c && (g.marginLeft = -k + "px"), "middle" == c && (g.marginLeft = -(k / 2) +
                     "px", g.textAlign = "center"), "start" == c && (g.marginLeft = "0px")), "fill" == b && (g.color = c), "font-weight" == b && (g.fontWeight = c));
-                if (g = a.children)for (k = 0; k < g.length; k++)g[k].setAttr(b, c);
+                if (g = a.children) for (k = 0; k < g.length; k++) g[k].setAttr(b, c);
                 if ("shape" == f) {
                     "cs" == b && (h.style.width = "100px", h.style.height = "100px", h.setAttribute("coordsize", c));
                     "d" == b && h.setAttribute("path", this.svgPathToVml(c));
@@ -5588,13 +5650,13 @@
                     "stroke-opacity" ==
                     b && (e ? f.opacity = c : f.setAttribute("opacity", c));
                     "stroke-dasharray" == b && (g = "solid", 0 < c && 3 > c && (g = "dot"), 3 <= c && 6 >= c && (g = "dash"), 6 < c && (g = "longdash"), e ? f.dashstyle = g : f.setAttribute("dashstyle", g));
-                    if ("fill-opacity" == b || "opacity" == b)0 === c ? e ? a.on = !1 : a.setAttribute("on", !1) : e ? a.opacity = c : a.setAttribute("opacity", c);
+                    if ("fill-opacity" == b || "opacity" == b) 0 === c ? e ? a.on = !1 : a.setAttribute("on", !1) : e ? a.opacity = c : a.setAttribute("opacity", c);
                     "fill" == b && (e ? a.color = c : a.setAttribute("color", c));
                     "rx" == b && (e ? h.arcSize = c + "%" : h.setAttribute("arcsize", c + "%"))
                 }
             }
         }, attr: function (a, b) {
-            for (var c in b)b.hasOwnProperty(c) && this.setAttr(a, c, b[c])
+            for (var c in b) b.hasOwnProperty(c) && this.setAttr(a, c, b[c])
         },
         text: function (a, b, c) {
             var e = new d.AmDObject("text", this.D), h = e.node;
@@ -5684,7 +5746,8 @@
                 a.backgroundColor = c;
                 a.paddingLeft = 1;
                 c = b * Math.PI / 180;
-                var h = Math.cos(c), f = Math.sin(c), g = d.removePx(a.left), k = d.removePx(a.top), l = e.offsetWidth, e = e.offsetHeight;
+                var h = Math.cos(c), f = Math.sin(c), g = d.removePx(a.left), k = d.removePx(a.top), l = e.offsetWidth,
+                    e = e.offsetHeight;
                 b /= Math.abs(b);
                 a.left = g + l / 2 - l / 2 * Math.cos(c) - b * e / 2 * Math.sin(c) + 3;
                 a.top = k - b * l / 2 * Math.sin(c) + b * e / 2 * Math.sin(c);
@@ -5703,7 +5766,7 @@
             this.D.container.appendChild(b.node);
             if (a) {
                 var c;
-                for (c = 0; c < a.length; c++)b.push(a[c])
+                for (c = 0; c < a.length; c++) b.push(a[c])
             }
             return b
         }, gradient: function (a, b, c, d) {
@@ -5711,7 +5774,7 @@
             "radialGradient" == b && (b = "gradientradial", c.reverse());
             "linearGradient" == b && (b = "gradient");
             var f;
-            for (f = 0; f < c.length; f++)h += Math.round(100 * f / (c.length - 1)) + "% " + c[f], f < c.length - 1 && (h += ",");
+            for (f = 0; f < c.length; f++) h += Math.round(100 * f / (c.length - 1)) + "% " + c[f], f < c.length - 1 && (h += ",");
             a = a.fill;
             90 == d ? d = 0 : 270 == d ? d = 180 : 180 ==
             d ? d = 90 : 0 === d && (d = 270);
@@ -5748,7 +5811,7 @@
         }, create: function (a, b) {
             return document.createElementNS(d.SVG_NS, b)
         }, attr: function (a, b) {
-            for (var c in b)b.hasOwnProperty(c) && this.setAttr(a, c, b[c])
+            for (var c in b) b.hasOwnProperty(c) && this.setAttr(a, c, b[c])
         }, setAttr: function (a, b, c) {
             void 0 !== c && a.node.setAttribute(b, c)
         }, animate: function (a, b, c, e, h) {
@@ -5777,15 +5840,15 @@
                         m = 0 === m - g ? m : Math.round(d[c.effect](0, h, g, m - g, e));
                         c = 0 === l - k ? l : Math.round(d[c.effect](0, h, k, l - k, e));
                         g = "transform";
-                        if (isNaN(m) || isNaN(c))continue;
+                        if (isNaN(m) || isNaN(c)) continue;
                         c = "translate(" + m + "," + c + ")"
                     } else l = Number(c.from), k = Number(c.to), m = k - l, c = d[c.effect](0, h, l, m, e), isNaN(c) && (c = k), 0 === m && this.animations.splice(a, 1);
                     this.setAttr(f, g, c)
-                } else"translate" == g ? (l = c.to.split(","), m = Number(l[0]), l = Number(l[1]), f.translate(m, l)) : (k = Number(c.to), this.setAttr(f, g, k)), f.animationFinished = !0, this.animations.splice(a, 1)
+                } else "translate" == g ? (l = c.to.split(","), m = Number(l[0]), l = Number(l[1]), f.translate(m, l)) : (k = Number(c.to), this.setAttr(f, g, k)), f.animationFinished = !0, this.animations.splice(a, 1)
             }
         }, getBBox: function (a) {
             if (a =
-                    a.node)try {
+                a.node) try {
                 return a.getBBox()
             } catch (b) {
             }
@@ -5832,7 +5895,7 @@
             this.D.container.appendChild(b.node);
             if (a) {
                 var c;
-                for (c = 0; c < a.length; c++)b.push(a[c])
+                for (c = 0; c < a.length; c++) b.push(a[c])
             }
             return b
         }, addListener: function (a, b, c) {
@@ -5851,7 +5914,7 @@
                 b.setAttribute("y1", l + "%");
                 b.setAttribute("y2", m + "%")
             }
-            for (e = 0; e < c.length; e++)g = document.createElementNS(d.SVG_NS, "stop"), k = 100 * e / (c.length - 1), 0 === e && (k = 0), g.setAttribute("offset", k + "%"), g.setAttribute("stop-color", c[e]), b.appendChild(g);
+            for (e = 0; e < c.length; e++) g = document.createElementNS(d.SVG_NS, "stop"), k = 100 * e / (c.length - 1), 0 === e && (k = 0), g.setAttribute("offset", k + "%"), g.setAttribute("stop-color", c[e]), b.appendChild(g);
             h.parentNode.appendChild(b);
             c = "#";
             d.baseHref && !d.isIE && (c = this.removeTarget(window.location.href) + c);
@@ -5955,12 +6018,13 @@
             var a = this.legendData;
             this.enabled && (d.ifArray(a) || d.ifArray(this.data)) && this.drawLegend()
         }, drawLegend: function () {
-            var a = this.chart, b = this.position, c = this.width, e = a.divRealWidth, h = a.divRealHeight, f = this.div, g = this.legendData;
+            var a = this.chart, b = this.position, c = this.width, e = a.divRealWidth, h = a.divRealHeight,
+                f = this.div, g = this.legendData;
             this.data && (g = this.combineLegend ? this.legendData.concat(this.data) :
                 this.data);
             isNaN(this.fontSize) && (this.fontSize = a.fontSize);
             this.maxColumnsReal = this.maxColumns;
-            if ("right" == b || "left" == b)this.maxColumnsReal = 1, this.autoMargins && (this.marginLeft = this.marginRight = 10); else if (this.autoMargins) {
+            if ("right" == b || "left" == b) this.maxColumnsReal = 1, this.autoMargins && (this.marginLeft = this.marginRight = 10); else if (this.autoMargins) {
                 this.marginRight = a.marginRight;
                 this.marginLeft = a.marginLeft;
                 var k = a.autoMarginOffset;
@@ -5978,18 +6042,20 @@
             h > this.fontSize && (this.ly = h / 2 - 1);
             0 < h && (this.lx += h + this.markerLabelGap);
             this.titleWidth = 0;
-            if (h = this.title)h =
+            if (h = this.title) h =
                 d.text(this.container, h, this.color, a.fontFamily, this.fontSize, "start", !0), d.setCN(a, h, "legend-title"), h.translate(this.marginLeft, this.marginTop + this.verticalGap + this.ly + 1), a = h.getBBox(), this.titleWidth = a.width + 15, this.titleHeight = a.height + 6;
             this.index = this.maxLabelWidth = 0;
             if (this.showEntries) {
-                for (a = 0; a < g.length; a++)this.createEntry(g[a]);
-                for (a = this.index = 0; a < g.length; a++)this.createValue(g[a])
+                for (a = 0; a < g.length; a++) this.createEntry(g[a]);
+                for (a = this.index = 0; a < g.length; a++) this.createValue(g[a])
             }
             this.arrangeEntries();
             this.updateValues()
         }, arrangeEntries: function () {
             var a = this.position, b = this.marginLeft +
-                this.titleWidth, c = this.marginRight, e = this.marginTop, h = this.marginBottom, f = this.horizontalGap, g = this.div, k = this.divWidth, l = this.maxColumnsReal, m = this.verticalGap, p = this.spacing, q = k - c - b, n = 0, t = 0, r = this.container;
+                this.titleWidth, c = this.marginRight, e = this.marginTop, h = this.marginBottom,
+                f = this.horizontalGap, g = this.div, k = this.divWidth, l = this.maxColumnsReal, m = this.verticalGap,
+                p = this.spacing, q = k - c - b, n = 0, t = 0, r = this.container;
             this.set && this.set.remove();
             var w = r.set();
             this.set = w;
@@ -6027,7 +6093,7 @@
             w.translate(b, e);
             c.toBack();
             b = f;
-            if ("top" == a || "bottom" == a || "absolute" == a || "outside" == a)"center" == this.align ? b = f + (p - u.width) / 2 : "right" == this.align && (b = f + p - u.width);
+            if ("top" == a || "bottom" == a || "absolute" == a || "outside" == a) "center" == this.align ? b = f + (p - u.width) / 2 : "right" == this.align && (b = f + p - u.width);
             z.translate(b, m + 1);
             this.titleHeight > l && (l = this.titleHeight);
             e = l + e + h + 1;
@@ -6053,18 +6119,18 @@
                 if (e) {
                     e = a.type;
                     b.switchType = void 0;
-                    if ("line" == e || "step" == e || "smoothedLine" == e || "ohlc" == e)m = q.set(), a.hidden || (f = a.lineColorR, k = a.bulletBorderColorR), t = d.line(q, [0, 2 *
+                    if ("line" == e || "step" == e || "smoothedLine" == e || "ohlc" == e) m = q.set(), a.hidden || (f = a.lineColorR, k = a.bulletBorderColorR), t = d.line(q, [0, 2 *
                     n], [n / 2, n / 2], f, a.lineAlpha, a.lineThickness, a.dashLength), d.setCN(c, t, "graph-stroke"), m.push(t), a.bullet && (a.hidden || (f = a.bulletColorR), t = d.bullet(q, a.bullet, a.bulletSize, f, a.bulletAlpha, a.bulletBorderThickness, k, a.bulletBorderAlpha)) && (d.setCN(c, t, "graph-bullet"), t.translate(n + 1, n / 2), m.push(t)), w = 0, t = n, r = n / 3; else {
                         a.getGradRotation && (m = a.getGradRotation(), 0 === m && (m = 180));
                         t = a.fillColorsR;
                         !0 === a.hidden && (t = f);
-                        if (m = b.createMarker("rectangle", t, a.fillAlphas, a.lineThickness, f, a.lineAlpha, m, l, a.dashLength))w =
+                        if (m = b.createMarker("rectangle", t, a.fillAlphas, a.lineThickness, f, a.lineAlpha, m, l, a.dashLength)) w =
                             n, m.translate(w, n / 2);
                         t = n
                     }
                     d.setCN(c, m, "graph-" + e);
                     d.setCN(c, m, "graph-" + a.id)
-                } else if (p)m = q.image(p, 0, 0, n, n); else {
+                } else if (p) m = q.image(p, 0, 0, n, n); else {
                     var z;
                     isNaN(b.gradientRotation) || (z = 180 + b.gradientRotation);
                     (m = b.createMarker(h, f, g, void 0, void 0, void 0, z, l)) && m.translate(n / 2, n / 2)
@@ -6200,12 +6266,12 @@
             this.invalidateSize()
         }, updateValues: function () {
             var a = this.valueLabels, b = this.chart, c, e = this.data;
-            if (a)for (c = 0; c < a.length; c++) {
+            if (a) for (c = 0; c < a.length; c++) {
                 var h = a[c], f = h.dItem;
                 f.periodDataItem = void 0;
                 f.periodPercentDataItem = void 0;
                 var g = " ";
-                if (e)f.value ? h.text(f.value) : h.text(""); else {
+                if (e) f.value ? h.text(f.value) : h.text(""); else {
                     var k = null;
                     if (void 0 !== f.type) {
                         var k = f.currentDataItem, l = this.periodValueText;
@@ -6224,7 +6290,7 @@
                     f.legendColorFunction && (p = f.legendColorFunction(l, g, f.periodDataItem, f.periodPercentDataItem));
                     h.text(g);
                     if (!f.pattern && (this.useMarkerColorForValues && h.setAttr("fill", p), this.useMarkerColorForLabels)) {
-                        if (h = f.legendMarker)h.setAttr("fill", p), h.setAttr("stroke", p);
+                        if (h = f.legendMarker) h.setAttr("fill", p), h.setAttr("stroke", p);
                         (f = f.legendLabel) && f.setAttr("fill", p)
                     }
                 }
@@ -6387,19 +6453,19 @@
             }], h = !0, f = b.indexOf("AA");
         -1 != f && (a.substr(f, 2), "pm" == a.toLowerCase && (h = !1));
         var f = b, g, k, l;
-        for (l = 0; l < e.length; l++)k = e[l].period, c[k] = 0, "date" == k && (c[k] =
+        for (l = 0; l < e.length; l++) k = e[l].period, c[k] = 0, "date" == k && (c[k] =
             1);
-        for (l = 0; l < e.length; l++)if (g = e[l].pattern, k = e[l].period, -1 != b.indexOf(g)) {
+        for (l = 0; l < e.length; l++) if (g = e[l].pattern, k = e[l].period, -1 != b.indexOf(g)) {
             var m = d.getFromDateString(g, a, f);
             b = b.replace(g, "");
-            if ("KK" == g || "K" == g || "LL" == g || "L" == g)h || (m += 12);
+            if ("KK" == g || "K" == g || "LL" == g || "L" == g) h || (m += 12);
             c[k] = m
         }
         d.useUTC ? (e = new Date, e.setUTCFullYear(c.year, c.month, c.date), e.setUTCHours(c.hours, c.minutes, c.seconds, c.milliseconds)) : e = new Date(c.year, c.month, c.date, c.hours, c.minutes, c.seconds, c.milliseconds);
         return e
     };
     d.getFromDateString = function (a, b, c) {
-        if (void 0 !== b)return c = c.indexOf(a), b = String(b), b = b.substr(c, a.length), "0" == b.charAt(0) &&
+        if (void 0 !== b) return c = c.indexOf(a), b = String(b), b = b.substr(c, a.length), "0" == b.charAt(0) &&
         (b = b.substr(1, b.length - 1)), b = Number(b), isNaN(b) && (b = 0), -1 != a.indexOf("M") && b--, b
     };
     d.formatDate = function (a, b, c) {
@@ -6482,7 +6548,7 @@
     };
     d.changeDate =
         function (a, b, c, e, h) {
-            if (d.useUTC)return d.changeUTCDate(a, b, c, e, h);
+            if (d.useUTC) return d.changeUTCDate(a, b, c, e, h);
             var f = -1;
             void 0 === e && (e = !0);
             void 0 === h && (h = !1);

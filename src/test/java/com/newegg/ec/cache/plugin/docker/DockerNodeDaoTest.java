@@ -16,23 +16,23 @@ import java.util.List;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = Application.class)
 public class DockerNodeDaoTest {
-    
+
     @Resource
     private IDockerNodeDao dockerNodeDao;
 
     @Test
-    public void testHumbackNodeList(){
+    public void testHumbackNodeList() {
         int id = 1;
         List<Node> list = dockerNodeDao.getDockerNodeList(id);
-        for(Node node :list){
-            DockerNode temp =   (DockerNode)node;
+        for (Node node : list) {
+            DockerNode temp = (DockerNode) node;
             System.out.println(temp.getClusterId());
         }
-        System.out.println( list );
+        System.out.println(list);
     }
 
     @Test
-    public void testAddHumbackNode(){
+    public void testAddHumbackNode() {
         DockerNode dockerNode = new DockerNode();
         dockerNode.setClusterId(1);
         dockerNode.setContainerName("redis8008");
@@ -44,21 +44,21 @@ public class DockerNodeDaoTest {
     }
 
     @Test
-    public void testRemovedockerNode(){
+    public void testRemovedockerNode() {
         int id = 2;
         System.out.println(dockerNodeDao.removeDockerNode(id));
     }
 
     @Test
-    public void testGetCluster(){
+    public void testGetCluster() {
         DockerNode dockerNode = dockerNodeDao.getDockerNode(1);
-        System.out.println( dockerNode );
+        System.out.println(dockerNode);
     }
 
     @Test
-    public void testPackageName(){
+    public void testPackageName() {
         String packageName = "redis3.0.5.tar";
         String tmp[] = packageName.split(".tar");
-        System.out.println( tmp[0] );
+        System.out.println(tmp[0]);
     }
 }

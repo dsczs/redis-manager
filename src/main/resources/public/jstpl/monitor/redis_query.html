@@ -10,7 +10,8 @@
                 </button>
                 <ul class="dropdown-menu pull-right db-list">
                     {{foreach from=$res item=dbItem}}
-                        <li><a href="javascript:void(0);" data-db="{{$dbItem.db}}" class="select-db">db{{$dbItem.db}}[{{$dbItem.keys}}]</a></li>
+                    <li><a href="javascript:void(0);" data-db="{{$dbItem.db}}" class="select-db">db{{$dbItem.db}}[{{$dbItem.keys}}]</a>
+                    </li>
                     {{/foreach}}
                 </ul>
             </div><!-- /btn-group -->

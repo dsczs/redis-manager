@@ -7,7 +7,7 @@ import org.junit.Test;
  */
 public class RemoteShellUtilTest {
     @Test
-    public void testExe(){
+    public void testExe() {
 
     }
 }

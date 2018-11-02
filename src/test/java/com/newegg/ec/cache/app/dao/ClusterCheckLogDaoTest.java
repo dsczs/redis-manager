@@ -24,7 +24,7 @@ public class ClusterCheckLogDaoTest {
     private IClusterCheckLogDao logDao;
 
     @Test
-    public void addTest(){
+    public void addTest() {
         ClusterCheckLog log = new ClusterCheckLog();
         log.setId(CommonUtil.getUuid());
         log.setClusterId("2");
@@ -38,8 +38,8 @@ public class ClusterCheckLogDaoTest {
     }
 
     @Test
-    public void getLogsTest(){
-        Map<String,Object> param = new HashMap();
+    public void getLogsTest() {
+        Map<String, Object> param = new HashMap();
         param.put("clusterId", "ssecbigdata");
         param.put("nodeId", "localhost:8008");
         param.put("formula", "@{mem_fragmentation_ratio}>2.2");
@@ -49,23 +49,23 @@ public class ClusterCheckLogDaoTest {
     }
 
     @Test
-    public void delLogsTest(){
-        Map<String,Object> param = new HashMap();
-        param.put("clusterId","ssecbigdata");
-        param.put("nodeId","localhost:8008");
-        param.put("logType",ClusterCheckLog.LogType.warnlog.toString());
+    public void delLogsTest() {
+        Map<String, Object> param = new HashMap();
+        param.put("clusterId", "ssecbigdata");
+        param.put("nodeId", "localhost:8008");
+        param.put("logType", ClusterCheckLog.LogType.warnlog.toString());
         logDao.delLogs(param);
     }
 
     @Test
-    public void checkWarningLogTest(){
-        Map<String,Object> param = new HashMap();
-        param.put("clusterId","ssecbigdata");
+    public void checkWarningLogTest() {
+        Map<String, Object> param = new HashMap();
+        param.put("clusterId", "ssecbigdata");
         System.out.println(logDao.checkWarningLogs(param));
     }
 
     @Test
-    public void countWarningLogNumTest(){
+    public void countWarningLogNumTest() {
         //System.out.println(logDao.countTotalWarningLog(null) + "---------------------------");
         System.out.println(logDao.countWarningLogByClusterId(1));
     }

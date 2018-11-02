@@ -5,7 +5,7 @@
 
 <mapper namespace="com.newegg.ec.cache.plugin.docker.IDockerNodeDao">
 
-    <select id="getDockerNodeList"  resultType="com.newegg.ec.cache.plugin.docker.DockerNode" parameterType="int">
+    <select id="getDockerNodeList" resultType="com.newegg.ec.cache.plugin.docker.DockerNode" parameterType="int">
         select * from docker_node
         <if test="_parameter != null">
             where cluster_id =#{id}
@@ -21,7 +21,8 @@
         delete from docker_node where id = #{id}
     </delete>
 
-    <insert id="addDockerNode"  parameterType="com.newegg.ec.cache.plugin.docker.DockerNode"  useGeneratedKeys="true" keyProperty="id">
+    <insert id="addDockerNode" parameterType="com.newegg.ec.cache.plugin.docker.DockerNode" useGeneratedKeys="true"
+            keyProperty="id">
         insert into docker_node(image,container_name,cluster_id, user_group, ip,port, add_time ) values(#{image},#{containerName},#{clusterId},#{userGroup},#{ip},#{port},#{addTime})
     </insert>
 

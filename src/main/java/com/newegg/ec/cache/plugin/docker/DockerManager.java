@@ -44,6 +44,7 @@ public class DockerManager extends PluginParent implements INodeOperate {
     private String dockerApiFormat;
     @Value("${cache.docker.image}")
     private String images;
+
     public DockerManager() {
         //ignore
     }

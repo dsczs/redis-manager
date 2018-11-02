@@ -29,9 +29,10 @@ public class DockerOptionTest {
 
     @Test
     public void testcreateContainer() {
-        JSONObject installObject = generateInstallObject("ssecbigdata02:5000/redis4.0.1","leoredistest","/redis/redis-4.0.1/start.sh 7001 localhost");
+        JSONObject installObject = generateInstallObject("ssecbigdata02:5000/redis4.0.1", "leoredistest", "/redis/redis-4.0.1/start.sh 7001 localhost");
         System.out.println(docker.createContainer("localhost", installObject));
     }
+
     @Test
     public void testoptionContainer() {
         System.out.println(docker.optionContainer("localhost", "leoredistest", StartType.stop));
@@ -47,7 +48,7 @@ public class DockerOptionTest {
         System.out.println(docker.imagePull("localhost", "shec/itemserviceprd:v1.2.3.4.2"));
     }
 
-    private JSONObject generateInstallObject(String image, String name, String command){
+    private JSONObject generateInstallObject(String image, String name, String command) {
 
         JSONObject req = new JSONObject();
         req.put("Image", image);
@@ -58,8 +59,8 @@ public class DockerOptionTest {
         restartPolicy.put("Name", "always");
         hostConfig.put("RestartPolicy", restartPolicy);
         JSONArray binds = new JSONArray();
-        String bindStr = "/data/redis:/data/redis" ;
-        binds.add( bindStr );
+        String bindStr = "/data/redis:/data/redis";
+        binds.add(bindStr);
         hostConfig.put("Binds", binds);
         req.put("HostConfig", hostConfig);
         String[] cmds = command.split("\\s+");

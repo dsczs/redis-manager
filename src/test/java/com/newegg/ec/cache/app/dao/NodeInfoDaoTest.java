@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
@@ -25,12 +26,12 @@ public class NodeInfoDaoTest {
     private NodeInfoDao nodeInfoTable;
 
     @Test
-    public void testCreate(){
+    public void testCreate() {
         nodeInfoTable.createTable("node_info_5");
     }
 
     @Test
-    public void testAdd(){
+    public void testAdd() {
         NodeInfo nodeInfo = new NodeInfo();
         nodeInfo.setConnectedClients(1100);
         nodeInfo.setBlockedClients(10100);
@@ -40,39 +41,39 @@ public class NodeInfoDaoTest {
     }
 
     @Test
-    public void testGroupNodeInfo(){
-        List<NodeInfo> res  = nodeInfoDao.getGroupNodeInfo("hello", 0, DateUtil.getTime(), "all", "sum", "day");
-        System.out.println( res );
+    public void testGroupNodeInfo() {
+        List<NodeInfo> res = nodeInfoDao.getGroupNodeInfo("hello", 0, DateUtil.getTime(), "all", "sum", "day");
+        System.out.println(res);
     }
 
     @Test
-    public void testGetMaxFields(){
+    public void testGetMaxFields() {
         List<Map> res = nodeInfoDao.getMaxField("hello", 0, DateUtil.getTime(), "connected_clients", 2);
-        System.out.println( res );
+        System.out.println(res);
     }
 
     @Test
-    public void testGetMinFields(){
+    public void testGetMinFields() {
         List<Map> res = nodeInfoDao.getMinField("hello", 0, DateUtil.getTime(), "connected_clients", 2);
-        System.out.println( res );
+        System.out.println(res);
     }
 
     @Test
-    public void testGetAvgField(){
+    public void testGetAvgField() {
         String res = nodeInfoDao.getAvgField("hello", 0, DateUtil.getTime(), "all", "connected_clients");
-        System.out.println( res );
+        System.out.println(res);
     }
 
     @Test
-    public void testGetAllField(){
+    public void testGetAllField() {
         String res = nodeInfoDao.getAllField("hello", 0, DateUtil.getTime(), "connected_clients");
-        System.out.println( res );
+        System.out.println(res);
     }
 
     @Test
-    public void testGetLastField(){
+    public void testGetLastField() {
         NodeInfo nodeInfo = nodeInfoDao.getLastNodeInfo("hello", 0, DateUtil.getTime(), "localhost:8008");
-        System.out.println( nodeInfo );
+        System.out.println(nodeInfo);
 
     }
 }

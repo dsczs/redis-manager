@@ -8,7 +8,7 @@ function connect(data, url) {
         return;
     }
 
-    ws = new SockJS( url );
+    ws = new SockJS(url);
 
 
     ws.onopen = function () {
@@ -57,27 +57,26 @@ function updateUrl(urlPath) {
 }
 
 function updateTransport(transport) {
-    transports = (transport == 'all') ?  [] : [transport];
+    transports = (transport == 'all') ? [] : [transport];
 }
 
 function echo_msg(message) {
     var msgs = message.split("'");
-    if( msgs.length == 2 ){
+    if (msgs.length == 2) {
         message = msgs[1];
     }
-    try{
+    try {
         var terminal = document.getElementById('console');
         var p = document.createElement('p');
         p.style.wordWrap = 'break-word';
         p.appendChild(document.createTextNode(message));
         terminal.appendChild(p);
         if (terminal.childNodes.length > 200) {
-            terminal.removeChild( terminal.firstElementChild );
+            terminal.removeChild(terminal.firstElementChild);
         }
         terminal.scrollTop = terminal.scrollHeight;
-    }catch( e )
-    {
-        console.log( e );
+    } catch (e) {
+        console.log(e);
         disconnect();
     }
 }

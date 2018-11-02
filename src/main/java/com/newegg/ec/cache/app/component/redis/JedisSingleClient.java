@@ -1,7 +1,11 @@
 package com.newegg.ec.cache.app.component.redis;
 
 import com.newegg.ec.cache.app.model.RedisValue;
-import redis.clients.jedis.*;
+import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisCommands;
+import redis.clients.jedis.MultiKeyCommands;
+import redis.clients.jedis.ScanParams;
+import redis.clients.jedis.ScanResult;
 
 /**
  * Created by lzz on 2018/3/19.

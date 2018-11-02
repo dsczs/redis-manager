@@ -24,17 +24,17 @@ public class HumpackOptionTest {
     @Test
     public void testoptionContainer() {
         boolean result = humpback.optionContainer("localhost", "itemService_test_Log", StartType.start);
-        System.out.println("result "+result);
+        System.out.println("result " + result);
     }
 
 
     @Test
     public void testDelContainer() {
         boolean stop = humpback.optionContainer("localhost", "itemservicespring_E4_leotest", StartType.stop);
-        if(stop){
+        if (stop) {
             JSONObject param = new JSONObject();
-            param.put("ip","localhost");
-            param.put("containerId","itemservicespring_E4_leotest");
+            param.put("ip", "localhost");
+            param.put("containerId", "itemservicespring_E4_leotest");
             System.out.println(humpback.remove(param));
         }
     }
@@ -45,7 +45,7 @@ public class HumpackOptionTest {
                 "localhost:8009\n" +
                 "localhost:8010";
         JSONObject param = new JSONObject();
-        param.put("iplist",ipListStr);
+        param.put("iplist", ipListStr);
         param.put("imageUrl", "humpback-hub.newegg.org/shec/redis3.0.6:v3");
         System.out.println(humpback.pullImage(param));
     }
@@ -94,7 +94,7 @@ public class HumpackOptionTest {
                 "            \"SHMSize\": 67108864\n" +
                 "    }";
 
-        System.out.println(humpback.createContainer("localhost",JSONObject.fromObject(param)));
+        System.out.println(humpback.createContainer("localhost", JSONObject.fromObject(param)));
 
 
     }
@@ -108,6 +108,6 @@ public class HumpackOptionTest {
     public void testInstall() {
         JSONObject param = new JSONObject();
         param.put("imageUrl", "humpback-hub.newegg.org/shec/redis3.0.6:v3");
-        humpback.installNodeList(param,new ArrayList());
+        humpback.installNodeList(param, new ArrayList());
     }
 }

@@ -16,24 +16,24 @@ import java.util.List;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = Application.class)
 public class MachineNodeDaoTest {
-    
+
     @Resource
     private IMachineNodeDao machineNodeDao;
 
     @Test
-    public void testHumbackNodeList(){
+    public void testHumbackNodeList() {
         int cluster_id = 3;
         List<Node> list = machineNodeDao.getMachineNodeList(cluster_id);
-        for(Node node :list){
-            MachineNode temp = (MachineNode)node;
+        for (Node node : list) {
+            MachineNode temp = (MachineNode) node;
             System.out.println(temp.getUsername());
 
         }
-        System.out.println( list );
+        System.out.println(list);
     }
 
     @Test
-    public void testAddHumbackNode(){
+    public void testAddHumbackNode() {
         MachineNode machineNode = new MachineNode();
         machineNode.setClusterId(2);
         machineNode.setImage("redis3.0.6.tar.gz");
@@ -47,14 +47,14 @@ public class MachineNodeDaoTest {
     }
 
     @Test
-    public void testRemovedockerNode(){
+    public void testRemovedockerNode() {
         int id = 1;
         System.out.println(machineNodeDao.removeMachineNode(id));
     }
 
     @Test
-    public void testGetCluster(){
+    public void testGetCluster() {
         MachineNode machineNode = machineNodeDao.getMachineNode(2);
-        System.out.println( machineNode );
+        System.out.println(machineNode);
     }
 }

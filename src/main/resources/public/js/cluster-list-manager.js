@@ -1,32 +1,32 @@
-smarty.get( "/cluster/listClusterByUser", "cluster/cluster_list_content", "cluster-list-content", function(){
-}, true );
+smarty.get("/cluster/listClusterByUser", "cluster/cluster_list_content", "cluster-list-content", function () {
+}, true);
 
-smarty.register_function( 'cluster_state', function( params ){
+smarty.register_function('cluster_state', function (params) {
     var address = params['address'];
     var id = params["id"];
-    var div_id = "cluster-state-" +  id;
-    getClusterInfoByAddress(address, function(obj){
+    var div_id = "cluster-state-" + id;
+    getClusterInfoByAddress(address, function (obj) {
         var state = obj.res.cluster_state;
-        if(state == "ok"){
-            $("#" + div_id).append( "<span class='state-ok'>OK</span>" );
+        if (state == "ok") {
+            $("#" + div_id).append("<span class='state-ok'>OK</span>");
         } else {
-            $("#" + div_id).append( "<span class='state-fail'>Fail</span>" );
+            $("#" + div_id).append("<span class='state-fail'>Fail</span>");
         }
 
     });
 });
 
 
-$("#clusterName, #address, #userName, #password").on("blur", function(){
+$("#clusterName, #address, #userName, #password").on("blur", function () {
     var obj = $(this);
     var val = obj.val();
-    if(val != null && val != ""){
+    if (val != null && val != "") {
         obj.removeClass("input-error");
     }
 })
 
 // save redis cluster
-$("#save").on("click", function(){
+$("#save").on("click", function () {
     var clusterNameObj = $("#clusterName");
     var addressObj = $("#address");
     var groupIdObj = $("#group");
@@ -37,7 +37,7 @@ $("#save").on("click", function(){
     var userGroup = $("#group option:selected").val().trim();
     var redisPassword = redisPasswordObj.val().trim();
 
-    if(clusterName == null || clusterName == ""){
+    if (clusterName == null || clusterName == "") {
         clusterNameObj.addClass("input-error");
         layer.msg("Cluster Name can't be null");
         return;
@@ -45,13 +45,13 @@ $("#save").on("click", function(){
         clusterNameObj.removeClass("input-error");
     }
 
-    if(address == null || address == ""){
+    if (address == null || address == "") {
         addressObj.addClass("input-error");
         layer.msg("IP can't be null");
         return;
     }
 
-    if(userGroup == null || userGroup == "" || userGroup == 0){
+    if (userGroup == null || userGroup == "" || userGroup == 0) {
         layer.msg("Please select a group");
         return;
     }
@@ -60,10 +60,10 @@ $("#save").on("click", function(){
     var cluster = {};
     cluster.clusterName = clusterName;
     cluster.address = address;
-    cluster.userGroup =  userGroup;
+    cluster.userGroup = userGroup;
     cluster.clusterType = "machine";
     cluster.redisPassword = redisPassword;
-    addCluster(cluster, function(obj){
+    addCluster(cluster, function (obj) {
         location.reload();
     });
 

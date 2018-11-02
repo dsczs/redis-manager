@@ -20,14 +20,14 @@ public class UserDaoTest {
     private IUserDao userDao;
 
     @Test
-    public void getUserList(){
+    public void getUserList() {
         List<User> list = userDao.getUserList();
-        System.out.println( list );
+        System.out.println(list);
     }
 
     @Test
-    public void addUser(){
+    public void addUser() {
         User user = new User("admin", "admin", "admin");
-        userDao.addUser( user );
+        userDao.addUser(user);
     }
 }

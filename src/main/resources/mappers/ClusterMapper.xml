@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.newegg.ec.cache.app.dao.IClusterDao">
-    <select id="getClusterList"  resultType="com.newegg.ec.cache.app.model.Cluster" parameterType="String">
+    <select id="getClusterList" resultType="com.newegg.ec.cache.app.model.Cluster" parameterType="String">
         select * from cluster
         <if test="_parameter != null">
             where user_group=#{userGroup}
@@ -25,7 +25,8 @@
     <delete id="removeCluster">
         delete from cluster where id = #{id}
     </delete>
-    <insert id="addCluster"  parameterType="com.newegg.ec.cache.app.model.Cluster"  useGeneratedKeys="true" keyProperty="id">
+    <insert id="addCluster" parameterType="com.newegg.ec.cache.app.model.Cluster" useGeneratedKeys="true"
+            keyProperty="id">
         insert into cluster(address,cluster_name,user_group, ssl_username, ssl_password,cluster_type ) values(#{address},#{clusterName},#{userGroup},#{sslUsername},#{sslPassword},#{clusterType})
     </insert>
     <update id="updateClusterAddress">

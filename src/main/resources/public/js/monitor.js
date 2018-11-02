@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function () {
     window.clusterId = getQueryString("clusterId");
     window.endTime = getQueryString("endTime") || getCurrentTime();
     window.startTime = getQueryString("startTime") || (window.endTime - 60 * 60);
@@ -7,7 +7,7 @@ $(document).ready(function(){
     window.type = getQueryString("type") || "max";
     window.address = "";
 
-    getCluster(window.clusterId , function(obj){
+    getCluster(window.clusterId, function (obj) {
         var cluster = obj.res;
         window.address = cluster.address;
         $("#monitorTitle").html(cluster.clusterName);
@@ -21,24 +21,24 @@ $(document).ready(function(){
     // set type selector
     $("#dataType").selectpicker("val", window.type);
 
-     $("#instance").text(window.host);
-     $("#data-type").text(window.type);
+    $("#instance").text(window.host);
+    $("#data-type").text(window.type);
 
 });
 
-$(window).resize(function(){
-    $(".chart-sm").each(function(){
+$(window).resize(function () {
+    $(".chart-sm").each(function () {
         var id = $(this).attr('id');
         echarts.getInstanceByDom(document.getElementById(id)).resize();
     });
 });
 
-function getCurrentTime(){
-    return Date.parse(new Date())/1000;
+function getCurrentTime() {
+    return Date.parse(new Date()) / 1000;
 }
 
 // select time
-$(".relative-section ul li").on("click", function(){
+$(".relative-section ul li").on("click", function () {
     var timeRangeObj = $(this);
     timeRangeObj.addClass("time-selected").siblings().removeClass("time-selected");
     timeRangeObj.parent().siblings().children().removeClass('time-selected');
@@ -46,33 +46,34 @@ $(".relative-section ul li").on("click", function(){
     var currentTime = getCurrentTime();
     window.endTime = currentTime;
     window.startTime = window.endTime - timeRange * 60;
-    if(timeRange >= 60*24*3 ) {
+    if (timeRange >= 60 * 24 * 3) {
         window.date = "day";
-    }else if(timeRange >= 60*12 ) {
+    } else if (timeRange >= 60 * 12) {
         window.date = "hour";
-    }else{
+    } else {
         window.date = "minute";
     }
     reloadMonitor();
 })
 
 // query by time selector
-$(".query").on("click", function(){
+$(".query").on("click", function () {
     var startStr = $('#startTime').val().trim();
     var endStr = $('#endTime').val().trim();
-    if(startStr == '' || endStr == ''){
-        layer.msg("datetime can't be null", function(){});
+    if (startStr == '' || endStr == '') {
+        layer.msg("datetime can't be null", function () {
+        });
         return;
     }
     var startTime = Date.parse(new Date(startStr.replace(/-/g, '/')));
     var endTime = Date.parse(new Date(endStr.replace(/-/g, '/')));
-    if(startTime < endTime){
+    if (startTime < endTime) {
         var timeRange = (endTime - startTime) / 1000 / 60 / 60;
-        if(timeRange >= 72){
+        if (timeRange >= 72) {
             window.date = "day";
-        }else if(timeRange >= 3){
+        } else if (timeRange >= 3) {
             window.date = "hour";
-        }else{
+        } else {
             window.date = "minute";
         }
         window.startTime = startTime / 1000;
@@ -84,13 +85,13 @@ $(".query").on("click", function(){
     }
 })
 
-$("#nodeList").on('changed.bs.select', function (e){
+$("#nodeList").on('changed.bs.select', function (e) {
     var host = $(this).selectpicker('val');
     window.host = host;
     reloadMonitor();
 })
 
-$("body").delegate(".top_request_monitor", "click", function(){
+$("body").delegate(".top_request_monitor", "click", function () {
     var host = $(this).attr("title") || "all";
     window.host = host;
     reloadMonitor();
@@ -104,10 +105,10 @@ $('#dataType').on('changed.bs.select', function (e) {
 });
 
 // cluster info command
-$(".cluster-info").on("click", function(){
-    getCluster(window.clusterId , function(obj){
+$(".cluster-info").on("click", function () {
+    getCluster(window.clusterId, function (obj) {
         var address = obj.res.address;
-        getClusterInfoByAddress(address, function(obj){
+        getClusterInfoByAddress(address, function (obj) {
             layer.open({
                 title: 'Cluster Info',
                 type: 1,
@@ -116,17 +117,24 @@ $(".cluster-info").on("click", function(){
                 closeBtn: 1, //显示关闭按钮
                 anim: 2,
                 shadeClose: true, //开启遮罩关闭
-                content: '<pre style="padding: 20px; height:auto; border: none;">'+ syntaxHighlight(obj.res) +'</pre>'
+                content: '<pre style="padding: 20px; height:auto; border: none;">' + syntaxHighlight(obj.res) + '</pre>'
             });
         })
     })
 })
 
 // info command
-$("#info").on("click", function(){
+$("#info").on("click", function () {
     var host = window.host;
-    if(host != "all" && host != "" && host != null){
-        smarty.fopen( "/cluster/getNodeInfo?address="+ host, "cluster/info_format", true, { title: "Info", area: '800px', type: 1, closeBtn: 1, anim: 2, shadeClose: true},  function(obj){
+    if (host != "all" && host != "" && host != null) {
+        smarty.fopen("/cluster/getNodeInfo?address=" + host, "cluster/info_format", true, {
+            title: "Info",
+            area: '800px',
+            type: 1,
+            closeBtn: 1,
+            anim: 2,
+            shadeClose: true
+        }, function (obj) {
         });
     } else {
         layer.msg("Please select one node");
@@ -134,26 +142,33 @@ $("#info").on("click", function(){
 })
 
 // redis config
-$("#config").on("click", function(){
+$("#config").on("click", function () {
     var host = window.host;
-    if(host != "all" && host != "" && host != null){
-        smarty.fopen( "/cluster/getRedisConfig?address="+ host, "cluster/config_format", true, { title: "Config", area: '800px', type: 1, closeBtn: 1, anim: 2, shadeClose: true},  function(obj){
+    if (host != "all" && host != "" && host != null) {
+        smarty.fopen("/cluster/getRedisConfig?address=" + host, "cluster/config_format", true, {
+            title: "Config",
+            area: '800px',
+            type: 1,
+            closeBtn: 1,
+            anim: 2,
+            shadeClose: true
+        }, function (obj) {
         });
     } else {
         layer.msg("Please select one node");
     }
 })
 
-function reloadMonitor(){
-    window.location.href = "/monitor/clusterMonitor?clusterId="+window.clusterId +"&startTime=" + window.startTime + "&endTime="+window.endTime + "&host=" + window.host + "&type=" + window.type + "&date=" + window.date;
+function reloadMonitor() {
+    window.location.href = "/monitor/clusterMonitor?clusterId=" + window.clusterId + "&startTime=" + window.startTime + "&endTime=" + window.endTime + "&host=" + window.host + "&type=" + window.type + "&date=" + window.date;
 }
 
-function init(){
+function init() {
     // cluster info for state
-    getClusterInfoByAddress(window.address, function(obj){
+    getClusterInfoByAddress(window.address, function (obj) {
         var clusterInfo = obj.res;
         var state = clusterInfo.cluster_state;
-        if(state == "ok"){
+        if (state == "ok") {
             $("#cluster-state").html('<span class="label-success cluster-info">Cluster Healthy</span>');
         } else {
             $("#cluster-state").html('<span class="label-danger cluster-info">Cluster Bad</span>');
@@ -161,93 +176,93 @@ function init(){
         $("#cluster-nodes-number").text(clusterInfo.cluster_known_nodes);
         $("#master-number").text(clusterInfo.cluster_size);
     })
-    monitorGetMaxField(window.clusterId ,window.startTime,window.endTime,"response_time", 2,function(obj){
+    monitorGetMaxField(window.clusterId, window.startTime, window.endTime, "response_time", 2, function (obj) {
         var resList = obj.res;
         var topListStr = "";
-        for( var i = 0; i < resList.length; i++ ){
-            topListStr += '<p class="top-item">Top-' + (i + 1) + ': <span class="top_request_monitor" title="'+ resList[i]["host"] + '" >&nbsp;' +  resList[i]["response_time"] + "&nbsp; ms"+ '&nbsp;</span></p>';
+        for (var i = 0; i < resList.length; i++) {
+            topListStr += '<p class="top-item">Top-' + (i + 1) + ': <span class="top_request_monitor" title="' + resList[i]["host"] + '" >&nbsp;' + resList[i]["response_time"] + "&nbsp; ms" + '&nbsp;</span></p>';
         }
-        $("#top-response-time").append( topListStr );
+        $("#top-response-time").append(topListStr);
     });
-    monitorGetAvgField(window.clusterId ,window.startTime,window.endTime,window.host, "response_time",function(obj){
-        $("#avg-response").html( obj.res );
+    monitorGetAvgField(window.clusterId, window.startTime, window.endTime, window.host, "response_time", function (obj) {
+        $("#avg-response").html(obj.res);
     });
 
-    monitorGetDbSize(window.address,function(obj){
-        if( obj.res ){
-            $("#all-key").html( Math.round(obj.res) );
+    monitorGetDbSize(window.address, function (obj) {
+        if (obj.res) {
+            $("#all-key").html(Math.round(obj.res));
         }
     });
-    monitorGetMaxField(window.clusterId ,window.startTime,window.endTime,"total_keys", 2,function(obj){
+    monitorGetMaxField(window.clusterId, window.startTime, window.endTime, "total_keys", 2, function (obj) {
         $("#max-all-key").attr("title", obj.res[0].host)
-        $("#max-all-key").html( obj.res[0].total_keys );
+        $("#max-all-key").html(obj.res[0].total_keys);
     });
-    monitorGetMinField(window.clusterId ,window.startTime,window.endTime,"total_keys", 2,function(obj){
+    monitorGetMinField(window.clusterId, window.startTime, window.endTime, "total_keys", 2, function (obj) {
         $("#min-all-key").attr("title", obj.res[0].host)
-        $("#min-all-key").html( obj.res[0].total_keys );
+        $("#min-all-key").html(obj.res[0].total_keys);
     });
 
-    monitorGetMaxField(window.clusterId ,window.startTime,window.endTime,"connected_clients", 2,function(obj){
+    monitorGetMaxField(window.clusterId, window.startTime, window.endTime, "connected_clients", 2, function (obj) {
         var resList = obj.res;
         var topListStr = "";
-        for( var i = 0; i < resList.length; i++ ){
-            topListStr += '<p class="top-item">Top-' + (i + 1) + ': <span class="top_request_monitor" title="'+ resList[i]["host"] + '" >&nbsp;' + resList[i]["connected_clients"]  + '</span></p>';
+        for (var i = 0; i < resList.length; i++) {
+            topListStr += '<p class="top-item">Top-' + (i + 1) + ': <span class="top_request_monitor" title="' + resList[i]["host"] + '" >&nbsp;' + resList[i]["connected_clients"] + '</span></p>';
         }
-        $("#top-avg-connection").append( topListStr );
+        $("#top-avg-connection").append(topListStr);
     });
 
-    monitorGetAvgField(window.clusterId ,window.startTime,window.endTime,window.host, "connected_clients",function(obj){
-        if( obj.res ){
-            $("#avg-connection").html( Math.round(obj.res) );
+    monitorGetAvgField(window.clusterId, window.startTime, window.endTime, window.host, "connected_clients", function (obj) {
+        if (obj.res) {
+            $("#avg-connection").html(Math.round(obj.res));
         }
     });
 
-    monitorGetMaxField(window.clusterId ,window.startTime,window.endTime,"instantaneous_ops_per_sec", 2,function(obj){
+    monitorGetMaxField(window.clusterId, window.startTime, window.endTime, "instantaneous_ops_per_sec", 2, function (obj) {
         var resList = obj.res;
         var topListStr = "";
-        for( var i = 0; i < resList.length; i++ ){
-            topListStr += '<p class="top-item">Top-' + (i + 1) + ':  <span class="top_request_monitor" title="'+ resList[i]["host"] + '" >&nbsp;' + resList[i]["instantaneous_ops_per_sec"]  + '</span></p>';
+        for (var i = 0; i < resList.length; i++) {
+            topListStr += '<p class="top-item">Top-' + (i + 1) + ':  <span class="top_request_monitor" title="' + resList[i]["host"] + '" >&nbsp;' + resList[i]["instantaneous_ops_per_sec"] + '</span></p>';
         }
-        $("#top-avg-instantaneous").append( topListStr );
+        $("#top-avg-instantaneous").append(topListStr);
     });
 
-    monitorGetAvgField(window.clusterId ,window.startTime,window.endTime,window.host, "instantaneous_ops_per_sec",function(obj){
-        if( obj.res ){
-            $("#avg-instantaneous").html( Math.round(obj.res) );
+    monitorGetAvgField(window.clusterId, window.startTime, window.endTime, window.host, "instantaneous_ops_per_sec", function (obj) {
+        if (obj.res) {
+            $("#avg-instantaneous").html(Math.round(obj.res));
         }
     });
 
-   monitorGetGroupNodeInfo(window.clusterId ,window.startTime,window.endTime,window.host,window.type,window.date,function(obj){
+    monitorGetGroupNodeInfo(window.clusterId, window.startTime, window.endTime, window.host, window.type, window.date, function (obj) {
         var storageUnit = calStorageUnit(obj.res[0].usedMemory);
         var numberUnit = calNumberUnit(obj.res[0].expires);
-        var usefulData = refactor(obj.res,window.date,storageUnit,numberUnit);
+        var usefulData = refactor(obj.res, window.date, storageUnit, numberUnit);
         clearChart_invalidatedData(usefulData);
 
-        buildChart("charts-cpu","平均每秒使用CPU时间","date","usedCpuUser",usefulData,"CPU usage","  /s");
-        buildChart("charts-memory","内存占用","date","usedMemory",usefulData,"memory usage", storageUnit);
-        buildChart("charts-client","客户端连接数","date","connectedClients",usefulData,"client connections"," ");
-        buildChart("charts-ops","每秒指令数(instantaneous_ops_per_sec )","date","instantaneousOpsPerSec",usefulData,"command  /sec"," ");
-        buildChart("charts-commands","每秒命令数(total_commands_processed)","date","totalCommandsProcessed",usefulData,"command  /sec  "," ");
-        buildChart("charts-Keyspace-expires","有TTL的key总数","date","expires",usefulData,"keys with ttl",numberUnit);
-        buildChart("charts-hitRate","命中率","date","keyspaceHitRate",usefulData,"hitRate_avg"," ");
+        buildChart("charts-cpu", "平均每秒使用CPU时间", "date", "usedCpuUser", usefulData, "CPU usage", "  /s");
+        buildChart("charts-memory", "内存占用", "date", "usedMemory", usefulData, "memory usage", storageUnit);
+        buildChart("charts-client", "客户端连接数", "date", "connectedClients", usefulData, "client connections", " ");
+        buildChart("charts-ops", "每秒指令数(instantaneous_ops_per_sec )", "date", "instantaneousOpsPerSec", usefulData, "command  /sec", " ");
+        buildChart("charts-commands", "每秒命令数(total_commands_processed)", "date", "totalCommandsProcessed", usefulData, "command  /sec  ", " ");
+        buildChart("charts-Keyspace-expires", "有TTL的key总数", "date", "expires", usefulData, "keys with ttl", numberUnit);
+        buildChart("charts-hitRate", "命中率", "date", "keyspaceHitRate", usefulData, "hitRate_avg", " ");
 
     });
 
-    getCluster(window.clusterId , function(obj){
+    getCluster(window.clusterId, function (obj) {
         $("#clusterName").html(obj.res.clusterName);
     });
 
     // set node options
     var address = window.address;
-    nodeList(address, function(nodeObj){
+    nodeList(address, function (nodeObj) {
         var nodeList = nodeObj.res;
         window.nodeList = nodeList;
         var options = '<option>all</option>';
-        for(var i = 0, len = nodeList.length; i < len; i++){
+        for (var i = 0, len = nodeList.length; i < len; i++) {
             var node = nodeList[i];
             var host = node.ip + ":" + node.port;
             var role = node.role;
-            options += '<option data-subtext="'+role+'">'+host+'</option>';
+            options += '<option data-subtext="' + role + '">' + host + '</option>';
         }
         var nodeListObj = $("#nodeList");
         nodeListObj.append(options);
@@ -259,35 +274,35 @@ function init(){
     });
 }
 
-function  calStorageUnit(numberValue){
+function calStorageUnit(numberValue) {
     var sizeUnit = '';
-    if( numberValue < 1024 ){
+    if (numberValue < 1024) {
         sizeUnit = 'B';
-    }else if( numberValue /1024 <1024 ){
+    } else if (numberValue / 1024 < 1024) {
         sizeUnit = 'KB';
-    }else if( numberValue /1024/1024 <1024 ){
+    } else if (numberValue / 1024 / 1024 < 1024) {
         sizeUnit = 'MB';
-    }else{
+    } else {
         sizeUnit = 'GB';
     }
     return sizeUnit;
 }
 
-function  calNumberUnit(numberValue){
+function calNumberUnit(numberValue) {
     var numberUnit = '';
-    if( numberValue/10000 < 10 ){
+    if (numberValue / 10000 < 10) {
         numberUnit = '';
-    }else {
+    } else {
         numberUnit = 'W';
     }
     return numberUnit;
 }
 
-function refactor(originData,timeUnit,storageUnit,numberUnit){
+function refactor(originData, timeUnit, storageUnit, numberUnit) {
     var maxIndex = originData.length;
-    for(var index=maxIndex-1;index>0;index--){
+    for (var index = maxIndex - 1; index > 0; index--) {
         var thisRecord = originData[index];
-        var fontRecord = originData[index-1];
+        var fontRecord = originData[index - 1];
 
         // 做差值 获得有用的 统计值
         thisRecord.totalConnectionsReceived = (thisRecord.totalConnectionsReceived - fontRecord.totalConnectionsReceived).toFixed(2);
@@ -302,67 +317,67 @@ function refactor(originData,timeUnit,storageUnit,numberUnit){
         thisRecord.usedCpuUserChildren = (thisRecord.usedCpuUserChildren - fontRecord.usedCpuUserChildren).toFixed(2);
 
         // 时间单位换算 获得有用的 统计值
-        if(timeUnit == 'minute'){
-            thisRecord.totalCommandsProcessed = ( thisRecord.totalCommandsProcessed /60 ).toFixed(2);
-            thisRecord.usedCpuUser = ( thisRecord.usedCpuUser /60 ).toFixed(4);
-        }else if(timeUnit == 'hour'){
-            thisRecord.totalCommandsProcessed = ( thisRecord.totalCommandsProcessed /60 /60 ).toFixed(2);
-            thisRecord.usedCpuUser = ( thisRecord.usedCpuUser /60/60 ).toFixed(4);
-        }else if(timeUnit == 'day'){
-            thisRecord.totalCommandsProcessed = ( thisRecord.totalCommandsProcessed /60 /60 /24 ).toFixed(2);
-            thisRecord.usedCpuUser = ( thisRecord.usedCpuUser /60/60/24 ).toFixed(4);
+        if (timeUnit == 'minute') {
+            thisRecord.totalCommandsProcessed = (thisRecord.totalCommandsProcessed / 60).toFixed(2);
+            thisRecord.usedCpuUser = (thisRecord.usedCpuUser / 60).toFixed(4);
+        } else if (timeUnit == 'hour') {
+            thisRecord.totalCommandsProcessed = (thisRecord.totalCommandsProcessed / 60 / 60).toFixed(2);
+            thisRecord.usedCpuUser = (thisRecord.usedCpuUser / 60 / 60).toFixed(4);
+        } else if (timeUnit == 'day') {
+            thisRecord.totalCommandsProcessed = (thisRecord.totalCommandsProcessed / 60 / 60 / 24).toFixed(2);
+            thisRecord.usedCpuUser = (thisRecord.usedCpuUser / 60 / 60 / 24).toFixed(4);
         }
 
         // 计算 获得有用的 统计值
-        thisRecord.keyspaceHitRate = (Number(thisRecord.keyspaceHits) / ( Number(thisRecord.keyspaceHits) + Number(thisRecord.keyspaceMisses))).toFixed(2);
-        if(isNaN(thisRecord.keyspaceHitRate) || thisRecord.keyspaceHitRate==Infinity){
+        thisRecord.keyspaceHitRate = (Number(thisRecord.keyspaceHits) / (Number(thisRecord.keyspaceHits) + Number(thisRecord.keyspaceMisses))).toFixed(2);
+        if (isNaN(thisRecord.keyspaceHitRate) || thisRecord.keyspaceHitRate == Infinity) {
             thisRecord.keyspaceHitRate = 0.0;
         }
 
         // 存储单位换算 获得有用的 统计值
-        if (storageUnit == 'KB'){
-            thisRecord.usedMemory = (thisRecord.usedMemory/1024).toFixed(2);
-            thisRecord.usedMemoryRss = (thisRecord.usedMemoryRss/1024).toFixed(2);
-            thisRecord.usedMemoryPeak = (thisRecord.usedMemoryPeak/1024).toFixed(2);
-        }else if (storageUnit == 'MB'){
-            thisRecord.usedMemory = (thisRecord.usedMemory /1024/1024).toFixed(2);
-            thisRecord.usedMemoryRss = (thisRecord.usedMemoryRss/1024/1024).toFixed(2);
-            thisRecord.usedMemoryPeak = (thisRecord.usedMemoryPeak/1024/1024).toFixed(2);
-        }else if (storageUnit == 'GB'){
-            thisRecord.usedMemory = (thisRecord.usedMemory/1024/1024/1024).toFixed(2);
-            thisRecord.usedMemoryRss = (thisRecord.usedMemoryRss/1024/1024/1024).toFixed(2);
-            thisRecord.usedMemoryPeak = (thisRecord.usedMemoryPeak/1024/1024/1024).toFixed(2);
-        }else {
+        if (storageUnit == 'KB') {
+            thisRecord.usedMemory = (thisRecord.usedMemory / 1024).toFixed(2);
+            thisRecord.usedMemoryRss = (thisRecord.usedMemoryRss / 1024).toFixed(2);
+            thisRecord.usedMemoryPeak = (thisRecord.usedMemoryPeak / 1024).toFixed(2);
+        } else if (storageUnit == 'MB') {
+            thisRecord.usedMemory = (thisRecord.usedMemory / 1024 / 1024).toFixed(2);
+            thisRecord.usedMemoryRss = (thisRecord.usedMemoryRss / 1024 / 1024).toFixed(2);
+            thisRecord.usedMemoryPeak = (thisRecord.usedMemoryPeak / 1024 / 1024).toFixed(2);
+        } else if (storageUnit == 'GB') {
+            thisRecord.usedMemory = (thisRecord.usedMemory / 1024 / 1024 / 1024).toFixed(2);
+            thisRecord.usedMemoryRss = (thisRecord.usedMemoryRss / 1024 / 1024 / 1024).toFixed(2);
+            thisRecord.usedMemoryPeak = (thisRecord.usedMemoryPeak / 1024 / 1024 / 1024).toFixed(2);
+        } else {
 
         }
 
-        if(numberUnit == 'W'){
-            thisRecord.expires = (thisRecord.expires/10000).toFixed(2);
+        if (numberUnit == 'W') {
+            thisRecord.expires = (thisRecord.expires / 10000).toFixed(2);
         }
 
         var dateStr_hhh = thisRecord.date.toString();
         // 时间字符串转化
         var splitIndex_date = dateStr_hhh.indexOf(":");
-        if(splitIndex_date != -1){
-            var str1 = dateStr_hhh.substring(0,splitIndex_date);
-            var str2 = dateStr_hhh.substring(splitIndex_date+1,dateStr_hhh.length);
-            if(str1.length  == 8 ){  //20180505:5
-                if(str2.length  == 1 ){
-                    str2 = '0'+str2;
+        if (splitIndex_date != -1) {
+            var str1 = dateStr_hhh.substring(0, splitIndex_date);
+            var str2 = dateStr_hhh.substring(splitIndex_date + 1, dateStr_hhh.length);
+            if (str1.length == 8) {  //20180505:5
+                if (str2.length == 1) {
+                    str2 = '0' + str2;
                 }
-                dateStr_hhh = str1.substring(4,6)+'/'+str1.substring(6,8) + ' ' + str2 +':00';
-            }else {
-                if(str1.length ==1){
-                    str1 = '0'+str1;
+                dateStr_hhh = str1.substring(4, 6) + '/' + str1.substring(6, 8) + ' ' + str2 + ':00';
+            } else {
+                if (str1.length == 1) {
+                    str1 = '0' + str1;
                 }
-                if(str2.length ==1){
-                    str2 = '0'+str2;
+                if (str2.length == 1) {
+                    str2 = '0' + str2;
                 }
-                dateStr_hhh = str1+':'+str2;
+                dateStr_hhh = str1 + ':' + str2;
             }
             thisRecord.date = dateStr_hhh;
-        }else{
-            thisRecord.date = dateStr_hhh.substring(4,6)+'/'+dateStr_hhh.substring(6,8) ;
+        } else {
+            thisRecord.date = dateStr_hhh.substring(4, 6) + '/' + dateStr_hhh.substring(6, 8);
         }
 
     }
@@ -372,35 +387,35 @@ function refactor(originData,timeUnit,storageUnit,numberUnit){
 }
 
 // 清除不合理的数据
-function clearChart_invalidatedData(originData){
+function clearChart_invalidatedData(originData) {
     var clearChart_commands = false;
     var clearChart_cpu = false;
     var clearChart_hitRate = false;
-    originData.forEach(function(thisRecord){
-        if(thisRecord.totalCommandsProcessed<0){
+    originData.forEach(function (thisRecord) {
+        if (thisRecord.totalCommandsProcessed < 0) {
             clearChart_commands = true;
         }
-        if(thisRecord.usedCpuUser<0){
+        if (thisRecord.usedCpuUser < 0) {
             clearChart_cpu = true;
         }
-        if(thisRecord.keyspaceHitRate>1 || thisRecord.keyspaceHitRate<0 ){
+        if (thisRecord.keyspaceHitRate > 1 || thisRecord.keyspaceHitRate < 0) {
             clearChart_hitRate = true;
         }
     });
-    if(clearChart_commands){
-        originData.forEach(function(thisRecord){
+    if (clearChart_commands) {
+        originData.forEach(function (thisRecord) {
             thisRecord.totalCommandsProcessed = "clear";
         });
         console.log("have some invalidate data, clear chart-totalCommandsProcessed");
     }
-    if(clearChart_cpu){
-        originData.forEach(function(thisRecord){
+    if (clearChart_cpu) {
+        originData.forEach(function (thisRecord) {
             thisRecord.usedCpuUser = "clear";
         });
         console.log("have some invalidate data, clear chart-usedCpuUser");
     }
-    if(clearChart_hitRate){
-        originData.forEach(function(thisRecord){
+    if (clearChart_hitRate) {
+        originData.forEach(function (thisRecord) {
             thisRecord.keyspaceHitRate = "clear";
         });
         console.log("have some invalidate data, clear chart-keyspaceHitRate");
@@ -408,11 +423,11 @@ function clearChart_invalidatedData(originData){
 }
 
 
-function buildChart(webElementId,titleText,xAxisFieldName,yAxisFieldName,chartData,legendText,yAxisText){
+function buildChart(webElementId, titleText, xAxisFieldName, yAxisFieldName, chartData, legendText, yAxisText) {
     var myChart = echarts.init(document.getElementById(webElementId));
     myChart.showLoading({
         text: '数据正在努力加载...',
-        textStyle: { fontSize : 30 , color: '#444' },
+        textStyle: {fontSize: 30, color: '#444'},
         effectOption: {backgroundColor: 'rgba(0, 0, 0, 0)'}
     });
     var option_bar = {
@@ -421,7 +436,7 @@ function buildChart(webElementId,titleText,xAxisFieldName,yAxisFieldName,chartDa
             subtext: ''
         },
         color: [
-            '#7cb5ec','#90ed7d','#FE8463','#9BCA63','#FAD860','#60C0DD','#0084C6'
+            '#7cb5ec', '#90ed7d', '#FE8463', '#9BCA63', '#FAD860', '#60C0DD', '#0084C6'
         ],
         xAxis: {
             type: 'category',
@@ -435,10 +450,10 @@ function buildChart(webElementId,titleText,xAxisFieldName,yAxisFieldName,chartDa
             scale: true,
             nameTextStyle: {
                 fontSize: 12,
-                align:'right'
+                align: 'right'
             }
         },
-        tooltip:{
+        tooltip: {
             show: true,
             trigger: 'axis',
             triggerOn: 'mousemove|click',
@@ -446,20 +461,20 @@ function buildChart(webElementId,titleText,xAxisFieldName,yAxisFieldName,chartDa
 //                return legendText+': {b}';
 //            }
         },
-        grid:{
+        grid: {
             bottom: 40,
             left: 80,
             top: 60,
         },
-        legend:{
+        legend: {
             show: true,
             top: 'bottom',
             selectedMode: false,
-            formatter: function(name){
+            formatter: function (name) {
                 return legendText;
             }
         },
-        dataset:{
+        dataset: {
             source: chartData
         },
         series: [{
@@ -473,28 +488,28 @@ function buildChart(webElementId,titleText,xAxisFieldName,yAxisFieldName,chartDa
 }
 
 
-
 // slow log
 $("#logNodeList").on('changed.bs.select', function (e) {
     slowLog();
 })
+
 // slow log function
-function slowLog(){
+function slowLog() {
     $("#slow-log-table").empty();
     var logParam = {};
     var logNode = $("#logNodeList").selectpicker("val");
-    if(logNode == "all"){
+    if (logNode == "all") {
         logParam.hostList = window.nodeList;
     } else {
         var ipAndPort = logNode.split(":");
-        logParam.hostList = [{"ip":ipAndPort[0], "port": parseInt(ipAndPort[1])}];
+        logParam.hostList = [{"ip": ipAndPort[0], "port": parseInt(ipAndPort[1])}];
     }
     var tableStr = '<table class="table table-bordered scrollbar">';
     tableStr += "<thead><tr><th>Host</th><th>Slow Date</th><th>Run Time</th><th>Type</th><th>command</th></tr></thead><tbody>"
-    monitorSlowLogs(logParam,function(obj){
+    monitorSlowLogs(logParam, function (obj) {
         var items = obj.res;
         var tr = "";
-        for(var index in items){
+        for (var index in items) {
             tr += "<tr>";
             tr += "<td class='one_slow_log info-hover'>" + items[index].host + "</td>";
             tr += "<td>" + items[index].showDate + "</td>";
@@ -505,11 +520,11 @@ function slowLog(){
         }
         tableStr += tr;
         tableStr += "</tbody></table>";
-        $("#slow-log-table").append( tableStr );
+        $("#slow-log-table").append(tableStr);
         $("#slow-log-table>table").dataTable({
-            pageLength:15,
-            lengthMenu: [15, 30, 50, 100, 200, 300 ],
-            order: [[ 1, 'asc' ]]
+            pageLength: 15,
+            lengthMenu: [15, 30, 50, 100, 200, 300],
+            order: [[1, 'asc']]
         });
     });
 }

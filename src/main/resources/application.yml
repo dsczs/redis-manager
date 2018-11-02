@@ -4,21 +4,21 @@ server:
 
 spring:
   application:
-      name: redis-manager
+    name: redis-manager
   http:
-      encoding:
-        enabled: true
-        force: true
-        charset: UTF-8
+    encoding:
+      enabled: true
+      force: true
+      charset: UTF-8
   # 改成自己的数据库，仅需自己创建数据库即可，相关表会自动生成
   datasource:
-      name: serverbase
-      driver-class-name: com.mysql.jdbc.Driver
-      url: jdbc:mysql://127.0.0.1:3306/redis_manager_new?useUnicode=true&characterEncoding=utf-8
-      username: test
-      password: test
+    name: serverbase
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.60.128:3306/redis_manager_new?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: hadoop123
   wechat:
-     alarm:
+    alarm:
       url:
       roleId: 2
       alarmsize: 200
@@ -26,43 +26,43 @@ spring:
 mybatis:
   mapper-locations: classpath*:mappers/*
   configuration:
-      mapUnderscoreToCamelCase: true
+    mapUnderscoreToCamelCase: true
 
 cache:
-    # redis 客户端用于配置修改什么的,记得安装部署的时候要修改一下权限 chmod 777 redis-cli
-    redis.client: ../redis-manager/src/main/resources/public/shell/redis-cli
-    # userapi 自动生成 restful 接口
-    user.api.path: ../redis-manager/src/main/resources/public/core/userApi.js
-    # 自动生成 mysql 表
-    mysql:
-        scan.package: com.newegg.ec.cache
-        # 配置成跟 jdbc 连接的信息一样
-        database.name: redis_manager_new
-        # 用于删除 7 天的后的数据
-        clearn.day: 7
-    # 支持的插件多个可以用逗号隔开
-    plugin: machine,humpback
-    # humpback 相关配置
-    humpback:
-        # 镜像列表, 如果没有humpback，则可为空
-        image: humpback-hub.newegg.org/shec/redis3.0.6:v3,docker.neg/shec/redis-4.0.8:v1
-        # humpback 操作的 api 接口 %s 是占位符
-        api.format: http://%s:8500/dockerapi/v2/
-    # docker 相关配置
-    docker:
-        # docker 镜像需要自己 build
-        image: ssecbigdata02:5000/redis4.0.1
-        # docker api 格式
-        api.format: http://%s:2375/
-    # 物理机相关配置
-    machine:
-        install:
-            # 安装脚本的路径
-            shell: /shell/redis_install.sh
-            # 安装包路径
-            package: /package
-            # 安装的基础路径
-            basepath: redis-cluster/
-        # 可以安装的 tar 包
-        image: redis3.0.6.tar,redis-4.0.8.tar
+  # redis 客户端用于配置修改什么的,记得安装部署的时候要修改一下权限 chmod 777 redis-cli
+  redis.client: ../redis-manager/src/main/resources/public/shell/redis-cli
+  # userapi 自动生成 restful 接口
+  user.api.path: ../redis-manager/src/main/resources/public/core/userApi.js
+  # 自动生成 mysql 表
+  mysql:
+    scan.package: com.newegg.ec.cache
+    # 配置成跟 jdbc 连接的信息一样
+    database.name: redis_manager_new
+    # 用于删除 7 天的后的数据
+    clearn.day: 7
+  # 支持的插件多个可以用逗号隔开
+  plugin: machine,humpback
+  # humpback 相关配置
+  humpback:
+    # 镜像列表, 如果没有humpback，则可为空
+    image: humpback-hub.newegg.org/shec/redis3.0.6:v3,docker.neg/shec/redis-4.0.8:v1
+    # humpback 操作的 api 接口 %s 是占位符
+    api.format: http://%s:8500/dockerapi/v2/
+  # docker 相关配置
+  docker:
+    # docker 镜像需要自己 build
+    image: ssecbigdata02:5000/redis4.0.1
+    # docker api 格式
+    api.format: http://%s:2375/
+  # 物理机相关配置
+  machine:
+    install:
+      # 安装脚本的路径
+      shell: /shell/redis_install.sh
+      # 安装包路径
+      package: /package
+      # 安装的基础路径
+      basepath: redis-cluster/
+    # 可以安装的 tar 包
+    image: redis3.0.6.tar,redis-4.0.8.tar
 

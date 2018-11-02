@@ -20,18 +20,18 @@ public class HumpbackNodeDaoTest {
     private IHumpbackNodeDao humpbackNodeDao;
 
     @Test
-    public void testHumbackNodeList(){
+    public void testHumbackNodeList() {
         int id = 1;
         List<Node> list = humpbackNodeDao.getHumbackNodeList(id);
-        for(Node node :list){
-            HumpbackNode temp =   (HumpbackNode)node;
+        for (Node node : list) {
+            HumpbackNode temp = (HumpbackNode) node;
             System.out.println(temp.getClusterId());
         }
-        System.out.println( list );
+        System.out.println(list);
     }
 
     @Test
-    public void testAddHumbackNode(){
+    public void testAddHumbackNode() {
         HumpbackNode humpbackNode = new HumpbackNode();
         humpbackNode.setClusterId(1);
         humpbackNode.setContainerName("redis8018");
@@ -43,14 +43,14 @@ public class HumpbackNodeDaoTest {
     }
 
     @Test
-    public void testRemoveHumpbackNode(){
+    public void testRemoveHumpbackNode() {
         int id = 6;
-        System.out.println(humpbackNodeDao.removeHumbackNode( id ));
+        System.out.println(humpbackNodeDao.removeHumbackNode(id));
     }
 
     @Test
-    public void testGetCluster(){
-        HumpbackNode humpbackNode = humpbackNodeDao.getHumpbackNode( 3 );
-        System.out.println( humpbackNode );
+    public void testGetCluster() {
+        HumpbackNode humpbackNode = humpbackNodeDao.getHumpbackNode(3);
+        System.out.println(humpbackNode);
     }
 }
